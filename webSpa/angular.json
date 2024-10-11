@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "web-spa": {
+    "webSpa": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "web-spa:build:production"
+              "buildTarget": "webSpa:build:production"
             },
             "development": {
-              "buildTarget": "web-spa:build:development"
+              "buildTarget": "webSpa:build:development"
             }
           },
           "defaultConfiguration": "development"
