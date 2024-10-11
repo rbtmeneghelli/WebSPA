@@ -1,0 +1,101 @@
+@mixin custom-container($varFlex, $varWidth, $varGap) {
+    display: $varFlex;
+    width: $varWidth;
+    gap: $varGap;
+}
+
+.container-page {
+    @include custom-container($display-flex, $width-100, $gap-10);
+    flex-direction: $flex-direction-column;
+    align-items: $align-items-center;
+    .text-table {
+        width: $width-100;
+        margin-bottom: 0;
+    }
+    .text-sub-table {
+        width: $width-100;
+        mat-icon{
+            vertical-align: sub;
+        }
+    }
+}
+
+.container-filter {
+    @include custom-container($display-flex, $width-100, $gap-10);
+    @media only screen and (max-width: $max-width-mobile) {
+        flex-direction: $flex-direction-column;
+    }
+
+    .search-name {
+        width: $width-40;
+        @media only screen and (max-width: $max-width-mobile) {
+            width: $width-100;
+        }
+    }
+
+    .search-profile {
+        width: $width-40;
+        @media only screen and (max-width: $max-width-mobile) {
+            width: $width-100;
+        }
+    }
+
+    .search-status {
+        width: $width-20;
+        @media only screen and (max-width: $max-width-mobile) {
+            width: $width-100;
+        }
+    }
+}
+
+.container-filter-button {
+    @include custom-container($display-flex, $width-100, $gap-10);
+    justify-content: $justify-content-end;
+    @media only screen and (max-width: $max-width-mobile) {
+        flex-direction: $flex-direction-column;
+    }
+    .btn-table {
+        width: $width-10;
+        @media only screen and (max-width: $max-width-mobile) {
+            width: $width-100;
+        }
+    }
+}
+
+.container-table {
+    @include custom-container($display-flex, $width-100, $gap-10);
+    justify-content: $justify-content-start;
+    align-items: $align-items-center;
+    .text-table {
+        width: $width-90;
+    }
+}
+
+.container-table-button {
+    @include custom-container($display-flex, $width-100, $gap-10);
+    justify-content: $justify-content-end;
+    align-items: $align-items-center;
+    @media only screen and (max-width: $max-width-mobile) {
+        flex-direction: $flex-direction-column;
+    }
+
+    .text-table {
+        width: $width-90;
+        @media only screen and (max-width: $max-width-mobile) {
+            width: $width-100;
+        }
+    }
+
+    .btn-table {
+        width: $width-20;
+        @media only screen and (max-width: $max-width-mobile) {
+            width: $width-100;
+        }
+    }
+}
+
+.container-pagination {
+    @include custom-container($display-flex, $width-100, $gap-10);
+    justify-content: $justify-content-end;
+    align-items: $align-items-center;
+}

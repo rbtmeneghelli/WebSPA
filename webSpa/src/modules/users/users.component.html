@@ -1,16 +1,19 @@
 <div class="row">
-    <div class="container-novo">
+    <div class="container-page">
         <h1 class="text-table">Filtro de pesquisa</h1>
+        <p class="text-sub-table"><mat-icon>information</mat-icon> Por meio da consulta, você pode consultar diferentes usuários, ou realizar uma busca mais
+            aprofundada,
+            preenchendo 1 ou mais campos dos filtros</p>
     </div>
 </div>
 
 <div class="row">
     <div class="container-filter">
         <mat-form-field appearance="outline" class="search-name">
-            <mat-label>Nome do Usuário</mat-label>
-            <input matInput placeholder="Placeholder">
+            <mat-label hintLabel="máximo de 100 caracteres">Nome do Usuário</mat-label>
+            <input matInput placeholder="Nome do Usuário" maxlength="100" #nomeUsuario>
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <mat-hint>Hint</mat-hint>
+            <mat-hint align="end">{{nomeUsuario.value.length}}/100</mat-hint>
         </mat-form-field>
         <mat-form-field class="search-profile">
             <mat-label>Perfil do Usuário</mat-label>
@@ -24,6 +27,13 @@
             <mat-select multiple>
                 <mat-option value="one">Ativo</mat-option>
                 <mat-option value="two">Inativo</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="search-profile">
+            <mat-label>Ordernação</mat-label>
+            <mat-select>
+                <mat-option value="one">Decrescente</mat-option>
+                <mat-option value="two">Crescente</mat-option>
             </mat-select>
         </mat-form-field>
     </div>
