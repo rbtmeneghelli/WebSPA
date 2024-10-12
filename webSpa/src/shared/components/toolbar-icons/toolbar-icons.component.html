@@ -1,0 +1,22 @@
+<div>
+    <button mat-icon-button [matMenuTriggerFor]="menuNotificacao" matTooltip="Exibir Notificações">
+        <mat-icon>notifications</mat-icon>
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="menuUsuario" matTooltip="Exibir Opções">
+        <mat-icon>account_circle</mat-icon>
+    </button>
+</div>
+
+<mat-menu #menuUsuario="matMenu" xPosition="after">
+    <small mat-menu-item disabled><mat-icon class="mat-icon-actions">person</mat-icon>Usuário: XPTO</small>
+    <small mat-menu-item disabled><mat-icon class="mat-icon-actions">timer</mat-icon>Logado no dia 12/10/2024, 16:03:39</small>
+    <mat-divider></mat-divider>
+    <small mat-menu-item><mat-icon class="mat-icon-actions">manage_accounts</mat-icon> Alterar dados meu Usuário</small>
+    <small mat-menu-item><mat-icon class="mat-icon-actions">logout</mat-icon> Sair</small>
+</mat-menu>
+
+<mat-menu #menuNotificacao="matMenu" xPosition="after">
+    <small mat-menu-item><mat-icon class="mat-icon-actions">file_download</mat-icon> Excel solicitado está pronto para download</small>
+    <small mat-menu-item><mat-icon class="mat-icon-actions">celebration</mat-icon> O aniversario do cliente XXX chegou. bora celebrar!</small>
+    <small mat-menu-item><mat-icon class="mat-icon-actions">report</mat-icon> Ocorreu um erro no APP, verifique!</small>
+</mat-menu>

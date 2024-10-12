@@ -117,27 +117,3 @@
         word-break: break-all;
     }
 }
-
-mat-toolbar {
-    background-color: $primary-color !important;
-    justify-content: space-between;
-    align-items: center;
-
-    span {
-        color: $color-white;
-        font-weight: $font-weight-700;
-    }
-
-    mat-icon {
-        color: $color-white;
-    }
-}
-
-.sidenav-container {
-    width: $width-100;
-    height: $height-100;
-    mat-sidenav {
-        background-color: $primary-color !important;
-        border-radius: 0px !important;
-    }
-}

@@ -1,76 +1,17 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav mode="side" opened>
-        <h2 class="menu-item">Menu</h2>
-        <mat-nav-list>
-            <div mat-subheader class="menu-area">Área de Funcionalidade</div>
-            <mat-list-item>
-                <mat-icon matListItemIcon class="mat-icon-menu-actions">assignment</mat-icon>
-                <div matListItemTitle class="menu-item-text">Gerencial</div>
-            </mat-list-item>
-            <mat-list-item>
-                <mat-icon matListItemIcon class="mat-icon-menu-actions">calculate</mat-icon>
-                <div matListItemTitle class="menu-item-text">Financeira</div>
-            </mat-list-item>
-            <mat-list-item>
-                <mat-icon matListItemIcon class="mat-icon-menu-actions">security</mat-icon>
-                <div matListItemTitle class="menu-item-text">Segurança</div>
-            </mat-list-item>
-
-            <div mat-subheader class="menu-area">Área de Analise</div>
-            <mat-list-item>
-                <mat-icon matListItemIcon class="mat-icon-menu-actions">analytics</mat-icon>
-                <div matListItemTitle class="menu-item-text">Relatorios</div>
-            </mat-list-item>
-            <div mat-subheader class="menu-area">Área de Configuração</div>
-            <mat-list-item>
-                <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="!submenuOpen">chevron_right</mat-icon>
-                <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="submenuOpen">expand_more</mat-icon>
-                <div matListItemTitle (click)="toggleSubmenu()" class="menu-item-text">Serviços</div>
-            </mat-list-item>
-            <!-- Inicio do subMenu do menu Serviços -->
-            <mat-list-item *ngIf="submenuOpen" style="padding-left: 20px;">
-                <mat-icon matListItemIcon class="mat-icon-menu-actions">mail</mat-icon>
-                <div matListItemTitle class="menu-item-text">Configuração de Email</div>
-            </mat-list-item>
-            <mat-list-item *ngIf="submenuOpen" style="padding-left: 20px;">
-                <mat-icon matListItemIcon class="mat-icon-menu-actions">settings</mat-icon>
-                <div matListItemTitle class="menu-item-text">Configuração do Sistema</div>
-            </mat-list-item>
-            <!-- Fim do subMenu do menu Serviços -->
-            <div mat-subheader class="menu-area">Área de Suporte</div>
-            <mat-list-item>
-                <mat-icon matListItemIcon class="mat-icon-menu-actions">help_center</mat-icon>
-                <div matListItemTitle class="menu-item-text">Manual do Sistema</div>
-            </mat-list-item>
-            <mat-list-item>
-                <mat-icon matListItemIcon class="mat-icon-menu-actions">info</mat-icon>
-                <div matListItemTitle class="menu-item-text">Contato</div>
-            </mat-list-item>
-        </mat-nav-list>
+        <app-side-bar></app-side-bar>
     </mat-sidenav>
 
     <mat-sidenav-content>
         <mat-toolbar>
-            <button type="button" mat-icon-button (click)="sidenav.toggle()">
+            <button type="button" mat-icon-button (click)="sidenav.toggle()" [matTooltip]="sidenav.opened ?  'Ocultar menu' : 'Exibir menu'">
                 <mat-icon>menu</mat-icon>
             </button>
-            <span>WebSPA</span>
-            <div>
-                <button mat-icon-button [matMenuTriggerFor]="menuNotificacao">
-                    <mat-icon>notifications</mat-icon>
-                </button>
-                <button mat-icon-button [matMenuTriggerFor]="menuUsuario">
-                    <mat-icon>account_circle</mat-icon>
-                </button>
-            </div>
+            <span>{{title}}</span>
+            <app-toolbar-icons></app-toolbar-icons>
         </mat-toolbar>
-        <div class="row">
-            <div class="container-footer">
-                <p class="first-text">
-                    Todos os direitos reservados a Romar Software desde 2024. <br>
-                </p>
-            </div>
-        </div>
+        <app-footer></app-footer>
         <div class="content">
             <app-user></app-user>
             <router-outlet />
@@ -78,16 +19,3 @@
     </mat-sidenav-content>
 </mat-sidenav-container>
 
-<mat-menu #menuUsuario="matMenu" xPosition="after">
-    <small mat-menu-item disabled><mat-icon class="mat-icon-actions">person</mat-icon>Usuário: XPTO</small>
-    <small mat-menu-item disabled><mat-icon class="mat-icon-actions">timer</mat-icon>Logado no dia 12/10/2024, 16:03:39</small>
-    <mat-divider></mat-divider>
-    <small mat-menu-item><mat-icon class="mat-icon-actions">manage_accounts</mat-icon> Alterar dados meu Usuário</small>
-    <small mat-menu-item><mat-icon class="mat-icon-actions">logout</mat-icon> Sair</small>
-</mat-menu>
-
-<mat-menu #menuNotificacao="matMenu" xPosition="after">
-    <small mat-menu-item><mat-icon class="mat-icon-actions">file_download</mat-icon> Excel solicitado está pronto para download</small>
-    <small mat-menu-item><mat-icon class="mat-icon-actions">celebration</mat-icon> O aniversario do cliente XXX chegou. bora celebrar!</small>
-    <small mat-menu-item><mat-icon class="mat-icon-actions">report</mat-icon> Ocorreu um erro no APP, verifique!</small>
-</mat-menu>
