@@ -1,26 +1,60 @@
 <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav mode="side" opened style="background-color: blue;">
-        <h2>Menu</h2>
+    <mat-sidenav #sidenav mode="side" opened style="background-color: #005cbb; border-radius: 0px !important;">
+        <h2 style="color: white; text-align: center;">Menu WebSPA</h2>
         <mat-nav-list>
-            <a mat-list-item href="#">Item 1</a>
-            <a mat-list-item href="#">Item 2</a>
+            <div mat-subheader style="color: white; text-align: center;">Área de Funcionalidade</div>
             <mat-list-item>
-                <button mat-flat-button (click)="toggleSubmenu()">
-                    Item 3
-                    <mat-icon class="chevron" *ngIf="!submenuOpen">chevron_right</mat-icon>
-                    <mat-icon class="chevron" *ngIf="submenuOpen">expand_more</mat-icon>
-                </button>
-                <mat-nav-list *ngIf="submenuOpen">
-                    <a mat-list-item href="#">Subitem 1</a>
-                    <a mat-list-item href="#">Subitem 2</a>
-                    <a mat-list-item href="#">Subitem 3</a>
-                </mat-nav-list>
+                <mat-icon matListItemIcon>check</mat-icon>
+                <div matListItemTitle style="color: white;">Gerencial</div>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon matListItemIcon>check</mat-icon>
+                <div matListItemTitle>Financeira</div>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon matListItemIcon>check</mat-icon>
+                <div matListItemTitle>Segurança</div>
+            </mat-list-item>
+
+            <div mat-subheader style="color: white; text-align: center;">Área de Analise</div>
+            <mat-list-item>
+                <mat-icon matListItemIcon>check</mat-icon>
+                <div matListItemTitle>Relatorios</div>
+            </mat-list-item>
+            <div mat-subheader>Área de Configuração</div>
+            <mat-list-item>
+                <mat-icon matListItemIcon>check</mat-icon>
+                <div matListItemTitle (click)="toggleSubmenu()">Serviços</div>
+                <!-- <mat-icon class="chevron" *ngIf="!submenuOpen">chevron_right</mat-icon>
+                    <mat-icon class="chevron" *ngIf="submenuOpen">expand_more</mat-icon> -->
+                    <!-- <mat-nav-list *ngIf="submenuOpen">
+                        <a mat-list-item href="#">Subitem 1</a>
+                        <a mat-list-item href="#">Subitem 2</a>
+                        <a mat-list-item href="#">Subitem 3</a>
+                    </mat-nav-list> -->
+            </mat-list-item>
+            <mat-list-item *ngIf="submenuOpen" style="padding-left: 20px;">
+                <mat-icon matListItemIcon>check</mat-icon>
+                <div matListItemTitle (click)="toggleSubmenu()">dsfsdf</div>
+            </mat-list-item>
+            <mat-list-item *ngIf="submenuOpen" style="padding-left: 20px;">
+                <mat-icon matListItemIcon>check</mat-icon>
+                <div matListItemTitle (click)="toggleSubmenu()">sdfsdf</div>
+            </mat-list-item>
+            <div mat-subheader>Área de Suporte</div>
+            <mat-list-item>
+                <mat-icon matListItemIcon>check</mat-icon>
+                <div matListItemTitle>Manual do Sistema</div>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon matListItemIcon>check</mat-icon>
+                <div matListItemTitle>Contato</div>
             </mat-list-item>
         </mat-nav-list>
     </mat-sidenav>
 
     <mat-sidenav-content>
-        <mat-toolbar style="background-color: blue;">
+        <mat-toolbar style="background-color: #005cbb;">
             <button type="button" mat-icon-button (click)="sidenav.toggle()" aria-label="Toggle sidenav">
                 <mat-icon>menu</mat-icon>
             </button>
