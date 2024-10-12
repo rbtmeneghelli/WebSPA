@@ -47,12 +47,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-left: auto;
 }
 
-.sidenav-container {
-  width: $width-100;
-  height: $height-100;
-  background-color: blue;
-}
-
 .content {
   padding: 36px;
 }
@@ -97,4 +91,18 @@ mat-paginator{
   position: fixed;
   flex-direction: $flex-direction-row;
   margin-bottom: 2em;
+}
+
+.menu-area{
+  color: $color-white; 
+  text-align: $text-align-center;
+}
+
+.menu-item{
+  color: $color-white; 
+  text-align: $text-align-center;
+}
+
+.menu-item-text {
+  color: $color-white !important; 
 }

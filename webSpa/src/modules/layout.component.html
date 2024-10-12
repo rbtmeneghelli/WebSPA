@@ -1,64 +1,68 @@
 <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav mode="side" opened style="background-color: #005cbb; border-radius: 0px !important;">
-        <h2 style="color: white; text-align: center;">Menu WebSPA</h2>
+    <mat-sidenav #sidenav mode="side" opened>
+        <h2 class="menu-item">Menu</h2>
         <mat-nav-list>
-            <div mat-subheader style="color: white; text-align: center;">Área de Funcionalidade</div>
+            <div mat-subheader class="menu-area">Área de Funcionalidade</div>
             <mat-list-item>
-                <mat-icon matListItemIcon>check</mat-icon>
-                <div matListItemTitle style="color: white;">Gerencial</div>
+                <mat-icon matListItemIcon class="mat-icon-menu-actions">assignment</mat-icon>
+                <div matListItemTitle class="menu-item-text">Gerencial</div>
             </mat-list-item>
             <mat-list-item>
-                <mat-icon matListItemIcon>check</mat-icon>
-                <div matListItemTitle>Financeira</div>
+                <mat-icon matListItemIcon class="mat-icon-menu-actions">calculate</mat-icon>
+                <div matListItemTitle class="menu-item-text">Financeira</div>
             </mat-list-item>
             <mat-list-item>
-                <mat-icon matListItemIcon>check</mat-icon>
-                <div matListItemTitle>Segurança</div>
+                <mat-icon matListItemIcon class="mat-icon-menu-actions">security</mat-icon>
+                <div matListItemTitle class="menu-item-text">Segurança</div>
             </mat-list-item>
 
-            <div mat-subheader style="color: white; text-align: center;">Área de Analise</div>
+            <div mat-subheader class="menu-area">Área de Analise</div>
             <mat-list-item>
-                <mat-icon matListItemIcon>check</mat-icon>
-                <div matListItemTitle>Relatorios</div>
+                <mat-icon matListItemIcon class="mat-icon-menu-actions">analytics</mat-icon>
+                <div matListItemTitle class="menu-item-text">Relatorios</div>
             </mat-list-item>
-            <div mat-subheader>Área de Configuração</div>
+            <div mat-subheader class="menu-area">Área de Configuração</div>
             <mat-list-item>
-                <mat-icon matListItemIcon>check</mat-icon>
-                <div matListItemTitle (click)="toggleSubmenu()">Serviços</div>
-                <!-- <mat-icon class="chevron" *ngIf="!submenuOpen">chevron_right</mat-icon>
-                    <mat-icon class="chevron" *ngIf="submenuOpen">expand_more</mat-icon> -->
-                    <!-- <mat-nav-list *ngIf="submenuOpen">
-                        <a mat-list-item href="#">Subitem 1</a>
-                        <a mat-list-item href="#">Subitem 2</a>
-                        <a mat-list-item href="#">Subitem 3</a>
-                    </mat-nav-list> -->
+                <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="!submenuOpen">chevron_right</mat-icon>
+                <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="submenuOpen">expand_more</mat-icon>
+                <div matListItemTitle (click)="toggleSubmenu()" class="menu-item-text">Serviços</div>
+            </mat-list-item>
+            <!-- Inicio do subMenu do menu Serviços -->
+            <mat-list-item *ngIf="submenuOpen" style="padding-left: 20px;">
+                <mat-icon matListItemIcon class="mat-icon-menu-actions">mail</mat-icon>
+                <div matListItemTitle class="menu-item-text">Configuração de Email</div>
             </mat-list-item>
             <mat-list-item *ngIf="submenuOpen" style="padding-left: 20px;">
-                <mat-icon matListItemIcon>check</mat-icon>
-                <div matListItemTitle (click)="toggleSubmenu()">dsfsdf</div>
+                <mat-icon matListItemIcon class="mat-icon-menu-actions">settings</mat-icon>
+                <div matListItemTitle class="menu-item-text">Configuração do Sistema</div>
             </mat-list-item>
-            <mat-list-item *ngIf="submenuOpen" style="padding-left: 20px;">
-                <mat-icon matListItemIcon>check</mat-icon>
-                <div matListItemTitle (click)="toggleSubmenu()">sdfsdf</div>
-            </mat-list-item>
-            <div mat-subheader>Área de Suporte</div>
+            <!-- Fim do subMenu do menu Serviços -->
+            <div mat-subheader class="menu-area">Área de Suporte</div>
             <mat-list-item>
-                <mat-icon matListItemIcon>check</mat-icon>
-                <div matListItemTitle>Manual do Sistema</div>
+                <mat-icon matListItemIcon class="mat-icon-menu-actions">help_center</mat-icon>
+                <div matListItemTitle class="menu-item-text">Manual do Sistema</div>
             </mat-list-item>
             <mat-list-item>
-                <mat-icon matListItemIcon>check</mat-icon>
-                <div matListItemTitle>Contato</div>
+                <mat-icon matListItemIcon class="mat-icon-menu-actions">info</mat-icon>
+                <div matListItemTitle class="menu-item-text">Contato</div>
             </mat-list-item>
         </mat-nav-list>
     </mat-sidenav>
 
     <mat-sidenav-content>
-        <mat-toolbar style="background-color: #005cbb;">
-            <button type="button" mat-icon-button (click)="sidenav.toggle()" aria-label="Toggle sidenav">
+        <mat-toolbar>
+            <button type="button" mat-icon-button (click)="sidenav.toggle()">
                 <mat-icon>menu</mat-icon>
             </button>
-            <span>Aplicação Exemplo</span>
+            <span>WebSPA</span>
+            <div>
+                <button mat-icon-button [matMenuTriggerFor]="menuNotificacao">
+                    <mat-icon>notifications</mat-icon>
+                </button>
+                <button mat-icon-button [matMenuTriggerFor]="menuUsuario">
+                    <mat-icon>account_circle</mat-icon>
+                </button>
+            </div>
         </mat-toolbar>
         <div class="row">
             <div class="container-footer">
@@ -70,7 +74,20 @@
         <div class="content">
             <app-user></app-user>
             <router-outlet />
-
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
+
+<mat-menu #menuUsuario="matMenu" xPosition="after">
+    <small mat-menu-item disabled><mat-icon class="mat-icon-actions">person</mat-icon>Usuário: XPTO</small>
+    <small mat-menu-item disabled><mat-icon class="mat-icon-actions">timer</mat-icon>Logado no dia 12/10/2024, 16:03:39</small>
+    <mat-divider></mat-divider>
+    <small mat-menu-item><mat-icon class="mat-icon-actions">manage_accounts</mat-icon> Alterar dados meu Usuário</small>
+    <small mat-menu-item><mat-icon class="mat-icon-actions">logout</mat-icon> Sair</small>
+</mat-menu>
+
+<mat-menu #menuNotificacao="matMenu" xPosition="after">
+    <small mat-menu-item><mat-icon class="mat-icon-actions">file_download</mat-icon> Excel solicitado está pronto para download</small>
+    <small mat-menu-item><mat-icon class="mat-icon-actions">celebration</mat-icon> O aniversario do cliente XXX chegou. bora celebrar!</small>
+    <small mat-menu-item><mat-icon class="mat-icon-actions">report</mat-icon> Ocorreu um erro no APP, verifique!</small>
+</mat-menu>

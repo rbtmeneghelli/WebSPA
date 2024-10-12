@@ -9,11 +9,12 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { UserComponent } from './users/users.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [RouterOutlet, MatSlideToggleModule, MatSidenavModule, MatToolbarModule, MatListModule, MatIconModule, MatDividerModule, MatButtonModule, CommonModule, UserComponent],
+  imports: [RouterOutlet, MatMenuModule, MatSlideToggleModule, MatSidenavModule, MatToolbarModule, MatListModule, MatIconModule, MatDividerModule, MatButtonModule, CommonModule, UserComponent],
   templateUrl: './layout.component.html',
 })
 
