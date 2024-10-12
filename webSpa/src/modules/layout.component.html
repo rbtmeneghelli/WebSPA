@@ -20,16 +20,23 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-        <mat-toolbar color="primary">
+        <mat-toolbar style="background-color: blue;">
             <button type="button" mat-icon-button (click)="sidenav.toggle()" aria-label="Toggle sidenav">
                 <mat-icon>menu</mat-icon>
             </button>
             <span>Aplicação Exemplo</span>
         </mat-toolbar>
-
+        <div class="row">
+            <div class="container-footer">
+                <p class="first-text">
+                    Todos os direitos reservados a Romar Software desde 2024. <br>
+                </p>
+            </div>
+        </div>
         <div class="content">
             <app-user></app-user>
             <router-outlet />
+
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

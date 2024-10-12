@@ -4,7 +4,7 @@
         <p class="text-sub-table"><mat-icon>information</mat-icon> Por meio da consulta, você pode consultar diferentes
             usuários, ou realizar uma busca mais
             aprofundada,
-            preenchendo 1 ou mais campos dos filtros</p>
+            preenchendo 1 ou mais campos dos filtros abaixo.</p>
     </div>
 </div>
 
@@ -18,8 +18,9 @@
         <mat-form-field class="search-profile" appearance="outline">
             <mat-label>Perfil do Usuário</mat-label>
             <mat-select>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
+                <mat-option value=1>Administrador</mat-option>
+                <mat-option value=2>Colaborador</mat-option>
+                <mat-option value=3>Cliente</mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field class="search-status" appearance="outline">
@@ -41,8 +42,8 @@
 
 <div class="row">
     <div class="container-filter-button">
-        <button mat-flat-button class="btn-table"><mat-icon>filter_alt_off</mat-icon> Limpar</button>
-        <button mat-flat-button class="btn-table"><mat-icon>search</mat-icon> Filtrar</button>
+        <button mat-flat-button class="btn-table" matTooltip="Limpar"><mat-icon>filter_alt_off</mat-icon> Limpar</button>
+        <button mat-flat-button class="btn-table" matTooltip="Filtrar"><mat-icon>search</mat-icon> Filtrar</button>
     </div>
 </div>
 
@@ -51,8 +52,8 @@
 <div class="row">
     <div class="container-table-button">
         <h1 class="text-table">Lista de Usuários registrados</h1>
-        <button mat-flat-button class="btn-table"><mat-icon>download</mat-icon> Exportar dados</button>
-        <button mat-flat-button class="btn-table"><mat-icon>add</mat-icon> Criar Novo Usuario</button>
+        <button mat-flat-button class="btn-table" matTooltip="Exportar dados"><mat-icon>download</mat-icon> Exportar dados</button>
+        <button mat-flat-button class="btn-table" matTooltip="Criar Novo Usuario"><mat-icon>add</mat-icon> Criar Novo Usuario</button>
     </div>
 </div>
 
@@ -77,8 +78,10 @@
             <ng-container matColumnDef="status">
                 <th mat-header-cell *matHeaderCellDef> Status </th>
                 <td mat-cell *matCellDef="let element">
-                    <span *ngIf="element.status" class="mat-span-active">Ativo <mat-icon class="mat-icon-active">check</mat-icon></span>
-                    <span *ngIf="!element.status" class="mat-span-inactive">Inativo <mat-icon class="mat-icon-inactive">close_small</mat-icon></span>
+                    <span *ngIf="element.status" class="mat-span-active">Ativo <mat-icon
+                            class="mat-icon-active">check</mat-icon></span>
+                    <span *ngIf="!element.status" class="mat-span-inactive">Inativo <mat-icon
+                            class="mat-icon-inactive">close_small</mat-icon></span>
                 </td>
             </ng-container>
 
@@ -89,22 +92,25 @@
                     <button mat-icon-button [matMenuTriggerFor]="menu">
                         <mat-icon class="mat-icon-actions">more_horiz</mat-icon>
                     </button>
-                    <mat-menu #menu="matMenu" >
-                        <button mat-menu-item>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item matTooltip="Visualizar Usuário">
                             <mat-icon class="mat-icon-actions">visibility</mat-icon>
-                            <span>Visualizar</span>
+                            <span>Visualizar Usuário</span>
                         </button>
-                        <button mat-menu-item disabled>
+                        <button mat-menu-item matTooltip="Editar Usuário">
                             <mat-icon class="mat-icon-actions">edit</mat-icon>
-                            <span>Editar</span>
+                            <span>Editar Usuário</span>
                         </button>
-                        <button mat-menu-item>
+                        <button mat-menu-item matTooltip="Deletar Usuário">
                             <mat-icon class="mat-icon-actions">delete</mat-icon>
-                            <span>Excluir</span>
+                            <span>Deletar Usuário</span>
                         </button>
-                        <button mat-menu-item>
-                            <mat-icon class="mat-icon-actions">check</mat-icon>
-                            <span>Ativar Usuário</span>
+                        <button mat-menu-item [matTooltip]="element.status ? 'Inativar Usuário' : 'Ativar
+                        Usuário'">
+                            <mat-icon class="mat-icon-actions" *ngIf="element.status">close</mat-icon>
+                            <mat-icon class="mat-icon-actions" *ngIf="!element.status">check</mat-icon>
+                            <span>{{element.status ? 'Inativar Usuário' : 'Ativar
+                                Usuário'}}</span>
                         </button>
                     </mat-menu>
                 </td>

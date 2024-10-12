@@ -69,7 +69,7 @@ table{
   .tr-header{
     background-color: $primary-color;
   }
-  
+
   th{
     color:$color-white;
     font-weight: 700;
@@ -88,5 +88,13 @@ h1{
   background-color: black;
 }
 
+mat-paginator{
+  color: $primary-color !important;
+}
 
-
+.row-fixed{
+  display: $display-flex;
+  position: fixed;
+  flex-direction: $flex-direction-row;
+  margin-bottom: 2em;
+}
