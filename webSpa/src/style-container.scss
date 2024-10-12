@@ -14,8 +14,8 @@
     }
     .text-sub-table {
         width: $width-100;
-        mat-icon{
-            vertical-align: sub;
+        mat-icon {
+            @include custom-icon($vertical-align-sub, $primary-color);
         }
     }
 }

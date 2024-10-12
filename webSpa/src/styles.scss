@@ -29,6 +29,7 @@ $webSpa-theme: mat.define-theme((
 }
 
 @import "style-variables";
+@import "style-icons";
 @import "style-container";
 
 // Comment out the line below if you want to use the pre-defined typography utility classes.
@@ -64,4 +65,28 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 table{
   width: $width-100;
+
+  .tr-header{
+    background-color: $primary-color;
+  }
+  
+  th{
+    color:$color-white;
+    font-weight: 700;
+  }
 }
+
+h1{
+  color:$primary-color;
+}
+
+.mat-row:nth-child(even){
+  background-color: red;
+}
+      
+.mat-row:nth-child(odd){
+  background-color: black;
+}
+
+
+

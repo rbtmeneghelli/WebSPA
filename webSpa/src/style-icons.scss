@@ -1,0 +1,33 @@
+@mixin custom-span($varColor, $varFontWeight) {
+    color: $varColor !important;
+    font-weight: $varFontWeight;
+}
+
+@mixin custom-icon($varSub, $varColor) {
+    color: $varColor !important;
+    vertical-align: $varSub;
+}
+
+.mat-span-active{
+    @include custom-span($color-icon-active, $font-weight-700);
+}
+
+.mat-span-inactive{
+    @include custom-span($color-icon-inactive, $font-weight-700);
+}
+
+.mat-icon-active{
+    @include custom-icon($vertical-align-sub, $color-icon-active);
+}
+
+.mat-icon-inactive{
+    @include custom-icon($vertical-align-sub, $color-icon-inactive);
+}
+
+.mat-icon-menu-actions{
+    @include custom-icon($vertical-align-sub, $color-white);
+}
+
+.mat-icon-actions{
+    @include custom-icon($vertical-align-sub, $primary-color);
+}
