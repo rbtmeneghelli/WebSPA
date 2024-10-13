@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { IconFieldsComponent } from '../../shared/components/icon-fields/icon-fields.component';
 
 export interface PeriodicElement {
     id: number;
@@ -31,7 +32,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
     selector: 'app-user-list',
     standalone: true,
-    imports: [RouterOutlet, MatSelectModule, CommonModule, MatCardModule, MatPaginatorModule, MatTableModule, MatButtonModule, MatDividerModule, MatIconModule, MatFormFieldModule, MatInputModule, MatMenuModule, MatTooltipModule],
+    imports: [RouterOutlet, MatSelectModule, CommonModule, MatCardModule, MatPaginatorModule, MatTableModule, MatButtonModule, MatDividerModule, MatIconModule, MatFormFieldModule, MatInputModule, MatMenuModule, MatTooltipModule, IconFieldsComponent],
     templateUrl: './users-list.component.html',
 })
 

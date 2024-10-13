@@ -1,0 +1,36 @@
+<form [formGroup]="form" (ngSubmit)="login()">
+    <div class="container-login">
+        <div class="box-login">
+            <div class="row">
+                <div class="container-page">
+                    <h1 class="text-table">Solicitação de criação de usuário</h1>
+                </div>
+            </div>
+            <mat-form-field appearance="outline" class="field-form-1">
+                <mat-label hintLabel="máximo de 100 caracteres">Digite seu email</mat-label>
+                <input matInput placeholder="Email" maxlength="100" #emailUsuario formControlName="email">
+                <mat-icon matSuffix class="mat-icon-actions">{{emailUsuario.value.length
+                    > 0 ? ' mode_edit' :
+                    'person'}}</mat-icon>
+                <mat-hint align="end">{{emailUsuario.value.length}}/100</mat-hint>
+                <mat-error>sdfsdf</mat-error>
+            </mat-form-field>
+            <mat-form-field class="search-profile" appearance="outline" class="field-form-2">
+                <mat-label>Selecione um perfil</mat-label>
+                <mat-select>
+                    <mat-option value=2>Colaborador</mat-option>
+                    <mat-option value=3>Cliente</mat-option>
+                </mat-select>
+                <mat-icon matSuffix class="mat-icon-actions">mode_edit</mat-icon>
+            </mat-form-field>
+            <div class="row">
+                <div class="container-form-user-create">
+                    <button mat-flat-button class="btn-action" matTooltip="Cancelar"><mat-icon>close</mat-icon> Cancelar</button>
+                    <button mat-flat-button class="btn-action" matTooltip="Gravar dados"><mat-icon>manage_accounts</mat-icon> Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<app-footer></app-footer>

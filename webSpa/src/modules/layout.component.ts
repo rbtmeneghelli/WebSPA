@@ -12,12 +12,15 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { UsersAddComponent } from './users/users-add.component';
 import { UsersListComponent } from './users/users-list.component';
 import { LoginComponent } from './login/login.component';
+import { UserCreateComponent } from './user-create/user-create.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { IconFieldsComponent } from '../shared/components/icon-fields/icon-fields.component';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
   imports: [RouterOutlet, MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, CommonModule, MatTooltipModule,
-    UsersListComponent, FooterComponent, SideBarComponent, ToolBarIconsComponent, UsersAddComponent, LoginComponent],
+    UsersListComponent, FooterComponent, SideBarComponent, ToolBarIconsComponent, UsersAddComponent, LoginComponent, UserCreateComponent, ForgetPasswordComponent, IconFieldsComponent],
   templateUrl: './layout.component.html',
 })
 

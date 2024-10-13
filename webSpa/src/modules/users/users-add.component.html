@@ -11,7 +11,7 @@
         <mat-form-field appearance="outline" class="field-form-1">
             <mat-label hintLabel="máximo de 100 caracteres">Nome do Usuário</mat-label>
             <input matInput placeholder="Nome do Usuário" maxlength="100" #nomeUsuario>
-            <mat-icon matSuffix>mode_edit</mat-icon>
+            <mat-icon matSuffix class="mat-icon-actions">mode_edit</mat-icon>
             <mat-hint align="end">{{nomeUsuario.value.length}}/100</mat-hint>
         </mat-form-field>
         <mat-form-field class="search-profile" appearance="outline">
@@ -21,6 +21,7 @@
                 <mat-option value=2>Colaborador</mat-option>
                 <mat-option value=3>Cliente</mat-option>
             </mat-select>
+            <mat-icon matSuffix class="mat-icon-actions">mode_edit</mat-icon>
         </mat-form-field>
         <mat-form-field class="field-form-2" appearance="outline">
             <mat-label>Status do Registro</mat-label>
@@ -28,6 +29,7 @@
                 <mat-option value="one">Ativo</mat-option>
                 <mat-option value="two">Inativo</mat-option>
             </mat-select>
+            <mat-icon matSuffix class="mat-icon-actions">mode_edit</mat-icon>
         </mat-form-field>
         <mat-form-field class="field-form-3" appearance="outline">
             <mat-label>Ordernação</mat-label>
@@ -35,6 +37,7 @@
                 <mat-option value="one">Decrescente</mat-option>
                 <mat-option value="two">Crescente</mat-option>
             </mat-select>
+            <mat-icon matSuffix class="mat-icon-actions">mode_edit</mat-icon>
         </mat-form-field>
     </div>
 </div>
