@@ -42,7 +42,11 @@ $webSpa-theme: mat.define-theme((
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: $height-100; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body 
+{ 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
 
 .chevron {
   margin-left: auto;
@@ -50,7 +54,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .row{
   display: $display-flex;
-  flex-direction: $flex-direction-row;
   margin-bottom: 2em;
 }
 
@@ -73,5 +76,18 @@ h1{
 
 mat-paginator{
   color: $primary-color !important;
+}
+
+
+.custom-link {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s;
+  cursor: pointer;
+  
+  &:hover {
+      color: #0056b3;
+      text-decoration: underline;
+  }
 }
 

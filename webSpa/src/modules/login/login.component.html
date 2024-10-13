@@ -1,0 +1,61 @@
+<form [formGroup]="form" (ngSubmit)="login()">
+    <div class="container-login">
+        <div class="box-login">
+            <div class="row">
+                <div class="container-page">
+                    <h1 class="text-table">Tela de Login</h1>
+                </div>
+            </div>
+            <mat-form-field appearance="outline" class="field-form-1">
+                <mat-label hintLabel="máximo de 100 caracteres">Email de acesso</mat-label>
+                <input matInput placeholder="Nome do Usuário" maxlength="100" #nomeUsuario formControlName="email">
+                <mat-icon matSuffix class="mat-icon-actions">{{nomeUsuario.value.length
+                    > 0 ? ' mode_edit' :
+                    'person'}}</mat-icon>
+                <mat-hint align="end">{{nomeUsuario.value.length}}/100</mat-hint>
+                <mat-error>sdfsdf</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="field-form-2">
+                <mat-label hintLabel="máximo de 100 caracteres">Senha de acesso</mat-label>
+                <input matInput placeholder="Nome do Usuário" maxlength="100" #nomeUsuario
+                    [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+                <mat-icon matSuffix class="mat-icon-actions" (click)="hidePassword = !hidePassword">{{hidePassword ?
+                    'visibility' : 'visibility_off'}}</mat-icon>
+                <mat-hint align="end">{{nomeUsuario.value.length}}/100</mat-hint>
+                <mat-error>sdfsdf</mat-error>
+            </mat-form-field>
+
+            <div class="box-login-2">
+                <mat-checkbox>Lembrar dados do meu acesso?</mat-checkbox>
+                <button mat-flat-button class="btn-table" matTooltip="Cancelar"><mat-icon>login</mat-icon> Efetuar
+                    login</button>
+            </div>
+            <div class="box-login-3">
+                <p class="p-first-text">Esqueceu a senha? <a routerlink="" class="custom-link">Clique aqui</a></p>
+                <p>Novo usuário? <a routerlink="" class="custom-link">Clique aqui </a></p>
+            </div>
+        </div>
+    </div>
+</form>
+
+<app-footer></app-footer>
+
+<!-- <div class="container">
+    <div class="image-side"></div>
+    <div class="form-side">
+      <form class="login-form">
+        <h2>Tela de acesso</h2>
+        <mat-form-field appearance="outline" class="field-form-1">
+            <mat-label hintLabel="máximo de 100 caracteres">Nome do Usuário</mat-label>
+            <input matInput placeholder="Nome do Usuário" maxlength="100" #nomeUsuario>
+            <mat-hint align="end">{{nomeUsuario.value.length}}/100</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="field-form-1">
+            <mat-label hintLabel="máximo de 100 caracteres">Nome do Usuário</mat-label>
+            <input matInput placeholder="Nome do Usuário" maxlength="100" #nomeUsuario>
+            <mat-hint align="end">{{nomeUsuario.value.length}}/100</mat-hint>
+        </mat-form-field>
+        <button type="submit">Entrar</button>
+      </form>
+    </div>
+  </div> -->
