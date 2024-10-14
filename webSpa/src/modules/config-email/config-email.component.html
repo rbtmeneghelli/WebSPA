@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="container-page">
+        <h1 class="text-table">Configuração de Email</h1>
+        <p class="text-sub-table"><mat-icon>information</mat-icon> Por meio da consulta, você pode consultar diferentes
+            usuários, ou realizar uma busca mais
+            aprofundada,
+            preenchendo 1 ou mais campos dos filtros abaixo.</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="container-form">
+        <mat-form-field appearance="outline" class="field-form-1">
+            <mat-label hintLabel="máximo de 100 caracteres">Digite o Host de email</mat-label>
+            <input matInput placeholder="Nome do Usuário" maxlength="100" #nomeUsuario>
+            <mat-icon matSuffix class="mat-icon-actions">mode_edit</mat-icon>
+            <mat-hint align="end">{{nomeUsuario.value.length}}/100</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="field-form-1">
+            <mat-label hintLabel="máximo de 100 caracteres">Digite o SMTP de domínio do email</mat-label>
+            <input matInput placeholder="Nome do Usuário" maxlength="100" #nomeUsuario>
+            <mat-icon matSuffix class="mat-icon-actions">mode_edit</mat-icon>
+            <mat-hint align="end">{{nomeUsuario.value.length}}/100</mat-hint>
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="row">
+    <div class="container-form" style="flex-direction: row !important;">
+        <mat-form-field appearance="outline" class="field-form-1">
+            <mat-label hintLabel="máximo de 100 caracteres">Digite a porta principal do SMTP</mat-label>
+            <input matInput placeholder="Nome do Usuário" maxlength="100" #nomeUsuario>
+            <mat-icon matSuffix class="mat-icon-actions">mode_edit</mat-icon>
+            <mat-hint align="end">{{nomeUsuario.value.length}}/100</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="field-form-1">
+            <mat-label hintLabel="máximo de 100 caracteres">Digite a porta secundaria do SMTP</mat-label>
+            <input matInput placeholder="Nome do Usuário" maxlength="100" #nomeUsuario>
+            <mat-icon matSuffix class="mat-icon-actions">mode_edit</mat-icon>
+            <mat-hint align="end">{{nomeUsuario.value.length}}/100</mat-hint>
+        </mat-form-field>
+    </div>
+</div>
+<div class="row">
+    <div class="container-form">
+        <mat-form-field appearance="outline" class="field-form-1">
+            <mat-label hintLabel="máximo de 100 caracteres">Digite o endereço de email</mat-label>
+            <input matInput placeholder="Nome do Usuário" maxlength="100" #nomeUsuario>
+            <mat-icon matSuffix class="mat-icon-actions">mode_edit</mat-icon>
+            <mat-hint align="end">{{nomeUsuario.value.length}}/100</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="field-form-1">
+            <mat-label hintLabel="máximo de 100 caracteres">Digite a senha do email</mat-label>
+            <input matInput placeholder="Nome do Usuário" maxlength="100" #nomeUsuario>
+            <mat-icon matSuffix class="mat-icon-actions">mode_edit</mat-icon>
+            <mat-hint align="end">{{nomeUsuario.value.length}}/100</mat-hint>
+        </mat-form-field>
+    </div>
+</div>
+
+<mat-selection-list #itensEmail>
+    <mat-list-option style="font-weight: bold;" (click)="selectAll()">Marcar todas opções
+    </mat-list-option>
+    <mat-list-option *ngFor="let item of listaEmail" [selected]="item.active" (click)="changeType(item)">
+        {{item.description }}
+    </mat-list-option>
+</mat-selection-list>
+
+<div class="row">
+    <div class="container-form-button">
+        <button mat-flat-button class="btn-table" matTooltip="Cancelar"><mat-icon>cancel</mat-icon> Cancelar</button>
+        <button mat-flat-button class="btn-table" matTooltip="Limpar"><mat-icon>brush</mat-icon> Limpar campos</button>
+        <button mat-flat-button class="btn-table" matTooltip="Gravar dados"><mat-icon>save</mat-icon> Gravar
+            dados</button>
+    </div>
+</div>

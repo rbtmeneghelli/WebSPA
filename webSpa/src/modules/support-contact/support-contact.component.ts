@@ -9,16 +9,16 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatTooltipModule } from "@angular/material/tooltip";
-import { ListLinksModel } from "../../../core/models/list-links.model";
+import { ListLinksModel } from "../../core/models/list-links.model";
 
 @Component({
-    selector: 'app-icon-fields',
+    selector: 'app-support-contact',
     standalone: true,
     imports: [MatIconModule, MatCardModule, MatListModule, CommonModule, MatButtonModule, MatIconModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatButtonToggleModule, MatTooltipModule],
-    templateUrl: './icon-fields.component.html',
+    templateUrl: './support-contact.component.html',
 })
 
-export class IconFieldsComponent {
+export class SupportContactComponent {
 
     public listaContatos: ListLinksModel[] = [
         { description: 'Instagram', link: 'https://www.instagram.com/xpto/', icon: 'photo_camera' },

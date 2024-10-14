@@ -22,6 +22,22 @@ export const APP_ROUTES: Routes = [
             {
                 path: 'users',
                 loadChildren: () => import('../modules/users/users.routes').then(r => r.USERS_ROUTES)
+            },
+            {
+                path: 'generate-report',
+                loadComponent: () => import('../modules/generate-report/generate-report.component').then(c => c.GenerateReportComponent)
+            },
+            {
+                path: 'config-email',
+                loadComponent: () => import('../modules/config-email/config-email.component').then(c => c.ConfigEmailComponent)
+            },
+            {
+                path: 'config-system',
+                loadComponent: () => import('../modules/config-system/config-system.component').then(c => c.ConfigSystemComponent)
+            },
+            {
+                path: 'support-contact',
+                loadComponent: () => import('../modules/support-contact/support-contact.component').then(c => c.SupportContactComponent)
             }
         ]
     }

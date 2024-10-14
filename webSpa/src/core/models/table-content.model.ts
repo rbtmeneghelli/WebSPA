@@ -1,4 +1,4 @@
-export interface tableContent{
+export interface tableContentModel {
     textTable: string;
     subTextTable: string;
     iconClean: string;

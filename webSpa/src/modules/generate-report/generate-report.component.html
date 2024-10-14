@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="container-page">
+        <h1 class="text-table">Gerador de Relatórios</h1>
+        <p class="text-sub-table"><mat-icon>information</mat-icon> Por meio do gerador de relatório, você será capaz de
+            gerar
+            relatórios complexos para analise de seus especialistas.</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="container-form">
+        <mat-form-field appearance="outline" class="field-form-1">
+            <mat-label>Selecione o modelo do relatório a ser gerado</mat-label>
+            <mat-select>
+                <mat-option value=1>Relatório critico XPTO</mat-option>
+                <mat-option value=2>Relatório de resultados XPTO</mat-option>
+                <mat-option value=3>Relatório de dados unificados XPTO</mat-option>
+            </mat-select>
+            <mat-icon matSuffix class="mat-icon-actions">mode_edit</mat-icon>
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="row">
+    <div class="container-form" style="flex-direction: row !important;">
+        <mat-form-field appearance="outline" class="field-form-1">
+            <input matInput readonly [matDatepicker]="startPicker" placeholder="Data Inicial" name="txtStartDate"
+                (click)="startPicker.open()" #txtStartDate>
+            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+            <mat-hint align="end">{{txtStartDate.value.length}} / 10</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="field-form-1">
+            <input matInput readonly [matDatepicker]="endPicker" placeholder="Data Final" name="txtEndDate"
+                (click)="endPicker.open()" #txtEndDate>
+            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+            <mat-hint align="end">{{txtEndDate.value.length}} / 10</mat-hint>
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="row">
+    <div class="container-form" style="flex-direction: row !important;">
+        <mat-form-field appearance="outline" class="field-form-1">
+            <mat-label>Status dos dados</mat-label>
+            <mat-select multiple>
+                <mat-option value="one">Ativo</mat-option>
+                <mat-option value="two">Inativo</mat-option>
+            </mat-select>
+            <mat-icon matSuffix class="mat-icon-actions">mode_edit</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="field-form-1">
+            <mat-label>Formato do relatório</mat-label>
+            <mat-select>
+                <mat-option value=1>Arquivo PDF</mat-option>
+                <mat-option value=2>Arquivo Excel</mat-option>
+            </mat-select>
+            <mat-icon matSuffix class="mat-icon-actions">mode_edit</mat-icon>
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="row">
+    <div class="container-form-button">
+        <button mat-flat-button class="btn-table" matTooltip="Limpar"><mat-icon>brush</mat-icon> Limpar campos</button>
+        <button mat-flat-button class="btn-table" matTooltip="Gravar dados"><mat-icon>report</mat-icon> Gerar Relatório
+        </button>
+    </div>
+</div>
