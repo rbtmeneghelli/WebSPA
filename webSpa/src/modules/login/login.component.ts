@@ -1,6 +1,6 @@
 import { inject, OnInit } from "@angular/core";
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -21,7 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     selector: 'app-login',
     standalone: true,
     imports: [RouterOutlet, MatSelectModule, CommonModule, MatCardModule, MatPaginatorModule, MatTableModule, MatButtonModule, MatDividerModule, MatIconModule, 
-        MatFormFieldModule, MatInputModule, MatMenuModule, MatTooltipModule, MatCheckboxModule, FooterComponent, ReactiveFormsModule],
+        MatFormFieldModule, MatInputModule, MatMenuModule, MatTooltipModule, MatCheckboxModule, FooterComponent, ReactiveFormsModule, RouterLink],
     templateUrl: './login.component.html',
 })
 

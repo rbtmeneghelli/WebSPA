@@ -12,7 +12,7 @@
     <small mat-menu-item disabled><mat-icon class="mat-icon-actions">timer</mat-icon>Logado no dia 12/10/2024, 16:03:39</small>
     <mat-divider></mat-divider>
     <small mat-menu-item><mat-icon class="mat-icon-actions">manage_accounts</mat-icon> Alterar dados meu Usuário</small>
-    <small mat-menu-item><mat-icon class="mat-icon-actions">logout</mat-icon> Sair</small>
+    <small mat-menu-item [routerLink]="['/login']"><mat-icon class="mat-icon-actions">logout</mat-icon> Sair</small>
 </mat-menu>
 
 <mat-menu #menuNotificacao="matMenu" xPosition="after">

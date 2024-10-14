@@ -1,12 +1,28 @@
+import { ForgetPasswordComponent } from './../modules/forget-password/forget-password.component';
 import { Routes } from '@angular/router';
 import { LayoutComponent } from '../modules/layout.component';
-import { UsersListComponent } from '../modules/users/users-list.component';
 
-export const routes: Routes = [
+export const APP_ROUTES: Routes = [
+    { path: '', pathMatch: 'full', redirectTo: 'login' },
+    {
+        path: 'login',
+        loadComponent: () => import('../modules/login/login.component').then(c => c.LoginComponent)
+    },
+    {
+        path: 'forget-password',
+        loadComponent: () => import('../modules/forget-password/forget-password.component').then(c => c.ForgetPasswordComponent)
+    },
+    {
+        path: 'request-new-user',
+        loadComponent: () => import('../modules/user-create/user-create.component').then(c => c.UserCreateComponent)
+    },
     {
         path: '', component: LayoutComponent,
         children: [
-            { path: 'user', component: UsersListComponent },
+            {
+                path: 'users',
+                loadChildren: () => import('../modules/users/users.routes').then(r => r.USERS_ROUTES)
+            }
         ]
     }
 ];

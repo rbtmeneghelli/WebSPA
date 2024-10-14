@@ -25,12 +25,13 @@
 
             <div class="box-login-2">
                 <mat-checkbox>Lembrar dados do meu acesso?</mat-checkbox>
-                <button mat-flat-button class="btn-table" matTooltip="Cancelar"><mat-icon>login</mat-icon> Efetuar
+                <button mat-flat-button class="btn-table" matTooltip="Cancelar" [routerLink]="['/users']"><mat-icon>login</mat-icon> Efetuar
                     login</button>
             </div>
             <div class="box-login-3">
-                <p class="p-first-text">Esqueceu a senha? <a routerlink="" class="custom-link">Clique aqui</a></p>
-                <p>Novo usuário? <a routerlink="" class="custom-link">Clique aqui </a></p>
+                <p class="p-first-text">Esqueceu a senha? <a [routerLink]="['/forget-password']"
+                        class="custom-link">Clique aqui</a></p>
+                <p>Novo usuário? <a [routerLink]="['/request-new-user']" class="custom-link">Clique aqui </a></p>
             </div>
         </div>
     </div>

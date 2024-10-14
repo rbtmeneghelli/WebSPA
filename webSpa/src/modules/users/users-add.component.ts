@@ -23,6 +23,5 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 export class UsersAddComponent implements OnInit {
     ngOnInit(): void {
-        throw new Error("Method not implemented.");
     }
 }
