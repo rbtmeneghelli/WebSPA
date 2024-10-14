@@ -26,7 +26,9 @@
         <mat-form-field appearance="outline" class="field-form-1">
             <input matInput readonly [matDatepicker]="startPicker" placeholder="Data Inicial" name="txtStartDate"
                 (click)="startPicker.open()" #txtStartDate>
-            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker-toggle matIconSuffix  [for]="startPicker">
+                <mat-icon matDatepickerToggleIcon class="mat-icon-actions">edit_calendar</mat-icon>
+            </mat-datepicker-toggle>
             <mat-datepicker #startPicker></mat-datepicker>
             <mat-hint align="end">{{txtStartDate.value.length}} / 10</mat-hint>
         </mat-form-field>
@@ -34,7 +36,9 @@
         <mat-form-field appearance="outline" class="field-form-1">
             <input matInput readonly [matDatepicker]="endPicker" placeholder="Data Final" name="txtEndDate"
                 (click)="endPicker.open()" #txtEndDate>
-            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker-toggle matIconSuffix [for]="endPicker">
+                <mat-icon matDatepickerToggleIcon class="mat-icon-actions">edit_calendar</mat-icon>
+            </mat-datepicker-toggle>
             <mat-datepicker #endPicker></mat-datepicker>
             <mat-hint align="end">{{txtEndDate.value.length}} / 10</mat-hint>
         </mat-form-field>

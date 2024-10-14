@@ -1,28 +1,23 @@
-import { Musicas, MusicasFilterData } from './../models/musicas';
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BaseService } from './base.service';
-import { environment } from 'src/environments/environment';
+import { inject, Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ResponseResult } from '../models/response-result';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Notify } from '../models/notify';
+import { Notify } from '../models/notify.model';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
+import { environment } from '../../environments/environment';
 
 @Injectable()
-export class NotificationService extends BaseService<Notify> {
+export class NotificationService  {
 
-    public hubConnection: HubConnection;
-    public notifications?: BehaviorSubject<Notify[]> = new BehaviorSubject<Notify[]>([]);
-
-    constructor(http: HttpClient) {
-        super(http, `${environment.API}notify`);
-    }
+    private http: HttpClient = inject(HttpClient);
+    private hubConnection: HubConnection = inject(HubConnection);
+    public notifications: BehaviorSubject<Notify[]> = new BehaviorSubject<Notify[]>([]);
 
     getNotifications(): Observable<Notify[]> {
         return this.notifications.asObservable();
     }
 
-    setNotifications(newValue): void {
+    setNotifications(newValue: any): void {
         this.notifications.next(newValue);
     }
 
@@ -49,6 +44,20 @@ export class NotificationService extends BaseService<Notify> {
             .start()
             .then(() => console.log('Connection started'))
             .catch(err => console.log('Error while starting connection: ' + err))
+    }
+
+    private getOptions(): HttpHeaders {
+        let httpOptions: HttpHeaders = new HttpHeaders();
+        httpOptions = httpOptions.set('Content-Type', 'application/json');
+        httpOptions = httpOptions.set('Access-Control-Allow-Origin', '*');
+        httpOptions = httpOptions.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+        // tslint:disable-next-line: max-line-length
+        httpOptions = httpOptions.set('Access-Control-Allow-Headers', '*');
+        if (!!localStorage.getItem('userLoggedData')) {
+            const data: any = JSON.parse(localStorage.getItem('userLoggedData') ?? '');
+            httpOptions = httpOptions.set('Authorization', `Bearer ${data.token}`);
+        }
+        return httpOptions;
     }
 }
 

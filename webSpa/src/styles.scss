@@ -92,3 +92,36 @@ mat-paginator{
   }
 }
 
+@mixin setBgAndColor($var-background-color, $var-color) {
+  background-color: $var-background-color !important;
+  color: $var-color !important;
+}
+
+// .msg-error {
+//   @include setBgAndColor($color-error, $color-white);
+// }
+
+// .msg-success {
+//   @include setBgAndColor($color-success, $color-white);
+// }
+
+// .msg-info {
+//   @include setBgAndColor($color-info, $color-white);
+// }
+
+// .msg-warning {
+//   @include setBgAndColor($color-warning, $color-white);
+// }
+
+.mat-form-field .mat-datepicker-toggle .mat-icon {
+  color: blue !important; /* Ajuste a cor */
+  background-color: #0056b3;
+}
+
+mat-datepicker-toggle {
+  color: #0056b3 !important;
+ }
+
+ ::ng-deep .mat-datepicker-toggle{
+  color:red;
+}

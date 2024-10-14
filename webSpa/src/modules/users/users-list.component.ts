@@ -32,13 +32,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
     selector: 'app-user-list',
     standalone: true,
-    imports: [RouterOutlet, MatSelectModule, CommonModule, MatCardModule, MatPaginatorModule, MatTableModule, MatButtonModule, MatDividerModule, MatIconModule, MatFormFieldModule, MatInputModule, MatMenuModule, MatTooltipModule, IconFieldsComponent, RouterLink],
+    imports: [RouterOutlet, MatSelectModule, CommonModule, MatCardModule, MatPaginatorModule, MatTableModule, MatButtonModule, MatDividerModule, 
+        MatIconModule, MatFormFieldModule, MatInputModule, MatMenuModule, MatTooltipModule, IconFieldsComponent, RouterLink, MatPaginatorModule],
     templateUrl: './users-list.component.html',
 })
 
 export class UsersListComponent  implements AfterViewInit {
-    varShowFilter: boolean = false;
-    varShowFilterText: string = 'Exibir Filtro';
     displayedColumns: string[] = ['name', 'profile', 'status', '#'];
     dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
@@ -47,11 +46,6 @@ export class UsersListComponent  implements AfterViewInit {
 
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
-    }
-
-    showFilter(){
-        this.varShowFilter = !this.varShowFilter;
-        this.varShowFilterText = this.varShowFilter ? 'OcultarFiltro' : 'Exibir Filtro';
     }
 }
 

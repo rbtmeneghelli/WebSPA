@@ -1,16 +1,168 @@
 <div class="row">
     <div class="container-page">
-        <h1 class="text-table">Lista de contatos</h1>
+        <h1 class="text-table">Movimentação Financeira</h1>
         <p class="text-sub-table"><mat-icon>information</mat-icon> Ao clicar em um dos botões abaixo, você será
             redirecionado para a pagina da rede social escolhida.</p>
     </div>
 </div>
 
 <div class="row">
-    <div class="container-contact-list">
-        <ng-container *ngFor="let item of listaContatos">
-            <button mat-flat-button class="btn-action" matTooltip="{{item.description}}"
-                (click)="openLink(item.link)"><mat-icon>{{item.icon}}</mat-icon> {{item.description}}</button>
-        </ng-container>
+    <div style="justify-content: flex-start; flex-direction: column; width: 50%; margin-right:16px; display: flex;">
+        <mat-form-field appearance="outline" class="field-form-1" style="width: 100%;">
+            <mat-label>Selecione o(s) banco(s)</mat-label>
+            <mat-select multiple>
+                <mat-option value=1>Bradesco</mat-option>
+                <mat-option value=2>Itau</mat-option>
+                <mat-option value=3>Nubank</mat-option>
+                <mat-option value=4>Picpay</mat-option>
+            </mat-select>
+            <mat-icon matSuffix class="mat-icon-actions">mode_edit</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="field-form-1" style="width: 100%;">
+            <mat-label>Forma recebimento / pagamento</mat-label>
+            <mat-select multiple>
+                <mat-option value=1>Cartão Credito</mat-option>
+                <mat-option value=2>Cartão Debito</mat-option>
+                <mat-option value=3>Dinheiro</mat-option>
+                <mat-option value=4>Pix</mat-option>
+                <mat-option value=5>Transferência Bancaria</mat-option>
+            </mat-select>
+            <mat-icon matSuffix class="mat-icon-actions">mode_edit</mat-icon>
+        </mat-form-field>
+    </div>
+    <div style="justify-content: flex-start; flex-direction: column; width: 50%; display: flex;">
+        <mat-card style="height: 87%;">
+            <mat-card-content>
+                <div style="display: flex;">
+                    <p style="width: 50%; margin-right: 20px;">Receita</p>
+                    <p style="width: 50%;">{{10000 |currency:"BRL":"symbol"}} de {{100000 |currency:"BRL":"symbol"}}</p>
+                </div>
+                <div class="mb-4" style="display: flex;">
+                    <mat-progress-bar mode="buffer" [value]="60" matTooltip="60%"></mat-progress-bar>
+                </div>
+                <div style="display: flex;">
+                    <p style="width: 50%; margin-right: 20px;">Despesa</p>
+                    <p style="width: 50%;">{{5000 |currency:"BRL":"symbol"}} de {{100000 |currency:"BRL":"symbol"}}</p>
+                </div>
+                <div class="mb-4" style="display: flex;">
+                    <mat-progress-bar mode="buffer" [value]="35" matTooltip="35%"></mat-progress-bar>
+                </div>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>
+
+<div class="row">
+    <div style="justify-content: center; flex-direction: row; width: 100%; display: flex;">
+        <mat-form-field appearance="outline" class="field-form-1" style="width: 10%; margin-right: 16px">
+            <mat-label>Selecione o ano desejado</mat-label>
+            <mat-select>
+                <mat-option value=2024>2024</mat-option>
+                <mat-option value=2023>2023</mat-option>
+                <mat-option value=2022>2022</mat-option>
+                <mat-option value=2021>2021</mat-option>
+            </mat-select>
+            <mat-icon matSuffix class="mat-icon-actions">mode_edit</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="field-form-1" style="width: 50%;">
+            <mat-label>Forma recebimento / pagamento</mat-label>
+            <mat-select multiple>
+                <mat-option value=1>Cartão Credito</mat-option>
+                <mat-option value=2>Cartão Debito</mat-option>
+                <mat-option value=3>Dinheiro</mat-option>
+                <mat-option value=4>Pix</mat-option>
+                <mat-option value=5>Transferência Bancaria</mat-option>
+            </mat-select>
+            <mat-icon matSuffix class="mat-icon-actions">mode_edit</mat-icon>
+        </mat-form-field>
+    </div>
+</div>
+
+<mat-tab-group dynamicHeight>
+    <mat-tab label="Contas a Receber">
+        <div class="row">
+            <div class="container-table-button">
+                <button mat-flat-button class="btn-table" matTooltip="Exportar dados"><mat-icon>download</mat-icon> Exportar dados</button>
+                <button mat-flat-button class="btn-table" matTooltip="Criar nova conta a receber"><mat-icon>add</mat-icon> Criar nova conta a receber</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="container-table">
+                <table mat-table [dataSource]="dataSource">
+        
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> Nome </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                        <td mat-footer-cell *matFooterCellDef> Total </td>
+                    </ng-container>
+        
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="profile">
+                        <th mat-header-cell *matHeaderCellDef> Perfil </th>
+                        <td mat-cell *matCellDef="let element"> {{element.profile}} </td>
+                    </ng-container>
+        
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef> Status </th>
+                        <td mat-cell *matCellDef="let element">
+                            <span *ngIf="element.status" class="mat-span-active">Ativo <mat-icon
+                                    class="mat-icon-active">check</mat-icon></span>
+                            <span *ngIf="!element.status" class="mat-span-inactive">Inativo <mat-icon
+                                    class="mat-icon-inactive">close_small</mat-icon></span>
+                        </td>
+                    </ng-container>
+        
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="#">
+                        <th mat-header-cell *matHeaderCellDef> Ações </th>
+                        <td mat-cell *matCellDef="let element">
+                            <button mat-icon-button [matMenuTriggerFor]="menu">
+                                <mat-icon class="mat-icon-actions" matTooltip="Exibir Ações">more_horiz</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item matTooltip="Visualizar Usuário">
+                                    <mat-icon class="mat-icon-actions">visibility</mat-icon>
+                                    <span>Visualizar Usuário</span>
+                                </button>
+                                <button mat-menu-item matTooltip="Editar Usuário">
+                                    <mat-icon class="mat-icon-actions">edit</mat-icon>
+                                    <span>Editar Usuário</span>
+                                </button>
+                                <button mat-menu-item matTooltip="Deletar Usuário">
+                                    <mat-icon class="mat-icon-actions">delete</mat-icon>
+                                    <span>Deletar Usuário</span>
+                                </button>
+                                <button mat-menu-item [matTooltip]="element.status ? 'Inativar Usuário' : 'Ativar
+                                Usuário'">
+                                    <mat-icon class="mat-icon-actions" *ngIf="element.status">close</mat-icon>
+                                    <mat-icon class="mat-icon-actions" *ngIf="!element.status">check</mat-icon>
+                                    <span>{{element.status ? 'Inativar Usuário' : 'Ativar
+                                        Usuário'}}</span>
+                                </button>
+                            </mat-menu>
+                        </td>
+                    </ng-container>
+        
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="tr-header"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="container-pagination">
+                <mat-paginator [pageSizeOptions]="[5, 10, 20,40]" showFirstLastButtons>
+                </mat-paginator>
+            </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="Contas a pagar">
+        <!-- <app-despesa></app-despesa> -->
+    </mat-tab>
+    <mat-tab label="Lista de compras">
+        <!-- <app-compra></app-compra> -->
+    </mat-tab>
+</mat-tab-group>

@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { ResponseResultArray, ResponseResult } from '../models/response-result';
 import { catchError, first, map } from 'rxjs/operators';
 
-export abstract class GenericService<TRequestFilterData, TEntityResponse, TEntityListResponse> {
+export abstract class GenericService<TRequestFilterData, TEntityResponse> {
 
     protected _actionUrl: string;
 
@@ -52,7 +52,7 @@ export abstract class GenericService<TRequestFilterData, TEntityResponse, TEntit
         return this.http.get<any>(`${this.actionUrl}/${url}`, { headers: this.getOptions() });
     }
 
-    protected getOptions(): HttpHeaders {
+    private getOptions(): HttpHeaders {
         let httpOptions: HttpHeaders = new HttpHeaders();
         httpOptions = httpOptions.set('Content-Type', 'application/json');
         httpOptions = httpOptions.set('Access-Control-Allow-Origin', '*');

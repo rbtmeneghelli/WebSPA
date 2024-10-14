@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
@@ -9,27 +9,35 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatTooltipModule } from "@angular/material/tooltip";
-import { ListLinksModel } from "../../../core/models/list-links.model";
+import {MatTabsModule} from '@angular/material/tabs';
+import { PeriodicElement } from "../../../modules/users/users-list.component";
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatMenuModule } from "@angular/material/menu";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
 
 @Component({
     selector: 'app-icon-fields',
     standalone: true,
-    imports: [MatIconModule, MatCardModule, MatListModule, CommonModule, MatButtonModule, MatIconModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatButtonToggleModule, MatTooltipModule],
+    imports: [MatIconModule, MatCardModule, MatListModule, CommonModule, MatButtonModule, MatIconModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatButtonToggleModule, MatTooltipModule, MatTabsModule, MatTableModule, MatMenuModule, MatPaginatorModule, MatProgressBarModule],
     templateUrl: './icon-fields.component.html',
 })
 
 export class IconFieldsComponent {
-
-    public listaContatos: ListLinksModel[] = [
-        { description: 'Instagram', link: 'https://www.instagram.com/xpto/', icon: 'photo_camera' },
-        { description: 'Facebook', link: 'https://www.facebook.com/xpto', icon: 'thumb_up' },
-        { description: 'Github', link: 'https://github.com/xpto', icon: 'laptop' },
-        { description: 'Email', link: 'https://gmail.com/', icon: 'email' },
-        { description: 'WhatsApp', link: 'https://api.whatsapp.com/send?text=Enviar%20um%20pagina%20https://developertools.com.br&phone=5511999998888', icon: 'phone' },
-        { description: 'Youtube', link: 'https://www.youtube.com/', icon: 'smart_display' }
+    public displayedColumns: string[] = ['name', 'profile', 'status', '#'];
+    public ELEMENT_DATA: PeriodicElement[] = [
+        { id: 1, name: 'Roberto', profile: 'Administrador', status: true },
+        { id: 2, name: 'Antonio', profile: 'Colaborador', status: true },
+        { id: 3, name: 'Marisa', profile: 'Cliente', status: true },
+        { id: 4, name: 'Alik', profile: 'Cliente', status: true },
+        { id: 5, name: 'Murielle', profile: 'Cliente', status: false },
     ];
+    public dataSource = new MatTableDataSource<PeriodicElement>(this.ELEMENT_DATA);
 
-    openLink(link: string){
-        window.open(link, "_blank");
+    @ViewChild(MatPaginator)
+    paginator!: MatPaginator;
+
+    ngAfterViewInit() {
+        this.dataSource.paginator = this.paginator;
     }
 }

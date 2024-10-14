@@ -14,13 +14,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MAT_DATE_LOCALE, MatNativeDateModule } from "@angular/material/core";
+import { MatNativeDateModule } from "@angular/material/core";
 
 @Component({
-    selector: 'app-generate-report',
+    selector: 'app-report-file',
     standalone: true,
     imports: [RouterOutlet, MatSelectModule, CommonModule, MatCardModule, MatPaginatorModule, MatTableModule, MatButtonModule, MatDividerModule, MatIconModule, MatFormFieldModule, MatInputModule, MatMenuModule, MatTooltipModule, MatDatepickerModule, MatNativeDateModule],
-    templateUrl: './generate-report.component.html',
+    templateUrl: './report-file.component.html',
 })
 
 export class GenerateReportComponent implements OnInit {

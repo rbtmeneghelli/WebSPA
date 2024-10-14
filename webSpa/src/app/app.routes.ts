@@ -19,12 +19,16 @@ export const APP_ROUTES: Routes = [
         path: '', component: LayoutComponent,
         children: [
             {
+                path: 'finances',
+                loadComponent: () => import('../shared/components/icon-fields/icon-fields.component').then(r => r.IconFieldsComponent)
+            },
+            {
                 path: 'users',
                 loadChildren: () => import('../modules/users/users.routes').then(r => r.USERS_ROUTES)
             },
             {
-                path: 'generate-report',
-                loadComponent: () => import('../modules/generate-report/generate-report.component').then(c => c.GenerateReportComponent)
+                path: 'report',
+                loadComponent: () => import('../modules/report-file/report-file.component').then(c => c.GenerateReportComponent)
             },
             {
                 path: 'config-email',
