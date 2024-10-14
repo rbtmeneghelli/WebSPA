@@ -1,4 +1,3 @@
-import { ForgetPasswordComponent } from './../modules/forget-password/forget-password.component';
 import { Routes } from '@angular/router';
 import { LayoutComponent } from '../modules/layout.component';
 
@@ -38,7 +37,12 @@ export const APP_ROUTES: Routes = [
             {
                 path: 'support-contact',
                 loadComponent: () => import('../modules/support-contact/support-contact.component').then(c => c.SupportContactComponent)
-            }
+            },
         ]
-    }
+    },
+    {
+        path: '**',
+        loadComponent: () => import('../shared/components/alert-error/alert-error.component').then(c => c.AlertErrorComponent),
+        pathMatch: 'full'
+    },
 ];

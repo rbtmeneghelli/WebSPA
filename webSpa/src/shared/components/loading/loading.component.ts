@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { LoadingService } from './../../services/loading.service';
+import { LoadingService } from '../../../core/services/loading.service';
 import { inject } from '@angular/core';
 import { Component } from '@angular/core';
 import {MatProgressSpinnerModule, ProgressSpinnerMode} from '@angular/material/progress-spinner';

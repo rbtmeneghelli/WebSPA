@@ -1,0 +1,4 @@
+export const CONSTANT_HTTP_STATUS_CODE = {
+    UNAUTHORIZED: 401,
+    FORBIDDEN: 403
+};
