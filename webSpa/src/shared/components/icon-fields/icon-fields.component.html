@@ -5,77 +5,75 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="container-form-finance">
-        <mat-form-field appearance="outline" class="field-form-100">
-            <mat-label>Selecione o(s) banco(s)</mat-label>
-            <mat-select multiple>
-                <mat-option value=1>Bradesco</mat-option>
-                <mat-option value=2>Itau</mat-option>
-                <mat-option value=3>Nubank</mat-option>
-                <mat-option value=4>Picpay</mat-option>
-            </mat-select>
-            <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_FIELDS}}</mat-icon>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="field-form-100">
-            <mat-label>Forma recebimento / pagamento</mat-label>
-            <mat-select multiple>
-                <mat-option value=1>Cartão Credito</mat-option>
-                <mat-option value=2>Cartão Debito</mat-option>
-                <mat-option value=3>Dinheiro</mat-option>
-                <mat-option value=4>Pix</mat-option>
-                <mat-option value=5>Transferência Bancaria</mat-option>
-            </mat-select>
-            <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_FIELDS}}</mat-icon>
-        </mat-form-field>
+<form [formGroup]="form">
+    <div class="row">
+        <div class="container-form-finance">
+            <mat-form-field appearance="outline" class="field-form-100">
+                <mat-label>Selecione o(s) banco(s)</mat-label>
+                <mat-select multiple formControlName="banco">
+                    @for(bank of bankList; track bank){
+                    <mat-option value={{bank.id}}>{{bank.description}}</mat-option>
+                    }
+                </mat-select>
+                <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_FIELDS}}</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="field-form-100">
+                <mat-label>Forma recebimento / pagamento</mat-label>
+                <mat-select multiple formControlName="formaPagamento">
+                    @for(paymentForm of paymentFormList; track paymentForm){
+                    <mat-option value={{paymentForm.id}}>{{paymentForm.description}}</mat-option>
+                    }
+                </mat-select>
+                <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_FIELDS}}</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="container-form-finance2">
+            <mat-card>
+                <mat-card-content>
+                    <div class="container-data">
+                        <p class="p-left-1">Receita</p>
+                        <p class="p-right-1">{{10000 |currency:"BRL":"symbol"}} de {{100000 |currency:"BRL":"symbol"}}
+                        </p>
+                    </div>
+                    <div class="progress-bar">
+                        <mat-progress-bar mode="buffer" [value]="60" matTooltip="60%"></mat-progress-bar>
+                    </div>
+                    <div class="container-data">
+                        <p class="p-left-2">Despesa</p>
+                        <p class="p-right-2">{{5000 |currency:"BRL":"symbol"}} de {{100000 |currency:"BRL":"symbol"}}
+                        </p>
+                    </div>
+                    <div class="progress-bar">
+                        <mat-progress-bar mode="buffer" [value]="35" matTooltip="35%"></mat-progress-bar>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
     </div>
-    <div class="container-form-finance2">
-        <mat-card>
-            <mat-card-content>
-                <div class="container-data">
-                    <p class="p-left-1">Receita</p>
-                    <p class="p-right-1">{{10000 |currency:"BRL":"symbol"}} de {{100000 |currency:"BRL":"symbol"}}</p>
-                </div>
-                <div class="progress-bar">
-                    <mat-progress-bar mode="buffer" [value]="60" matTooltip="60%"></mat-progress-bar>
-                </div>
-                <div class="container-data">
-                    <p class="p-left-2">Despesa</p>
-                    <p class="p-right-2">{{5000 |currency:"BRL":"symbol"}} de {{100000 |currency:"BRL":"symbol"}}</p>
-                </div>
-                <div class="progress-bar">
-                    <mat-progress-bar mode="buffer" [value]="35" matTooltip="35%"></mat-progress-bar>
-                </div>
-            </mat-card-content>
-        </mat-card>
-    </div>
-</div>
 
-<div class="row">
-    <div class="container-subform-finance">
-        <mat-form-field appearance="outline" class="field-form-1">
-            <mat-label>Selecione o ano desejado</mat-label>
-            <mat-select>
-                <mat-option value=2024>2024</mat-option>
-                <mat-option value=2023>2023</mat-option>
-                <mat-option value=2022>2022</mat-option>
-                <mat-option value=2021>2021</mat-option>
-            </mat-select>
-            <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_FIELDS}}</mat-icon>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="field-form-2">
-            <mat-label>Forma recebimento / pagamento</mat-label>
-            <mat-select multiple>
-                <mat-option value=1>Cartão Credito</mat-option>
-                <mat-option value=2>Cartão Debito</mat-option>
-                <mat-option value=3>Dinheiro</mat-option>
-                <mat-option value=4>Pix</mat-option>
-                <mat-option value=5>Transferência Bancaria</mat-option>
-            </mat-select>
-            <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_FIELDS}}</mat-icon>
-        </mat-form-field>
+    <div class="row">
+        <div class="container-subform-finance">
+            <mat-form-field appearance="outline" class="field-form-1">
+                <mat-label>Selecione o ano desejado</mat-label>
+                <mat-select formControlName="ano">
+                    @for(year of yearList; track year){
+                    <mat-option value={{year.id}}>{{year.description}}</mat-option>
+                    }
+                </mat-select>
+                <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_FIELDS}}</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="field-form-2">
+                <mat-label>Selecione o mês desejado</mat-label>
+                <mat-select formControlName="mes">
+                    @for(month of monthList; track month){
+                    <mat-option value={{month.id}}>{{month.description}}</mat-option>
+                    }
+                </mat-select>
+                <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_FIELDS}}</mat-icon>
+            </mat-form-field>
+        </div>
     </div>
-</div>
+</form>
 
 <mat-tab-group dynamicHeight>
     <mat-tab>
@@ -90,8 +88,9 @@
                         [matTooltip]="constant_variables.ICON_ACTION_EXPORT_LABEL"><mat-icon>{{constant_variables.ICON_ACTION_EXPORT}}</mat-icon>
                         {{constant_variables.ICON_ACTION_EXPORT_LABEL}}</button>
                     <button mat-flat-button class="btn-table"
-                        matTooltip="Criar nova conta a receber"><mat-icon>add</mat-icon> Criar {{textPrincipal}}
-                        </button>
+                        [matTooltip]="constant_variables.ICON_ACTION_ADD_LABEL + ' ' + textPrincipal"><mat-icon>{{constant_variables.ICON_ACTION_ADD}}</mat-icon>
+                        {{constant_variables.ICON_ACTION_ADD_LABEL}} {{textPrincipal}}
+                    </button>
                 </div>
             </div>
 
@@ -99,25 +98,34 @@
                 <div class="container-table">
                     <table mat-table [dataSource]="dataSource">
 
-                        <ng-container matColumnDef="name">
-                            <th mat-header-cell *matHeaderCellDef> Nome </th>
-                            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                        <ng-container matColumnDef="registro">
+                            <th mat-header-cell *matHeaderCellDef> Registro </th>
+                            <td mat-cell *matCellDef="let element"> {{element.registro}} </td>
                         </ng-container>
 
-                        <ng-container matColumnDef="profile">
-                            <th mat-header-cell *matHeaderCellDef> Perfil </th>
-                            <td mat-cell *matCellDef="let element"> {{element.profile}} </td>
+                        <ng-container matColumnDef="planoConta">
+                            <th mat-header-cell *matHeaderCellDef> Plano de conta </th>
+                            <td mat-cell *matCellDef="let element"> {{element.planoConta}} </td>
                         </ng-container>
 
-                        <ng-container matColumnDef="status">
-                            <th mat-header-cell *matHeaderCellDef> Status </th>
-                            <td mat-cell *matCellDef="let element">
-                                <span *ngIf="element.status"
-                                    class="mat-span-active">{{constant_variables.ICON_ACTIVE_LABEL}} <mat-icon
-                                        class="mat-icon-active">{{constant_variables.ICON_ACTION_ACTIVE}}</mat-icon></span>
-                                <span *ngIf="!element.status"
-                                    class="mat-span-inactive">{{constant_variables.ICON_INACTIVE_LABEL}} <mat-icon
-                                        class="mat-icon-inactive">{{constant_variables.ICON_ACTION_INACTIVE}}</mat-icon></span>
+                        <ng-container matColumnDef="descricao">
+                            <th mat-header-cell *matHeaderCellDef> Descrição </th>
+                            <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="data">
+                            <th mat-header-cell *matHeaderCellDef> Data de recebimento </th>
+                            <td mat-cell *matCellDef="let element"> {{element.data | date:'dd/MM/yyyy'}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="formaRecebimento">
+                            <th mat-header-cell *matHeaderCellDef> Forma de recebimento </th>
+                            <td mat-cell *matCellDef="let element"> {{element.formaRecebimento}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="valorTotal">
+                            <th mat-header-cell *matHeaderCellDef> Valor Total </th>
+                            <td mat-cell *matCellDef="let element"> {{element.valorTotal |currency:"BRL":"symbol"}}
                             </td>
                         </ng-container>
 
@@ -136,7 +144,7 @@
                                         <span>{{constant_variables.ICON_ACTION_VIEW_LABEL}} {{textPrincipal}}</span>
                                     </button>
                                     <button mat-menu-item
-                                        [matTooltip]="constant_variables.ICON_ACTION_EDIT_LABEL &nbsp; + textPrincipal">
+                                        [matTooltip]="constant_variables.ICON_ACTION_EDIT_LABEL + textPrincipal">
                                         <mat-icon
                                             class="mat-icon-actions">{{constant_variables.ICON_ACTION_EDIT}}</mat-icon>
                                         <span>{{constant_variables.ICON_ACTION_EDIT_LABEL}} {{textPrincipal}}</span>

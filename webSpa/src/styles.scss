@@ -66,7 +66,8 @@ body {
 
 table {
   width: $width-100;
-
+  overflow: auto;
+  
   .tr-header {
     background-color: $primary-color;
   }

@@ -60,5 +60,7 @@ export const CONSTANT_VARIABLES = {
     ICON_FIELDS: 'mode_edit',
     ICON_INFORMATION: 'information',
     ICON_ACTION_EXPORT: 'download',
-    ICON_ACTION_EXPORT_LABEL: 'Exportar dados'
+    ICON_ACTION_EXPORT_LABEL: 'Exportar dados',
+    ICON_ACTION_ADD: 'add',
+    ICON_ACTION_ADD_LABEL: 'Criar'
 }

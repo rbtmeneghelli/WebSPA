@@ -63,6 +63,7 @@
 }
 
 .container-table {
+    overflow: auto;
     @include custom-container($display-flex, $width-100, $gap-10);
     justify-content: $justify-content-start;
     align-items: $align-items-center;
