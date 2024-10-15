@@ -1,4 +1,4 @@
-export interface ModalConfirmServiceOptions {
+export interface ModalConfirmServiceOptionsModel {
     title?: string;
     text: string;
     confirmButton?: string;

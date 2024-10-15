@@ -11,30 +11,30 @@ import { SnackBarService } from '../services/snackBar.service';
 
 export class RoleGuard implements CanActivate {
 
-    private authGuardService: AuthGuardService = inject(AuthGuardService);
-    private snackBarService: SnackBarService = inject(SnackBarService);
-    private router: Router = inject(Router);
+    private readonly _AuthGuardService: AuthGuardService = inject(AuthGuardService);
+    private readonly _SnackBarService: SnackBarService = inject(SnackBarService);
+    private readonly _Router: Router = inject(Router);
 
     canActivate(
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-        if (!this.authGuardService.isAuthenticated()) {
-            this.router.navigate(['/login']);
+        if (!this._AuthGuardService.isAuthenticated()) {
+            this._Router.navigate(['/login']);
             return false;
         }
 
-        else if (this.authGuardService.isAuthenticated() && this.authGuardService.isTokenExpired()) {
-            this.router.navigate(['/login']);
+        else if (this._AuthGuardService.isAuthenticated() && this._AuthGuardService.isTokenExpired()) {
+            this._Router.navigate(['/login']);
             return false;
         }
 
         const role = next.data['roles'] as string;
 
-        if (this.authGuardService.hasRole(role)) {
+        if (this._AuthGuardService.hasRole(role)) {
             return true;
         } else {
-            this.snackBarService.sendSnackBarNotification('Você não possui acesso a este recurso!', EnumTypeMessage.Personalized, EnumActionMessage.Error, false);
+            this._SnackBarService.sendSnackBarNotification('Você não possui acesso a este recurso!', EnumTypeMessage.Personalized, EnumActionMessage.Error, false);
             return false;
         }
     }

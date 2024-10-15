@@ -1,41 +1,42 @@
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { ResponseResult } from '../models/response-result';
-import { Credentials } from '../models/credentials.model';
 import { environment } from '../../environments/environment';
+import { getHttpHeaders } from '../functions/shared-methods.function';
+import { CredentialsModel } from '../models/credentials.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthGuardService {
 
-    private credentials: Credentials = {
+    private credentials: CredentialsModel = {
         login: '',
         password: '',
         profile: '',
         roles: [],
         token: ''
     };
-    private httpClient: HttpClient = inject(HttpClient);
-    private router: Router = inject(Router);
+    private _HttpClient: HttpClient = inject(HttpClient);
+    private _Router: Router = inject(Router);
 
-    public get credencial(): Credentials {
+    public get credencial(): CredentialsModel {
         if (this.credentials != null) {
             return this.credentials;
 
-        } else if (this.credentials == null && localStorage.getItem('userLogged') != null) {
+        } else if (this.credentials == null && localStorage.getItem('userLoggedData') != null) {
             this.setCredentials();
             return this.credentials;
         }
         return { login: '', password: '', profile: '', roles: [], token: '' };
     }
 
-    public login(credentials: Credentials): Observable<ResponseResult<string>> {
+    public login(credentials: CredentialsModel): Observable<ResponseResult<string>> {
         // tslint:disable-next-line: max-line-length
-        return this.httpClient.post<ResponseResult<string>>(environment.API + 'Conta/Login', { data: this.getCredencial(credentials.login, credentials.password) }, { headers: this.getOptions() })
+        return this._HttpClient.post<ResponseResult<string>>(environment.API + 'Conta/Login', { data: this.getCredencial(credentials.login, credentials.password) }, { headers: getHttpHeaders() })
             .pipe(map(response => response));
     }
 
@@ -49,7 +50,7 @@ export class AuthGuardService {
             roles: payload.role,
             token: data.token
         };
-        localStorage.setItem('userLogged', JSON.stringify(data));
+        localStorage.setItem('userLoggedData', JSON.stringify(data));
     }
 
     public isAuthenticated(): boolean {
@@ -60,7 +61,7 @@ export class AuthGuardService {
     public logout(): void {
         this.credentials = { login: '', password: '', profile: '', roles: [], token: '' };
         localStorage.clear();
-        this.router.navigate(['/login']);
+        this._Router.navigate(['/login']);
     }
 
     public hasRole(role: string): boolean {
@@ -88,7 +89,7 @@ export class AuthGuardService {
     }
 
     private setCredentials() {
-        const data = JSON.parse(localStorage.getItem('userLogged') ?? '');
+        const data = JSON.parse(localStorage.getItem('userLoggedData') ?? '');
         const payload = this.getTokenData(data.token);
         this.credentials = {
             login: payload.unique_name,
@@ -97,19 +98,6 @@ export class AuthGuardService {
             roles: payload.role,
             token: data.token
         };
-    }
-
-    private getOptions(): HttpHeaders {
-        let httpOptions: HttpHeaders = new HttpHeaders();
-        httpOptions = httpOptions.set('Content-Type', 'application/json');
-        httpOptions = httpOptions.set('Access-Control-Allow-Origin', '*');
-        httpOptions = httpOptions.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-        // tslint:disable-next-line: max-line-length
-        httpOptions = httpOptions.set('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
-        if (!!localStorage.getItem('userLogged')) {
-            httpOptions = httpOptions.append('Authorization', `Bearer ${'TOKEN'}`);
-        }
-        return httpOptions;
     }
 
     private getCredencial(login: string, senha: string): string {

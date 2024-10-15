@@ -8,13 +8,13 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { DropDownListModel } from "../../core/models/dropdown-list.model";
 
 @Component({
-    selector: 'app-config-email',
+    selector: 'app-config-mail',
     standalone: true,
     imports: [CommonModule, MatIconModule, MatFormFieldModule, MatListModule, MatInputModule, MatButtonModule],
-    templateUrl: './config-email.component.html',
+    templateUrl: './config-mail.component.html',
 })
 
-export class ConfigEmailComponent {
+export class ConfigMailComponent {
     public isAllChecked: boolean = false;
     public listaLog: DropDownListModel[] = [
         { id: 1, description: 'Gravar log ao acessar o sistema', active: false },

@@ -1,4 +1,5 @@
 import { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
+import { CONSTANT_VARIABLES } from '../constants/http-status.constant';
 
 // Função que retorna o validador
 export function urlValidator(): ValidatorFn {
@@ -18,10 +19,21 @@ export function urlValidator(): ValidatorFn {
 //     url: ['', [Validators.required, urlValidator()]]
 //   });
 
-export const hasErrorFormControl = (formControl: AbstractControl): string => {
-    return formControl.hasError('required') ? '* O campo é obrigatório' :
-        formControl.hasError('minlength') ? '* O campo deve ser preenchido corretamente' :
-            formControl.hasError('email') ? '* O campo está com email invalido' :
-                formControl.hasError('mismatch') ? 'A senha e a confirmação de senha não coincidem, por favor corrigir!' :
-                    '';
+export function validarSelect(control: AbstractControl) {
+    if (control.value === '0') {
+        return { selectValido: true };
+    }
+    return null;
+}
+
+export function hexadecimalColor(control: AbstractControl) {
+    const regex = CONSTANT_VARIABLES.REGEX_HEXADECIMAL_COLOR;
+
+    if (control?.value?.length === 0 || control?.value === undefined) return null;
+    return regex.test(control.value) ? null : { invalid: true };
+}
+
+export function noWhitespaceValidator(control: AbstractControl) {
+    if (control?.value?.length === 0 || control?.value === undefined) return null;
+    return (control.value || '')?.trim().length ? null : { invalid: true };
 }

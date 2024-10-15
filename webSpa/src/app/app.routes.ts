@@ -31,8 +31,8 @@ export const APP_ROUTES: Routes = [
                 loadComponent: () => import('../modules/report-file/report-file.component').then(c => c.GenerateReportComponent)
             },
             {
-                path: 'config-email',
-                loadComponent: () => import('../modules/config-email/config-email.component').then(c => c.ConfigEmailComponent)
+                path: 'config-mail',
+                loadComponent: () => import('../modules/config-mail/config-mail.component').then(c => c.ConfigMailComponent)
             },
             {
                 path: 'config-system',

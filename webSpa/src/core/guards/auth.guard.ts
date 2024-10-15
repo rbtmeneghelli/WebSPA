@@ -11,17 +11,17 @@ import { EnumTypeMessage, EnumActionMessage } from '../enums/enums';
 
 export class AuthGuard implements CanActivate {
 
-    private authGuardService: AuthGuardService = inject(AuthGuardService);
-    private snackBarService: SnackBarService = inject(SnackBarService);
+    private readonly _AuthGuardService: AuthGuardService = inject(AuthGuardService);
+    private readonly _SnackBarService: SnackBarService = inject(SnackBarService);
 
     canActivate(
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-        if (this.authGuardService.isAuthenticated() && !this.authGuardService.isTokenExpired()) {
+        if (this._AuthGuardService.isAuthenticated() && !this._AuthGuardService.isTokenExpired()) {
             return true;
         } else {
-            this.snackBarService.sendSnackBarNotificationRoute(
+            this._SnackBarService.sendSnackBarNotificationRoute(
                 '',
                 EnumTypeMessage.TokenExpired,
                 EnumActionMessage.Info,

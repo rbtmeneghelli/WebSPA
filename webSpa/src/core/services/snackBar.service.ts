@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EnumActionMessage, EnumTypeMessage } from '../enums/enums';
@@ -9,10 +9,9 @@ import { EnumActionMessage, EnumTypeMessage } from '../enums/enums';
 
 export class SnackBarService {
 
-    // tslint:disable-next-line: max-line-length
-    constructor(protected route: Router, protected snackBar: MatSnackBar) { }
+    constructor(protected readonly route: Router, protected snackBar: MatSnackBar) { }
 
-    sendSnackBarNotification(message: string, typeMessage?: EnumTypeMessage, actionMessage?: EnumActionMessage, isSuccess?: boolean) {
+    public sendSnackBarNotification(message: string, typeMessage?: EnumTypeMessage, actionMessage?: EnumActionMessage, isSuccess?: boolean) {
         this.snackBar.open(isSuccess ? this.getSnackBarMessage(message, typeMessage) : this.getSnackBarErrorMessage(message, typeMessage), '', {
             duration: 5000,
             horizontalPosition: 'right',
@@ -21,7 +20,7 @@ export class SnackBarService {
         });
     }
 
-    sendSnackBarStatus(actionMessage?: EnumActionMessage, isActive?: boolean) {
+    public sendSnackBarStatus(actionMessage?: EnumActionMessage, isActive?: boolean) {
         this.snackBar.open(isActive ? 'O registro foi inativado com sucesso. ' : 'O registro foi ativado com sucesso', '', {
             duration: 5000,
             horizontalPosition: 'right',
@@ -31,7 +30,7 @@ export class SnackBarService {
     }
 
     // tslint:disable-next-line: max-line-length
-    sendSnackBarNotificationRoute(message: string, typeMessage?: EnumTypeMessage, actionMessage?: EnumActionMessage, isSuccess?: boolean, routeDestiny?: string) {
+    public sendSnackBarNotificationRoute(message: string, typeMessage?: EnumTypeMessage, actionMessage?: EnumActionMessage, isSuccess?: boolean, routeDestiny?: string) {
         // tslint:disable-next-line: max-line-length
         const snackBarRef = this.snackBar.open(isSuccess ? this.getSnackBarMessage(message, typeMessage) : this.getSnackBarErrorMessage(message, typeMessage), '', {
             duration: 5000,
@@ -44,7 +43,7 @@ export class SnackBarService {
         });
     }
 
-    sendSnackBarNotificationLogOut(message: string, typeMessage?: EnumTypeMessage, actionMessage?: EnumActionMessage, isSuccess?: boolean) {
+    public sendSnackBarNotificationLogOut(message: string, typeMessage?: EnumTypeMessage, actionMessage?: EnumActionMessage, isSuccess?: boolean) {
         // tslint:disable-next-line: max-line-length
         const snackBarRef = this.snackBar.open(isSuccess ? this.getSnackBarMessage(message, typeMessage) : this.getSnackBarErrorMessage(message, typeMessage), '', {
             duration: 5000,
@@ -57,7 +56,7 @@ export class SnackBarService {
         });
     }
 
-    getSnackBarMessage(message: string, typeMessage?: EnumTypeMessage): string {
+    private getSnackBarMessage(message: string, typeMessage?: EnumTypeMessage): string {
         switch (typeMessage) {
             case EnumTypeMessage.New:
                 message = 'Cadastro efetuado com sucesso';
@@ -78,7 +77,7 @@ export class SnackBarService {
         return message;
     }
 
-    getSnackBarErrorMessage(message: string, typeMessage?: EnumTypeMessage): string {
+    private getSnackBarErrorMessage(message: string, typeMessage?: EnumTypeMessage): string {
         switch (typeMessage) {
             case EnumTypeMessage.New:
                 message = 'Erro ao efetuar o cadastro do registro';
@@ -99,7 +98,7 @@ export class SnackBarService {
         return message;
     }
 
-    getPanelClass(actionMessage?: EnumActionMessage): string[] {
+    private getPanelClass(actionMessage?: EnumActionMessage): string[] {
         const array: string[] = [];
         switch (actionMessage) {
             case EnumActionMessage.Success:

@@ -10,10 +10,10 @@ export class UserStatusPipe implements PipeTransform {
     transform(userStatus: boolean): string {
         // Dicionario do C# em TypeScript
         const userStatusDescription: { [key: number]: string } = {
-            [EnumUserStatus.ATIVO]: 'Ativo',
-            [EnumUserStatus.INATIVO]: 'Inativo',
+            [EnumUserStatus.Active]: 'Ativo',
+            [EnumUserStatus.Inactive]: 'Inativo',
         };
-        const status = userStatus ? EnumUserStatus.ATIVO : EnumUserStatus.INATIVO;
+        const status = userStatus ? EnumUserStatus.Active : EnumUserStatus.Inactive;
         return userStatusDescription[status] ? userStatusDescription[status] : 'Inválido';
     }
 }

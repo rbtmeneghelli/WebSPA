@@ -2,21 +2,23 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ResponseResult } from '../models/response-result';
 import { GenericService } from './generic.service';
+import { environment } from '../../environments/environment';
+import { getHttpHeaders } from '../functions/shared-methods.function';
 
 @Injectable()
-export class UsuarioService extends GenericService<any, any, any> {
+export class UsuarioService extends GenericService<any, any> {
 
-    constructor(http: HttpClient) {
-        super(http, `${environment.API}/users`);
+    constructor(protected readonly httpClient: HttpClient) {
+        super(httpClient, `${environment.API}/users`);
     }
 
-    changePassword(usuario?: any) {
+    public changePassword(usuario?: any) {
         // tslint:disable-next-line: max-line-length
-        return this.http.post<ResponseResult<boolean>>(`${`${environment.API}`}/changePassword`, usuario, { headers: this.getOptions() });
+        return this._HttpClient.post<ResponseResult<boolean>>(`${`${environment.API}`}/changePassword`, usuario, { headers: getHttpHeaders() });
     }
 
-    resetPassword(request?: any) {
+    public resetPassword(request?: any) {
         // tslint:disable-next-line: max-line-length
-        return this.http.post<ResponseResult<boolean>>(`${`${environment.API}`}/resetPassword`, request, { headers: this.getOptions() });
+        return this._HttpClient.post<ResponseResult<boolean>>(`${`${environment.API}`}/resetPassword`, request, { headers: getHttpHeaders() });
     }
 }

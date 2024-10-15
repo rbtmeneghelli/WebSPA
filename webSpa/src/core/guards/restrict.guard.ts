@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from "@angular/router";
 import { Observable } from "rxjs";
 
@@ -10,8 +10,7 @@ import { Observable } from "rxjs";
 export class RestrictGuard implements CanActivate {
 
     private readonly ADMIN_ID: number = 1;
-
-    constructor(private _router: Router) { }
+    private readonly _router: Router = inject(Router);
 
     canActivate(
         route: ActivatedRouteSnapshot,
