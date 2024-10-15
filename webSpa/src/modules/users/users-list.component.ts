@@ -21,14 +21,6 @@ export interface PeriodicElement {
     status: boolean;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-    { id: 1, name: 'Roberto', profile: 'Administrador', status: true },
-    { id: 2, name: 'Antonio', profile: 'Colaborador', status: true },
-    { id: 3, name: 'Marisa', profile: 'Cliente', status: true },
-    { id: 4, name: 'Alik', profile: 'Cliente', status: true },
-    { id: 5, name: 'Murielle', profile: 'Cliente', status: false },
-];
-
 @Component({
     selector: 'app-user-list',
     standalone: true,
@@ -39,7 +31,19 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 export class UsersListComponent  implements AfterViewInit {
     displayedColumns: string[] = ['name', 'profile', 'status', '#'];
-    dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+    public ELEMENT_DATA: PeriodicElement[] = [
+        { id: 1, name: 'Roberto', profile: 'Administrador', status: true },
+        { id: 2, name: 'Antonio', profile: 'Colaborador', status: true },
+        { id: 3, name: 'Marisa', profile: 'Cliente', status: true },
+        { id: 4, name: 'Alik', profile: 'Cliente', status: true },
+        { id: 5, name: 'Murielle', profile: 'Cliente', status: false },
+        { id: 6, name: 'Gabriel', profile: 'Colaborador', status: true },
+        { id: 7, name: 'Jonatas', profile: 'Colaborador', status: true },
+        { id: 8, name: 'Pedro', profile: 'Colaborador', status: true },
+        { id: 9, name: 'Fernanda', profile: 'Cliente', status: false },
+        { id: 10, name: 'Michele', profile: 'Cliente', status: true },
+    ];
+    dataSource = new MatTableDataSource<PeriodicElement>(this.ELEMENT_DATA);
 
     @ViewChild(MatPaginator)
     paginator!: MatPaginator;
