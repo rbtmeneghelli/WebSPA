@@ -7,17 +7,17 @@
     </mat-list-item> -->
     <mat-list-item>
         <mat-icon matListItemIcon class="mat-icon-menu-actions">calculate</mat-icon>
-        <div matListItemTitle class="menu-item-text" [routerLink]="['/finances']">Financeira</div>
+        <div matListItemTitle class="menu-item-text" [routerLink]="['finances']">Financeira</div>
     </mat-list-item>
     <mat-list-item>
         <mat-icon matListItemIcon class="mat-icon-menu-actions">security</mat-icon>
-        <div matListItemTitle class="menu-item-text" [routerLink]="['/users']">Segurança</div>
+        <div matListItemTitle class="menu-item-text" [routerLink]="['users']">Segurança</div>
     </mat-list-item>
 
     <div mat-subheader class="menu-area">Área de Analise</div>
     <mat-list-item>
         <mat-icon matListItemIcon class="mat-icon-menu-actions">analytics</mat-icon>
-        <div matListItemTitle class="menu-item-text" [routerLink]="['/report']">Relatorios</div>
+        <div matListItemTitle class="menu-item-text" [routerLink]="['report']">Relatorios</div>
     </mat-list-item>
     <div mat-subheader class="menu-area">Área de Configuração</div>
     <mat-list-item>
@@ -28,11 +28,11 @@
     <!-- Inicio do subMenu do menu Serviços -->
     <mat-list-item *ngIf="submenuOpen" class="mat-list-item-sub">
         <mat-icon matListItemIcon class="mat-icon-menu-actions">mail</mat-icon>
-        <div matListItemTitle class="menu-item-text" [routerLink]="['/config-email']">Configuração de Email</div>
+        <div matListItemTitle class="menu-item-text" [routerLink]="['config-mail']">Configuração de Email</div>
     </mat-list-item>
     <mat-list-item *ngIf="submenuOpen" class="mat-list-item-sub">
         <mat-icon matListItemIcon class="mat-icon-menu-actions">settings</mat-icon>
-        <div matListItemTitle class="menu-item-text" [routerLink]="['/config-system']">Configuração do Sistema</div>
+        <div matListItemTitle class="menu-item-text" [routerLink]="['config-system']">Configuração do Sistema</div>
     </mat-list-item>
     <!-- Fim do subMenu do menu Serviços -->
     <div mat-subheader class="menu-area">Área de Suporte</div>
@@ -42,6 +42,6 @@
     </mat-list-item>
     <mat-list-item>
         <mat-icon matListItemIcon class="mat-icon-menu-actions">support_agent</mat-icon>
-        <div matListItemTitle class="menu-item-text" [routerLink]="['/support-contact']">Contato</div>
+        <div matListItemTitle class="menu-item-text" [routerLink]="['support-contact']">Contato</div>
     </mat-list-item>
 </mat-nav-list>

@@ -12,9 +12,9 @@ export const USERS_ROUTES: Routes = [
         path: 'new', component: UsersAddComponent
     },
     {
-        path: 'edit/:id', component: UsersEditComponent
+        path: ':id/edit', component: UsersEditComponent
     },
     {
-        path: 'view/:id', component: UsersViewComponent
+        path: ':id/view', component: UsersViewComponent
     },
 ];

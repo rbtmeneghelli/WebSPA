@@ -46,16 +46,16 @@ export class UsersListComponent implements AfterViewInit {
     public orderList: DropDownListModel[] = CONSTANT_VARIABLES.FIX_DROPDOWNLIST_ORDER;
 
     public usersList: UsersList[] = [
-        { name: 'Roberto', profile: 'Administrador', status: true },
-        { name: 'Antonio', profile: 'Colaborador', status: true },
-        { name: 'Marisa', profile: 'Cliente', status: true },
-        { name: 'Alik', profile: 'Cliente', status: true },
-        { name: 'Murielle', profile: 'Cliente', status: false },
-        { name: 'Gabriel', profile: 'Colaborador', status: true },
-        { name: 'Jonatas', profile: 'Colaborador', status: true },
-        { name: 'Pedro', profile: 'Colaborador', status: true },
-        { name: 'Fernanda', profile: 'Cliente', status: false },
-        { name: 'Michele', profile: 'Cliente', status: true },
+        { id: 1, name: 'Roberto', profile: 'Administrador', status: true },
+        { id: 2, name: 'Antonio', profile: 'Colaborador', status: true },
+        { id: 3, name: 'Marisa', profile: 'Cliente', status: true },
+        { id: 4, name: 'Alik', profile: 'Cliente', status: true },
+        { id: 5, name: 'Murielle', profile: 'Cliente', status: false },
+        { id: 6, name: 'Gabriel', profile: 'Colaborador', status: true },
+        { id: 7, name: 'Jonatas', profile: 'Colaborador', status: true },
+        { id: 8, name: 'Pedro', profile: 'Colaborador', status: true },
+        { id: 9, name: 'Fernanda', profile: 'Cliente', status: false },
+        { id: 10, name: 'Michele', profile: 'Cliente', status: true },
     ];
 
 
@@ -69,8 +69,8 @@ export class UsersListComponent implements AfterViewInit {
         this.form = this.formBuilder.group({
             nomeUsuario: ['', []],
             perfilUsuario: ['', []],
-            status: ['2024', []],
-            ordenacao: ['10', []],
+            status: [['1'], []],
+            ordenacao: ['1', []],
         });
     }
 

@@ -67,7 +67,7 @@ body {
 table {
   width: $width-100;
   overflow: auto;
-  
+
   .tr-header {
     background-color: $primary-color;
   }
@@ -103,21 +103,32 @@ mat-paginator {
   color: $var-color !important;
 }
 
-// .msg-error {
-//   @include setBgAndColor($color-error, $color-white);
-// }
 
-// .msg-success {
+
+.mat-mdc-snack-bar-container {
+  &.msg-success {
+    --mdc-snackbar-container-color: #51a351;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+  &.msg-error {
+    --mdc-snackbar-container-color: #bd362f;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+}
+
+// mat-mdc-snack-bar-container mat-mdc-snackbar-surface {
 //   @include setBgAndColor($color-success, $color-white);
 // }
 
-// .msg-info {
-//   @include setBgAndColor($color-info, $color-white);
-// }
+.msg-info {
+  @include setBgAndColor($color-info, $color-white);
+}
 
-// .msg-warning {
-//   @include setBgAndColor($color-warning, $color-white);
-// }
+.msg-warning {
+  @include setBgAndColor($color-warning, $color-white);
+}
 
 .mat-form-field .mat-datepicker-toggle .mat-icon {
   color: blue !important; /* Ajuste a cor */
@@ -132,6 +143,6 @@ mat-datepicker-toggle {
   color: red;
 }
 
-.mr-5{
+.mr-5 {
   margin-right: 5px;
 }

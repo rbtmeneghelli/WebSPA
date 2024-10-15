@@ -1,33 +1,47 @@
 <div class="row">
     <div class="container-page">
-        <h1 class="text-table">Visualização do Usuário</h1>
-        <p class="text-sub-table"><mat-icon>information</mat-icon> Por meio da visualização, você será capaz de analisar
-            os dados do usuário, sem possibilidade de editar os dados.</p>
+        <h1 class="text-table">{{textPage}}</h1>
+        <p class="text-sub-table"><mat-icon>{{constant_variables.ICON_INFORMATION}}</mat-icon>{{subTextPage}} </p>
     </div>
 </div>
 
-<div class="row">
-    <div class="container-form">
-        <mat-form-field appearance="outline" class="field-form-1">
-            <mat-label hintLabel="máximo de 100 caracteres">Digite o nome do usuário</mat-label>
-            <input matInput placeholder="Nome do Usuário" maxlength="100" #nomeUsuario disabled="true">
-            <mat-icon matSuffix class="mat-icon-actions">lock</mat-icon>
-            <mat-hint align="end">{{nomeUsuario.value.length}}/100</mat-hint>
-        </mat-form-field>
-        <mat-form-field class="search-profile" appearance="outline">
-            <mat-label>Selecione o perfil do usuário</mat-label>
-            <mat-select disabled="true">
-                <mat-option value=1>Administrador</mat-option>
-                <mat-option value=2>Colaborador</mat-option>
-                <mat-option value=3>Cliente</mat-option>
-            </mat-select>
-            <mat-icon matSuffix class="mat-icon-actions">lock</mat-icon>
-        </mat-form-field>
+<form [formGroup]="form">
+    <div class="row">
+        <div class="container-form">
+            <mat-form-field appearance="outline" class="field-form-1">
+                <mat-label hintLabel="máximo de 80 caracteres">Digite o email do usuário</mat-label>
+                <input matInput placeholder="Email do Usuário" maxlength="80" #emailUsuario
+                    formControlName="emailUsuario" [disabled]="true">
+                <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_ACTION_LOCK}}</mat-icon>
+                <mat-hint align="start" class="mat-icon-actions">{{constant_variables.ICON_ACTION_LOCK_LABEL}}</mat-hint>
+                <mat-hint align="end" class="mat-icon-actions">{{emailUsuario.value.length}}/80</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="field-form-1">
+                <mat-label hintLabel="máximo de 100 caracteres">Digite o nome do usuário</mat-label>
+                <input matInput placeholder="Nome do Usuário" maxlength="100" #nomeUsuario formControlName="nomeUsuario"
+                    [attr.disabled]="true">
+                <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_ACTION_LOCK}}</mat-icon>
+                <mat-hint align="start" class="mat-icon-actions">{{constant_variables.ICON_ACTION_LOCK_LABEL}}</mat-hint>
+                <mat-hint align="end" class="mat-icon-actions">{{emailUsuario.value.length}}/80</mat-hint>
+            </mat-form-field>
+            <mat-form-field class="search-profile" appearance="outline">
+                <mat-label>Selecione o perfil do usuário</mat-label>
+                <mat-select formControlName="perfilUsuario" [disabled]="true">
+                    @for(profile of profileList; track profile){
+                    <mat-option value={{profile.id}}>{{profile.description}}</mat-option>
+                    }
+                </mat-select>
+                <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_ACTION_LOCK}}</mat-icon>
+                <mat-hint align="start" class="mat-icon-actions">{{constant_variables.ICON_ACTION_LOCK_LABEL}}</mat-hint>
+            </mat-form-field>
+        </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="container-form-button">
-        <button mat-flat-button class="btn-table" matTooltip="Voltar" [routerLink]="['/users']"><mat-icon>undo</mat-icon> Voltar</button>
+    <div class="row">
+        <div class="container-form-button">
+            <button mat-flat-button class="btn-table" matTooltip="Voltar"
+                [routerLink]="['/users']"><mat-icon>{{constant_variables.ICON_ACTION_UNDO}}</mat-icon>
+                {{constant_variables.ICON_ACTION_UNDO_LABEL}}</button>
+        </div>
     </div>
-</div>
+</form>

@@ -78,5 +78,15 @@ export const CONSTANT_VARIABLES = {
     ICON_ACTION_FILTER_OFF: 'filter_alt_off',
     ICON_ACTION_FILTER_OFF_LABEL: 'Limpar filtros',
     ICON_ACTION_FILTER: 'filter_alt',
-    ICON_ACTION_FILTER_LABEL: 'Filtrar dados'
+    ICON_ACTION_FILTER_LABEL: 'Filtrar dados',
+    ICON_ACTION_CANCEL: 'cancel',
+    ICON_ACTION_CANCEL_LABEL: 'Cancelar',
+    ICON_ACTION_CLEAN: 'brush',
+    ICON_ACTION_CLEAN_LABEL: 'Limpar',
+    ICON_ACTION_SAVE: 'save',
+    ICON_ACTION_SAVE_LABEL: 'Gravar dados',
+    ICON_ACTION_UNDO: 'undo',
+    ICON_ACTION_UNDO_LABEL: 'Voltar',
+    ICON_ACTION_LOCK: 'lock',
+    ICON_ACTION_LOCK_LABEL: 'Campo somente para visualização'
 }
