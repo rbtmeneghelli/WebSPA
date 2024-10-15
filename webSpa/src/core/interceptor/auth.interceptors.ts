@@ -5,7 +5,7 @@ import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthGuardService } from '../services/auth-guard.service';
-import { CONSTANT_HTTP_STATUS_CODE } from '../constants/http-status.constant';
+import { CONSTANT_HTTP_STATUS_CODE } from '../constants/variables.constant';
 import { EnumTypeMessage, EnumActionMessage } from '../enums/enums';
 
 @Injectable()

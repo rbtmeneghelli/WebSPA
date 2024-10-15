@@ -1,3 +1,4 @@
+import { DropDownListModel } from './../models/dropdown-list.model';
 export const CONSTANT_HTTP_STATUS_CODE = {
     UNAUTHORIZED: 401,
     FORBIDDEN: 403
@@ -62,5 +63,20 @@ export const CONSTANT_VARIABLES = {
     ICON_ACTION_EXPORT: 'download',
     ICON_ACTION_EXPORT_LABEL: 'Exportar dados',
     ICON_ACTION_ADD: 'add',
-    ICON_ACTION_ADD_LABEL: 'Criar'
+    ICON_ACTION_ADD_LABEL: 'Criar',
+    FILTER_STATUS_LABEL: 'Status do registro',
+    FILTER_ORDER_LABEL: 'Ordem dos dados',
+    ICON_ACTION_SEARCH: 'search',
+    FIX_DROPDOWNLIST_STATUS: [
+        { id: 0, description: 'Inativo', active: true },
+        { id: 1, description: 'Ativo', active: true }
+    ],
+    FIX_DROPDOWNLIST_ORDER: [
+        { id: 0, description: 'Decrescente', active: true },
+        { id: 1, description: 'Crescente', active: true }
+    ],
+    ICON_ACTION_FILTER_OFF: 'filter_alt_off',
+    ICON_ACTION_FILTER_OFF_LABEL: 'Limpar filtros',
+    ICON_ACTION_FILTER: 'filter_alt',
+    ICON_ACTION_FILTER_LABEL: 'Filtrar dados'
 }

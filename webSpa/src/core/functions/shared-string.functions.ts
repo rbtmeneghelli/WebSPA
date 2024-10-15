@@ -1,6 +1,6 @@
-import { CONSTANT_MESSAGES } from './../constants/http-status.constant';
+import { CONSTANT_MESSAGES } from '../constants/variables.constant';
 import { AbstractControl } from "@angular/forms";
-import { CONSTANT_VARIABLES } from "../constants/http-status.constant";
+import { CONSTANT_VARIABLES } from "../constants/variables.constant";
 
 export const convertBase64ToString = (char: string): string => {
   return decodeURIComponent(escape(atob(char)));

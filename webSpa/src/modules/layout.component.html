@@ -2,10 +2,10 @@
     <mat-sidenav #sidenav mode="side" opened>
         <app-side-bar></app-side-bar>
     </mat-sidenav>
-
     <mat-sidenav-content>
         <mat-toolbar>
-            <button type="button" mat-icon-button (click)="sidenav.toggle()" [matTooltip]="sidenav.opened ?  'Ocultar menu' : 'Exibir menu'">
+            <button type="button" mat-icon-button (click)="sidenav.toggle()"
+                [matTooltip]="sidenav.opened ?  'Ocultar menu' : 'Exibir menu'">
                 <mat-icon>menu</mat-icon>
             </button>
             <span>{{title}}</span>
@@ -13,14 +13,7 @@
         </mat-toolbar>
         <app-footer></app-footer>
         <div class="content">
-             <!-- <app-icon-fields></app-icon-fields> -->
-           <router-outlet />
+            <router-outlet />
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
-
-<!-- <app-login></app-login> -->
-
-<!-- <app-user-create></app-user-create> -->
-
-<!-- <app-forget-password></app-forget-password> -->

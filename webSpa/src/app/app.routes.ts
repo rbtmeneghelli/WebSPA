@@ -20,7 +20,7 @@ export const APP_ROUTES: Routes = [
         children: [
             {
                 path: 'finances',
-                loadComponent: () => import('../shared/components/icon-fields/icon-fields.component').then(r => r.IconFieldsComponent)
+                loadComponent: () => import('../modules/finances/finances.component').then(r => r.FinancesComponent)
             },
             {
                 path: 'users',

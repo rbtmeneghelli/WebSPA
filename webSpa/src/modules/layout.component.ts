@@ -14,13 +14,12 @@ import { UsersListComponent } from './users/users-list.component';
 import { LoginComponent } from './login/login.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
-import { IconFieldsComponent } from '../shared/components/icon-fields/icon-fields.component';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
   imports: [RouterOutlet, MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, CommonModule, MatTooltipModule,
-    UsersListComponent, FooterComponent, SideBarComponent, ToolBarIconsComponent, UsersAddComponent, LoginComponent, UserCreateComponent, ForgetPasswordComponent, IconFieldsComponent],
+    UsersListComponent, FooterComponent, SideBarComponent, ToolBarIconsComponent, UsersAddComponent, LoginComponent, UserCreateComponent, ForgetPasswordComponent],
   templateUrl: './layout.component.html',
 })
 

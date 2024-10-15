@@ -13,19 +13,19 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from "@angular/material/menu";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
-import { CONSTANT_VARIABLES } from "../../../core/constants/http-status.constant";
+import { CONSTANT_VARIABLES } from "../../core/constants/variables.constant";
 import { FormBuilder, FormGroup, ReactiveFormsModule } from "@angular/forms";
-import { FinancesModel } from "../../../core/models/finances/finances.model";
-import { DropDownListModel } from "../../../core/models/dropdown-list.model";
+import { FinancesModel } from "../../core/models/finances/finances.model";
+import { DropDownListModel } from "../../core/models/dropdown-list.model";
 
 @Component({
-    selector: 'app-icon-fields',
+    selector: 'app-finances',
     standalone: true,
     imports: [MatIconModule, MatCardModule, MatListModule, CommonModule, MatButtonModule, MatIconModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatTooltipModule, MatTabsModule, MatTableModule, MatMenuModule, MatPaginatorModule, MatProgressBarModule, ReactiveFormsModule],
-    templateUrl: './icon-fields.component.html',
+    templateUrl: './finances.component.html',
 })
 
-export class IconFieldsComponent {
+export class FinancesComponent {
     public textTable: string = 'Movimentação Financeira';
     public subTextTable: string = 'Ao clicar em um dos botões abaixo, você será redirecionado para a pagina da rede social escolhida.';
     public textPrincipal: string = 'conta a receber';

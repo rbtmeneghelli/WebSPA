@@ -1,5 +1,5 @@
 import { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
-import { CONSTANT_VARIABLES } from '../constants/http-status.constant';
+import { CONSTANT_VARIABLES } from '../constants/variables.constant';
 
 // Função que retorna o validador
 export function urlValidator(): ValidatorFn {
