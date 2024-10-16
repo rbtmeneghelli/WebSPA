@@ -57,9 +57,7 @@ export class UsersListComponent implements AfterViewInit {
         { id: 9, name: 'Fernanda', profile: 'Cliente', status: false },
         { id: 10, name: 'Michele', profile: 'Cliente', status: true },
     ];
-
-
-
+    
     dataSource = new MatTableDataSource<UsersList>(this.usersList);
 
     @ViewChild(MatPaginator)
@@ -81,6 +79,12 @@ export class UsersListComponent implements AfterViewInit {
         this.dataSource.paginator._intl.previousPageLabel = this.constant_variables.PREVIOUS_PAGE_LABEL;
         this.dataSource.paginator._intl.nextPageLabel = this.constant_variables.NEXT_PAGE_LABEL;
         this.dataSource.paginator._intl.lastPageLabel = this.constant_variables.LAST_PAGE_LABEL;
+    }
+
+    cleanForm(): void {
+        this.form.reset();
+        this.form.controls['status'].setValue(['1']);
+        this.form.controls['ordenacao'].setValue('1');
     }
 }
 

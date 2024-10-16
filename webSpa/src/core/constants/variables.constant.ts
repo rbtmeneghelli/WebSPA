@@ -84,9 +84,16 @@ export const CONSTANT_VARIABLES = {
     ICON_ACTION_CLEAN: 'brush',
     ICON_ACTION_CLEAN_LABEL: 'Limpar',
     ICON_ACTION_SAVE: 'save',
-    ICON_ACTION_SAVE_LABEL: 'Gravar dados',
+    ICON_ACTION_SAVE_LABEL: 'Gravar',
     ICON_ACTION_UNDO: 'undo',
     ICON_ACTION_UNDO_LABEL: 'Voltar',
     ICON_ACTION_LOCK: 'lock',
-    ICON_ACTION_LOCK_LABEL: 'Campo somente para visualização'
+    ICON_ACTION_LOCK_LABEL: 'Campo somente para visualização',
+    FIX_DROPDOWNLIST_FILE: [
+        { id: 0, description: 'Arquivo PDF', active: true },
+        { id: 1, description: 'Arquivo Excel', active: true }
+    ],
+    ICON_ACTION_CALENDAR: 'edit_calendar',
+    SELECT_ALL_LABEL: 'Marcar todas opções',
+    ONLY_NUMBERS_ACCEPT: 'Somente números são aceitos'
 }

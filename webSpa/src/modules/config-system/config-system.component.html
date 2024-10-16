@@ -1,25 +1,28 @@
 <div class="row">
     <div class="container-page">
-        <h1 class="text-table">Configuração do Sistema</h1>
-        <p class="text-sub-table"><mat-icon>information</mat-icon> Por meio da consulta, você pode consultar diferentes
-            usuários, ou realizar uma busca mais
-            aprofundada,
-            preenchendo 1 ou mais campos dos filtros abaixo.</p>
+        <h1 class="text-table">{{textPage}}</h1>
+        <p class="text-sub-table"><mat-icon>{{constant_variables.ICON_INFORMATION}}</mat-icon>{{subTextPage}}</p>
     </div>
 </div>
 
 <mat-selection-list #itensLog>
-    <mat-list-option style="font-weight: bold;" (click)="selectAll()">Marcar todas opções</mat-list-option>
-    <mat-list-option *ngFor="let item of listaLog" [selected]="item.active">
+    <mat-list-option (click)="selectAll()"
+        [selected]="isAllChecked">{{constant_variables.SELECT_ALL_LABEL}}</mat-list-option>
+    <mat-list-option *ngFor="let item of listaLog" [selected]="item.active" (click)="changeType(item)">
         {{item.description}}
     </mat-list-option>
 </mat-selection-list>
 
+<br>
+
 <div class="row">
     <div class="container-form-button">
-        <button mat-flat-button class="btn-table" matTooltip="Cancelar"><mat-icon>refresh</mat-icon> Restaurar
-            Padrão</button>
-        <button mat-flat-button class="btn-table" matTooltip="Gravar dados"><mat-icon>save</mat-icon> Gravar
-            dados</button>
+        <button mat-flat-button class="btn-table" [matTooltip]="constant_variables.ICON_ACTION_CLEAN_LABEL"
+            (click)="cleanForm()"><mat-icon>{{constant_variables.ICON_ACTION_CLEAN}}</mat-icon>
+            {{constant_variables.ICON_ACTION_CLEAN_LABEL}}</button>
+        <button mat-flat-button class="btn-table" [matTooltip]="constant_variables.ICON_ACTION_SAVE_LABEL"
+            [disabled]="enableButton()"><mat-icon>{{constant_variables.ICON_ACTION_SAVE}}</mat-icon>
+            {{constant_variables.ICON_ACTION_SAVE_LABEL}}
+        </button>
     </div>
 </div>

@@ -20,14 +20,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @Component({
     selector: 'app-login',
     standalone: true,
-    imports: [RouterOutlet, MatSelectModule, CommonModule, MatCardModule, MatPaginatorModule, MatTableModule, MatButtonModule, MatDividerModule, MatIconModule, 
+    imports: [RouterOutlet, MatSelectModule, CommonModule, MatCardModule, MatPaginatorModule, MatTableModule, MatButtonModule, MatDividerModule, MatIconModule,
         MatFormFieldModule, MatInputModule, MatMenuModule, MatTooltipModule, MatCheckboxModule, FooterComponent, ReactiveFormsModule, RouterLink],
     templateUrl: './login.component.html',
 })
 
 export class LoginComponent implements OnInit {
     public form: FormGroup;
-    public hidePassword!: boolean;
+    public hidePassword: boolean = true;
     protected formBuilder: FormBuilder = inject(FormBuilder);
 
     constructor() {
@@ -35,13 +35,12 @@ export class LoginComponent implements OnInit {
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required]],
         });
-        this.hidePassword = true;
     }
 
     ngOnInit(): void {
     }
 
-    login():void{
+    login(): void {
 
     }
 }

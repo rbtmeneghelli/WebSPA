@@ -48,7 +48,7 @@
 <div class="row">
     <div class="container-filter-button">
         <button mat-flat-button class="btn-table"
-            [matTooltip]="constant_variables.ICON_ACTION_FILTER_OFF_LABEL"><mat-icon>{{constant_variables.ICON_ACTION_FILTER_OFF}}</mat-icon>
+            [matTooltip]="constant_variables.ICON_ACTION_FILTER_OFF_LABEL"(click)="cleanForm()"><mat-icon>{{constant_variables.ICON_ACTION_FILTER_OFF}}</mat-icon>
             {{constant_variables.ICON_ACTION_FILTER_OFF_LABEL}}</button>
         <button mat-flat-button class="btn-table"
             [matTooltip]="constant_variables.ICON_ACTION_FILTER_LABEL"><mat-icon>{{constant_variables.ICON_ACTION_FILTER}}</mat-icon>

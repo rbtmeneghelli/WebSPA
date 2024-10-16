@@ -10,6 +10,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { ListLinksModel } from "../../core/models/list-links.model";
+import { CONSTANT_VARIABLES } from "../../core/constants/variables.constant";
 
 @Component({
     selector: 'app-support-contact',
@@ -19,7 +20,8 @@ import { ListLinksModel } from "../../core/models/list-links.model";
 })
 
 export class SupportContactComponent {
-
+    public textPage: string = 'Lista de contatos';
+    public subTextPage: string = 'Ao clicar em um dos botões abaixo, você será redirecionado para a pagina da rede social escolhida.';
     public listaContatos: ListLinksModel[] = [
         { description: 'Instagram', link: 'https://www.instagram.com/xpto/', icon: 'photo_camera' },
         { description: 'Facebook', link: 'https://www.facebook.com/xpto', icon: 'thumb_up' },
@@ -28,8 +30,9 @@ export class SupportContactComponent {
         { description: 'WhatsApp', link: 'https://api.whatsapp.com/send?text=Enviar%20um%20pagina%20https://developertools.com.br&phone=5511999998888', icon: 'phone' },
         { description: 'Youtube', link: 'https://www.youtube.com/', icon: 'smart_display' }
     ];
-
-    openLink(link: string){
+    public constant_variables = CONSTANT_VARIABLES;
+    
+    openLink(link: string) {
         window.open(link, "_blank");
     }
 }

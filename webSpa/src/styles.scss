@@ -130,19 +130,10 @@ mat-paginator {
   @include setBgAndColor($color-warning, $color-white);
 }
 
-.mat-form-field .mat-datepicker-toggle .mat-icon {
-  color: blue !important; /* Ajuste a cor */
-  background-color: #0056b3;
-}
-
-mat-datepicker-toggle {
-  color: #0056b3 !important;
-}
-
-::ng-deep .mat-datepicker-toggle {
-  color: red;
-}
-
 .mr-5 {
   margin-right: 5px;
+}
+
+mat-selection-list{
+  padding: 8px 0px 16px;
 }
