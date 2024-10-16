@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
+import { CONSTANT_VARIABLES } from '../../../core/constants/variables.constant';
 
 @Component({
     selector: 'app-alert-error',
@@ -10,10 +12,12 @@ import { RouterLink } from '@angular/router';
     templateUrl: './alert-error.component.html'
 })
 
-export class AlertErrorComponent implements OnInit {
+export class AlertErrorComponent {
+    public constant_variables = CONSTANT_VARIABLES;
 
-    constructor() { }
+    constructor(private location: Location) { }
 
-    ngOnInit(): void {
+    voltar(): void {
+        this.location.back();
     }
 }

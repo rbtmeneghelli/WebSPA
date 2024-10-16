@@ -8,11 +8,12 @@
             </div>
         </div>
         <div class="row">
-        <div class="box-login-2" style="flex-direction: column; width: 100%;">
-            <button mat-flat-button class="btn-table" matTooltip="Cancelar"
-                [routerLink]="['/dashboard']"><mat-icon>login</mat-icon> Voltar
-            </button>
+            <div class="box-login-2" style="flex-direction: column; width: 100%;">
+                <button mat-flat-button class="btn-table" matTooltip="Cancelar"
+                    (click)="voltar()"><mat-icon>{{constant_variables.ICON_ACTION_UNDO}}</mat-icon>
+                    {{constant_variables.ICON_ACTION_UNDO_LABEL}}
+                </button>
+            </div>
         </div>
-    </div>
     </div>
 </div>

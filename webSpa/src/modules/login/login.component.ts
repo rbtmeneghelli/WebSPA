@@ -58,7 +58,7 @@ export class LoginComponent {
                 EnumTypeMessage.Login,
                 EnumActionMessage.Success,
                 true,
-                'users'
+                'support-contact'
             );
         } else {
             this._SnackBarService.sendSnackBarNotification(

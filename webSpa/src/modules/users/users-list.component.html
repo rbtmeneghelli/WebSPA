@@ -106,13 +106,13 @@
                             [matTooltip]="constant_variables.ICON_ACTION_LIST_LABEL">{{constant_variables.ICON_ACTION_LIST}}</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu">
-                        <button mat-menu-item [matTooltip]="constant_variables.ICON_ACTION_VIEW_LABEL + actionLabel">
-                            <mat-icon class="mat-icon-actions" [routerLink]="[element.id,'view']">{{constant_variables.ICON_ACTION_VIEW}}</mat-icon>
-                            <span [routerLink]="[element.id,'view']">{{constant_variables.ICON_ACTION_VIEW_LABEL}} {{actionLabel}}</span>
+                        <button mat-menu-item [matTooltip]="constant_variables.ICON_ACTION_VIEW_LABEL + actionLabel" [routerLink]="[element.id,'view']">
+                            <mat-icon class="mat-icon-actions">{{constant_variables.ICON_ACTION_VIEW}}</mat-icon>
+                            <span>{{constant_variables.ICON_ACTION_VIEW_LABEL}} {{actionLabel}}</span>
                         </button>
-                        <button mat-menu-item [matTooltip]="constant_variables.ICON_ACTION_EDIT_LABEL + actionLabel">
+                        <button mat-menu-item [matTooltip]="constant_variables.ICON_ACTION_EDIT_LABEL + actionLabel" [routerLink]="[element.id,'edit']">
                             <mat-icon class="mat-icon-actions" [routerLink]="[element.id,'edit']">{{constant_variables.ICON_ACTION_EDIT}}</mat-icon>
-                            <span [routerLink]="[element.id,'edit']">{{constant_variables.ICON_ACTION_EDIT_LABEL}} {{actionLabel}}</span>
+                            <span>{{constant_variables.ICON_ACTION_EDIT_LABEL}} {{actionLabel}}</span>
                         </button>
                         <button mat-menu-item [matTooltip]="constant_variables.ICON_ACTION_DELETE_LABEL + actionLabel">
                             <mat-icon class="mat-icon-actions">{{constant_variables.ICON_ACTION_DELETE}}</mat-icon>

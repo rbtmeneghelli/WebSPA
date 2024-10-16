@@ -1,4 +1,3 @@
-import { DropDownListModel } from './../models/dropdown-list.model';
 export const CONSTANT_HTTP_STATUS_CODE = {
     UNAUTHORIZED: 401,
     FORBIDDEN: 403

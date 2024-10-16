@@ -1,6 +1,6 @@
 import { inject } from "@angular/core";
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -23,7 +23,8 @@ import { SnackBarService } from "../../core/services/snackBar.service";
 
 export class UsersEditComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
-    private snackBarService: SnackBarService = inject(SnackBarService);
+    private _SnackBarService: SnackBarService = inject(SnackBarService);
+    private _ActivatedRoute: ActivatedRoute = inject(ActivatedRoute);
 
     public textPage: string = 'Edição de Usuário';
     public subTextPage: string = 'Por meio da edição, você será capaz de editar os dados do usuário.';
@@ -38,9 +39,16 @@ export class UsersEditComponent {
 
     constructor() {
         this.form = this.formBuilder.group({
+            id: [],
             emailUsuario: ['', [Validators.required, Validators.email]],
             nomeUsuario: ['', [Validators.required]],
             perfilUsuario: ['', [Validators.required]],
+        });
+
+        this._ActivatedRoute.params.subscribe(params => {
+            if (!!params["id"]) {
+                this.form.controls['id'].setValue(params["id"] as number ?? 0);
+            }
         });
     }
 
@@ -53,7 +61,7 @@ export class UsersEditComponent {
     }
 
     save() {
-        this.snackBarService.sendSnackBarNotification(CONSTANT_MESSAGES.BTN_EDIT);
+        this._SnackBarService.sendSnackBarNotification(CONSTANT_MESSAGES.BTN_EDIT);
     }
 }
 
