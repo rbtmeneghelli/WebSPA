@@ -52,7 +52,7 @@
             <mat-form-field appearance="outline" class="field-form-1">
                 <mat-label hintLabel="máximo de 80 caracteres">Digite o endereço de email</mat-label>
                 <input matInput placeholder="Endereço de email" maxlength="80" #email formControlName="email">
-                <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_ACTION_EDIT}}</mat-icon>
+                <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_ACTION_EMAIL}}</mat-icon>
                 <mat-hint align="end" class="mat-icon-actions">{{email.value.length}}/80</mat-hint>
                 <mat-error>{{hasErrorFormControl(form.controls['email'])}}</mat-error>
             </mat-form-field>
@@ -61,7 +61,7 @@
                 <input matInput placeholder="Senha do email" maxlength="20" #senha formControlName="senha"
                     [type]="hidePassword ? 'password' : 'text'">
                 <mat-icon matSuffix class="mat-icon-actions" (click)="hidePassword = !hidePassword">{{hidePassword ?
-                    'visibility' : 'visibility_off'}}</mat-icon>
+                    constant_variables.ICON_ACTION_VIEW : constant_variables.ICON_ACTION_VIEW_OFF}}</mat-icon>
                 <mat-hint align="end" class="mat-icon-actions">{{senha.value.length}}/20</mat-hint>
                 <mat-error>{{hasErrorFormControl(form.controls['senha'])}}</mat-error>
             </mat-form-field>

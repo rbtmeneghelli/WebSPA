@@ -5,43 +5,45 @@
         <mat-icon matListItemIcon class="mat-icon-menu-actions">assignment</mat-icon>
         <div matListItemTitle class="menu-item-text">Gerencial</div>
     </mat-list-item> -->
-    <mat-list-item>
+    <mat-list-item [routerLink]="['finances']">
         <mat-icon matListItemIcon class="mat-icon-menu-actions">calculate</mat-icon>
-        <div matListItemTitle class="menu-item-text" [routerLink]="['finances']">Financeira</div>
+        <div matListItemTitle class="menu-item-text">Financeira</div>
     </mat-list-item>
-    <mat-list-item>
+    <mat-list-item [routerLink]="['users']">
         <mat-icon matListItemIcon class="mat-icon-menu-actions">security</mat-icon>
-        <div matListItemTitle class="menu-item-text" [routerLink]="['users']">Segurança</div>
+        <div matListItemTitle class="menu-item-text">Segurança</div>
     </mat-list-item>
 
     <div mat-subheader class="menu-area">Área de Analise</div>
-    <mat-list-item>
+    <mat-list-item [routerLink]="['report']">
         <mat-icon matListItemIcon class="mat-icon-menu-actions">analytics</mat-icon>
-        <div matListItemTitle class="menu-item-text" [routerLink]="['report']">Relatorios</div>
+        <div matListItemTitle class="menu-item-text">Relatorios</div>
     </mat-list-item>
     <div mat-subheader class="menu-area">Área de Configuração</div>
-    <mat-list-item>
+    <mat-list-item (click)="toggleSubmenu()">
         <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="!submenuOpen">chevron_right</mat-icon>
         <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="submenuOpen">expand_more</mat-icon>
-        <div matListItemTitle (click)="toggleSubmenu()" class="menu-item-text">Serviços</div>
+        <div matListItemTitle class="menu-item-text">Serviços</div>
     </mat-list-item>
     <!-- Inicio do subMenu do menu Serviços -->
-    <mat-list-item *ngIf="submenuOpen" class="mat-list-item-sub">
+    @if (submenuOpen) {
+    <mat-list-item class="mat-list-item-sub" [routerLink]="['config-mail']">
         <mat-icon matListItemIcon class="mat-icon-menu-actions">mail</mat-icon>
-        <div matListItemTitle class="menu-item-text" [routerLink]="['config-mail']">Configuração de Email</div>
+        <div matListItemTitle class="menu-item-text">Configuração de Email</div>
     </mat-list-item>
-    <mat-list-item *ngIf="submenuOpen" class="mat-list-item-sub">
+    <mat-list-item class="mat-list-item-sub" [routerLink]="['config-system']">
         <mat-icon matListItemIcon class="mat-icon-menu-actions">settings</mat-icon>
-        <div matListItemTitle class="menu-item-text" [routerLink]="['config-system']">Configuração do Sistema</div>
+        <div matListItemTitle class="menu-item-text">Configuração do Sistema</div>
     </mat-list-item>
+    }
     <!-- Fim do subMenu do menu Serviços -->
     <div mat-subheader class="menu-area">Área de Suporte</div>
     <mat-list-item>
         <mat-icon matListItemIcon class="mat-icon-menu-actions">text_snippet</mat-icon>
         <div matListItemTitle class="menu-item-text">Manual do Sistema</div>
     </mat-list-item>
-    <mat-list-item>
+    <mat-list-item [routerLink]="['support-contact']">
         <mat-icon matListItemIcon class="mat-icon-menu-actions">support_agent</mat-icon>
-        <div matListItemTitle class="menu-item-text" [routerLink]="['support-contact']">Contato</div>
+        <div matListItemTitle class="menu-item-text">Contato</div>
     </mat-list-item>
 </mat-nav-list>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { AuthGuardService } from './../core/services/auth-guard.service';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -24,6 +25,12 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 })
 
 export class LayoutComponent {
+  private _AuthGuardService: AuthGuardService = inject(AuthGuardService);
+
   title = 'WebSPA';
+
+  isAuthenticated() {
+    return this._AuthGuardService.isAuthenticated();
+  }
 }
 

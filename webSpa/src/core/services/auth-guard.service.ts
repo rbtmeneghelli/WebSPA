@@ -13,13 +13,7 @@ import { CredentialsModel } from '../models/credentials.model';
 })
 export class AuthGuardService {
 
-    private credentials: CredentialsModel = {
-        login: '',
-        password: '',
-        profile: '',
-        roles: [],
-        token: ''
-    };
+    private credentials!: CredentialsModel;
     private _HttpClient: HttpClient = inject(HttpClient);
     private _Router: Router = inject(Router);
 
@@ -31,35 +25,40 @@ export class AuthGuardService {
             this.setCredentials();
             return this.credentials;
         }
-        return { login: '', password: '', profile: '', roles: [], token: '' };
+        return new CredentialsModel();
     }
 
     public login(credentials: CredentialsModel): Observable<ResponseResult<string>> {
         // tslint:disable-next-line: max-line-length
-        return this._HttpClient.post<ResponseResult<string>>(environment.API + 'Conta/Login', { data: this.getCredencial(credentials.login, credentials.password) }, { headers: getHttpHeaders() })
+        return this._HttpClient.post<ResponseResult<string>>(environment.API + 'Conta/Login', { data: this.getCredencial(credentials.email, credentials.password) }, { headers: getHttpHeaders() })
             .pipe(map(response => response));
     }
 
 
-    public keepUserData(data: any) {
-        const payload = this.getTokenData(data.token);
-        this.credentials = {
-            login: payload.unique_name,
-            password: '*********',
-            profile: payload.profile,
-            roles: payload.role,
-            token: data.token
-        };
-        localStorage.setItem('userLoggedData', JSON.stringify(data));
+    public keepUserData(credencial: CredentialsModel) {
+        const payload = this.getTokenData(credencial.token);
+        this.credentials = new CredentialsModel();
+        this.credentials.email = 'admin@gmail.com';
+        this.credentials.password = '***********';
+        this.credentials.profile = 'Administrador';
+        this.credentials.roles = [];
+        this.credentials.token = 'DJHSGDHJGHJDHSDHSD_DHJSGHJDGHJSD_245_fsdf';
+        localStorage.setItem('userLoggedData', JSON.stringify(this.credentials));
     }
 
     public isAuthenticated(): boolean {
-        const payload = this.getTokenData(this.credencial.token);
-        return !!payload ? true : false;
+        //const payload = this.getTokenData(this.credencial.token);
+        // return !!payload;
+        const data = localStorage.getItem('userLoggedData');
+        if (!!data) {
+            const result: CredentialsModel = JSON.parse(data) as CredentialsModel;
+            return !!result.token ? true : false;
+        }
+        return false;
     }
 
     public logout(): void {
-        this.credentials = { login: '', password: '', profile: '', roles: [], token: '' };
+        this.credentials = new CredentialsModel();
         localStorage.clear();
         this._Router.navigate(['/login']);
     }
@@ -74,7 +73,7 @@ export class AuthGuardService {
     public getUserName(): string {
         this.setCredentials();
         if (!!this.credentials) {
-            return this.credentials.login;
+            return this.credentials.email;
         }
         return '';
     }
@@ -89,15 +88,22 @@ export class AuthGuardService {
     }
 
     private setCredentials() {
-        const data = JSON.parse(localStorage.getItem('userLoggedData') ?? '');
-        const payload = this.getTokenData(data.token);
-        this.credentials = {
-            login: payload.unique_name,
-            password: '*********',
-            profile: payload.profile,
-            roles: payload.role,
-            token: data.token
-        };
+        if(!!localStorage.getItem('userLoggedData')){
+            this.credentials = new CredentialsModel();
+            this.credentials.email = 'admin@gmail.com';
+            this.credentials.password = '***********';
+            this.credentials.profile = 'Administrador';
+            this.credentials.roles = [];
+            this.credentials.token = 'DJHSGDHJGHJDHSDHSD_DHJSGHJDGHJSD_245_fsdf';
+            // const payload = this.getTokenData(data.token);
+            // this.credentials = {
+            //     email: payload.unique_name,
+            //     password: '*********',
+            //     profile: payload.profile,
+            //     roles: payload.role,
+            //     token: data.token
+            // };
+        }
     }
 
     private getCredencial(login: string, senha: string): string {

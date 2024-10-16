@@ -87,13 +87,14 @@ mat-paginator {
 }
 
 .custom-link {
-  color: #007bff;
+  color: $primary-color;
   text-decoration: none;
   transition: color 0.3s;
   cursor: pointer;
+  font-weight: 700;
 
   &:hover {
-    color: #0056b3;
+    color: $color-info;
     text-decoration: underline;
   }
 }
@@ -116,18 +117,16 @@ mat-paginator {
     --mat-mdc-snack-bar-button-color: #fff;
     --mdc-snackbar-supporting-text-color: #fff;
   }
-}
-
-// mat-mdc-snack-bar-container mat-mdc-snackbar-surface {
-//   @include setBgAndColor($color-success, $color-white);
-// }
-
-.msg-info {
-  @include setBgAndColor($color-info, $color-white);
-}
-
-.msg-warning {
-  @include setBgAndColor($color-warning, $color-white);
+  &.msg-info {
+    --mdc-snackbar-container-color: #2f96b4;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+  &.msg-warning {
+    --mdc-snackbar-container-color: #f89406;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
 }
 
 .mr-5 {

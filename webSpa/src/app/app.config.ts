@@ -4,7 +4,7 @@ import { APP_ROUTES } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { LoaderInterceptor } from '../core/interceptor/loader.interceptor';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 
 const scrollConfig: InMemoryScrollingOptions = {
   scrollPositionRestoration: 'top',
@@ -20,5 +20,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+    provideHttpClient()
   ]
 };

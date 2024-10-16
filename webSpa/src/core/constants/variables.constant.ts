@@ -46,6 +46,8 @@ export const CONSTANT_VARIABLES = {
     PREVIOUS_PAGE_LABEL: 'Voltar pagina',
     ICON_ACTION_VIEW: 'visibility',
     ICON_ACTION_VIEW_LABEL: 'Visualizar ',
+    ICON_ACTION_VIEW_OFF: 'visibility_off',
+    ICON_ACTION_VIEW_OFF_LABEL: 'Ocultar ',
     ICON_ACTION_EDIT: 'edit',
     ICON_ACTION_EDIT_LABEL: 'Editar ',
     ICON_ACTION_DELETE: 'delete',
@@ -95,5 +97,6 @@ export const CONSTANT_VARIABLES = {
     ],
     ICON_ACTION_CALENDAR: 'edit_calendar',
     SELECT_ALL_LABEL: 'Marcar todas opções',
-    ONLY_NUMBERS_ACCEPT: 'Somente números são aceitos'
+    ONLY_NUMBERS_ACCEPT: 'Somente números são aceitos',
+    ICON_ACTION_EMAIL: 'email'
 }

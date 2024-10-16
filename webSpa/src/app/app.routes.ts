@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { LayoutComponent } from '../modules/layout.component';
+import { AuthGuard } from '../core/guards/auth.guard';
 
 export const APP_ROUTES: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -16,7 +17,7 @@ export const APP_ROUTES: Routes = [
         loadComponent: () => import('../modules/user-create/user-create.component').then(c => c.UserCreateComponent)
     },
     {
-        path: '', component: LayoutComponent,
+        path: '', component: LayoutComponent, canActivate: [AuthGuard],
         children: [
             {
                 path: 'finances',

@@ -18,14 +18,15 @@ export class AuthGuard implements CanActivate {
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-        if (this._AuthGuardService.isAuthenticated() && !this._AuthGuardService.isTokenExpired()) {
+        // if (this._AuthGuardService.isAuthenticated() && !this._AuthGuardService.isTokenExpired()) {
+        if (this._AuthGuardService.isAuthenticated()) {
             return true;
         } else {
             this._SnackBarService.sendSnackBarNotificationRoute(
                 '',
                 EnumTypeMessage.TokenExpired,
                 EnumActionMessage.Info,
-                true,
+                false,
                 'login'
             );
             return false;
