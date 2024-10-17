@@ -1,0 +1,22 @@
+.mat-mdc-snack-bar-container {
+    &.msg-success {
+        --mdc-snackbar-container-color: #51a351;
+        --mat-mdc-snack-bar-button-color: #fff;
+        --mdc-snackbar-supporting-text-color: #fff;
+    }
+    &.msg-error {
+        --mdc-snackbar-container-color: #bd362f;
+        --mat-mdc-snack-bar-button-color: #fff;
+        --mdc-snackbar-supporting-text-color: #fff;
+    }
+    &.msg-info {
+        --mdc-snackbar-container-color: #2f96b4;
+        --mat-mdc-snack-bar-button-color: #fff;
+        --mdc-snackbar-supporting-text-color: #fff;
+    }
+    &.msg-warning {
+        --mdc-snackbar-container-color: #f89406;
+        --mat-mdc-snack-bar-button-color: #fff;
+        --mdc-snackbar-supporting-text-color: #fff;
+    }
+}

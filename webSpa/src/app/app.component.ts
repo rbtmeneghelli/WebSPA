@@ -1,10 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LayoutComponent } from '../modules/layout.component';
 import { LoadingComponent } from '../shared/components/loading/loading.component';
 import { fromEvent, map, merge, Observable, Observer } from 'rxjs';
 import { SnackBarService } from '../core/services/snackBar.service';
 import { EnumActionMessage, EnumTypeMessage } from '../core/enums/enums';
+import { LayoutComponent } from '../modules/layout/layout.component';
 
 @Component({
   selector: 'app-root',

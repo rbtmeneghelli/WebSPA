@@ -1,0 +1,21 @@
+table {
+    width: $width-100;
+    overflow: $auto;
+
+    .tr-header {
+        background-color: $primary-color;
+    }
+
+    th {
+        color: $color-white;
+        font-weight: $font-weight-700;
+    }
+}
+
+mat-paginator {
+    color: $primary-color !important;
+}
+
+mat-selection-list {
+    padding: 8px 0px 16px;
+}

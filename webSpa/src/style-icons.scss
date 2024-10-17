@@ -1,13 +1,3 @@
-@mixin custom-span($varColor, $varFontWeight) {
-    color: $varColor !important;
-    font-weight: $varFontWeight;
-}
-
-@mixin custom-icon($varSub, $varColor) {
-    color: $varColor !important;
-    vertical-align: $varSub;
-}
-
 .mat-span-active{
     @include custom-span($color-icon-active, $font-weight-700);
 }

@@ -1,0 +1,28 @@
+@mixin custom-container($varFlex, $varWidth, $varGap) {
+    display: $varFlex;
+    width: $varWidth;
+    gap: $varGap;
+}
+
+@mixin custom-span($varColor, $varFontWeight) {
+    color: $varColor !important;
+    font-weight: $varFontWeight;
+}
+
+@mixin custom-icon($varSub, $varColor) {
+    color: $varColor !important;
+    vertical-align: $varSub;
+}
+
+@mixin setBgAndColor($var-background-color, $var-color) {
+    background-color: $var-background-color !important;
+    color: $var-color !important;
+}
+
+@mixin custom-container($var-display, $var-flex-direction, $var-justify-content, $var-width) {
+    display: $var-display;
+    flex-direction: $var-flex-direction;
+    justify-content: $var-justify-content;
+    width: 100%;
+}
+

@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { LayoutComponent } from '../modules/layout.component';
 import { AuthGuard } from '../core/guards/auth.guard';
+import { LayoutComponent } from '../modules/layout/layout.component';
 
 export const APP_ROUTES: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'login' },

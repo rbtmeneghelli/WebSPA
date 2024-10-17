@@ -1,7 +1,9 @@
-@mixin custom-container($varFlex, $varWidth, $varGap) {
-    display: $varFlex;
-    width: $varWidth;
-    gap: $varGap;
+.row {
+    display: $display-flex;
+    margin-bottom: 2em;
+    @media only screen and (max-width: $max-width-mobile) {
+        flex-wrap: $flex-wrap;
+    }
 }
 
 .container-page {
@@ -63,7 +65,7 @@
 }
 
 .container-table {
-    overflow: auto;
+    overflow: $auto;
     @include custom-container($display-flex, $width-100, $gap-10);
     justify-content: $justify-content-start;
     align-items: $align-items-center;
@@ -103,10 +105,10 @@
 
 .container-footer {
     @include custom-container($display-flex, $width-100, $gap-10);
-    justify-content: center;
+    justify-content: $justify-content-center;
     align-items: $align-items-center;
-    text-align: center;
-    position: fixed;
+    text-align: $text-align-center;
+    position: $position-fixed;
     bottom: 0;
     @media only screen and (max-width: $max-width-mobile) {
         display: none;
@@ -134,7 +136,7 @@
 
     .field-form-1 {
         width: $width-100;
-        margin-bottom: 10px;
+        margin-bottom: $mb-10;
         @media only screen and (max-width: $max-width-mobile) {
             width: $width-100;
         }
@@ -142,7 +144,7 @@
 
     .field-form-2 {
         width: $width-100;
-        margin-bottom: 10px;
+        margin-bottom: $mb-10;
         @media only screen and (max-width: $max-width-mobile) {
             width: $width-100;
         }
@@ -150,7 +152,7 @@
 
     .field-form-3 {
         width: $width-100;
-        margin-bottom: 10px;
+        margin-bottom: $mb-10;
         @media only screen and (max-width: $max-width-mobile) {
             width: $width-100;
         }
@@ -176,14 +178,14 @@
     justify-content: center; // Centraliza horizontalmente
     align-items: center; // Centraliza verticalmente
     height: 100vh; // Define a altura como 100% da viewport
-    flex-direction: column;
+    flex-direction: $flex-direction-column;
     background: linear-gradient(to bottom right, $primary-color, #005d8c);
     .box-login {
         width: 600px; // Largura da div
         height: 400px; // Altura da div
         background: $color-white; // Cor de fundo
         text-align: center; // Centraliza o texto
-        flex-direction: column;
+        flex-direction: $flex-direction-column;
         padding: 0px 30px 0px 30px;
 
         @media only screen and (max-width: $max-width-mobile) {
@@ -363,3 +365,25 @@
 .mat-tab-label-text {
     color: $primary-color;
 }
+
+.container-detail-record{
+    
+}
+<div class="row">
+    <div style="display: flex; flex-direction: row; justify-content: center; width: 100%;">
+        <div style="display: flex; flex-direction: column; justify-content: center; width: 100%; text-align: center;">
+            <p style="width: 100%; margin-bottom: 0; color: #005cbb; font-weight: 700;">ID do Registro</p>
+            <p style="width: 100%; margin-bottom: 0; color: #005cbb;">{{id}}</p>
+        </div>
+        <div
+            style="display: flex; flex-direction: column; justify-content: center; width: 100%; text-align: center; margin-bottom: 0;">
+            <p style="width: 100%; margin-bottom: 0; color: #005cbb; font-weight: 700;">Data de cadastro</p>
+            <p style="width: 100%; margin-bottom: 0; color: #005cbb;">20/05/2024</p>
+        </div>
+        <div
+            style="display: flex; flex-direction: column; justify-content: center; width: 100%; text-align: center; margin-bottom: 0;">
+            <p style="width: 100%; margin-bottom: 0; color: #005cbb; font-weight: 700;">Data de alteração</p>
+            <p style="width: 100%; margin-bottom: 0; color: #005cbb;">25/05/2024</p>
+        </div>
+    </div>
+</div>

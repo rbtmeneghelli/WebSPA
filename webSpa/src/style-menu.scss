@@ -1,7 +1,7 @@
 mat-toolbar {
     background-color: $primary-color !important;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: $justify-content-sp-between;
+    align-items: $align-items-center;
 
     span {
         color: $color-white;
