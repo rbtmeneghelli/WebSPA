@@ -36,3 +36,35 @@ CONSEQUÊNCIAS FINAIS
   - Facilidade de entendimento de codigo
   - Facilidade de manutenção do banco de dados
   - Agilidade no desenvolvimento de novas telas, seguindo o padrão desenvolvido nesse projeto
+
+PASSOS PARA UTILIZAR
+  - Utilizar uma IDE da sua escolha, recomendo a utilização do VISUAL STUDIO CODE
+  - Efetuar a instalação do Angular CLI versão 18.2.8 ou superior
+  - Efetuar a instalação do Node JS 22.9.0 ou superior
+  - Ao baixar o projeto, efetuar a execução do comando NPM Install para que os pacotes e as dependências do projeto sejam instaladas
+  - Por fim, executar o comando Ng Serve ou Ng s para obter a execução do projeto em sua maquina
+  - Dados ficticios de acesso ao sistema são:
+    - Email >> admin@gmail.com
+    - Senha >> Admin@123
+   
+PRINTS DO SISTEMA
+
+![image](https://github.com/user-attachments/assets/3c678e54-a413-4508-8790-9e26dfb255ff)
+
+![image](https://github.com/user-attachments/assets/c3df6a56-f1c8-4583-9b7f-c67cc9254e83)
+
+![image](https://github.com/user-attachments/assets/a7f3fc73-642e-466b-b346-ce463a043fbd)
+
+![image](https://github.com/user-attachments/assets/2ac3e255-7146-44b8-90b4-7f85890182a8)
+
+![image](https://github.com/user-attachments/assets/16dbc566-42aa-450b-82ce-257e11f44f49)
+
+![image](https://github.com/user-attachments/assets/bec27098-a6b2-42c5-937b-b3cf349ca969)
+
+![image](https://github.com/user-attachments/assets/238248f3-22d5-4f8f-8c30-64161cc52f88)
+
+
+
+
+
+
