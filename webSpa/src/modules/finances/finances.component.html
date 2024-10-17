@@ -8,7 +8,7 @@
 <form [formGroup]="form">
     <div class="row">
         <div class="container-form-finance">
-            <mat-form-field appearance="outline" class="field-form-100">
+            <mat-form-field appearance="outline" class="field-form">
                 <mat-label>Selecione o(s) banco(s)</mat-label>
                 <mat-select multiple formControlName="banco">
                     @for(bank of bankList; track bank){
@@ -17,7 +17,7 @@
                 </mat-select>
                 <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_FIELDS}}</mat-icon>
             </mat-form-field>
-            <mat-form-field appearance="outline" class="field-form-100">
+            <mat-form-field appearance="outline" class="field-form">
                 <mat-label>Forma recebimento / pagamento</mat-label>
                 <mat-select multiple formControlName="formaPagamento">
                     @for(paymentForm of paymentFormList; track paymentForm){
