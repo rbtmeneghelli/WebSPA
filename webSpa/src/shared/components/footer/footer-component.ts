@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, effect, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,7 +9,18 @@ import { CommonModule } from '@angular/common';
 })
 
 export class FooterComponent {
-  @Input()
-  classColor: string = 'text-primary';
+  // Forma efetuada antes do Angular 16
+  // @Input()
+  // classColor: string = 'text-primary';
+
+  //Nova forma efetuada para Angular 16 ou superior
+  classColor = input<string>('text-primary', { alias: 'classColor' });
+
+  constructor() {
+    // Tem o efeito semelhante ao NgOnChanges
+    // effect(() => {
+    //   console.log(this.classColor());
+    // });
+  }
 }
 
