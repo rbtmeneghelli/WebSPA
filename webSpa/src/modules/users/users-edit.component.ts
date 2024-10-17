@@ -13,11 +13,12 @@ import { CONSTANT_VARIABLES, CONSTANT_MESSAGES } from "../../core/constants/vari
 import { hasErrorFormControl } from "../../core/functions/shared-string.functions";
 import { DropDownListModel } from "../../core/models/dropdown-list.model";
 import { SnackBarService } from "../../core/services/snackBar.service";
+import { DetailsRecordComponent } from "../../shared/components/details-record/details-record.component";
 
 @Component({
     selector: 'app-users-edit',
     standalone: true,
-    imports: [RouterOutlet, MatSelectModule, CommonModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatTooltipModule, ReactiveFormsModule, RouterLink],
+    imports: [RouterOutlet, MatSelectModule, CommonModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatTooltipModule, ReactiveFormsModule, RouterLink, DetailsRecordComponent],
     templateUrl: './users-edit.component.html',
 })
 

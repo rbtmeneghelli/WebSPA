@@ -3,3 +3,4 @@ export const environment = {
     API: 'https://localhost:9000/api/',
     SOCKET: 'https://localhost:9000/',
 };
+//ng build --configuration production

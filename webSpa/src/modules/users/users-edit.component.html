@@ -5,22 +5,7 @@
     </div>
 </div>
 
-<div class="row">
-    <div style="display: flex; flex-direction: row; justify-content: center; width: 100%;">
-        <div style="display: flex; flex-direction: column; justify-content: center; width: 100%; text-align: center;">
-            <p style="width: 100%; margin-bottom: 0; color: #005cbb; font-weight: 700;">ID do Registro</p>
-            <p style="width: 100%; margin-bottom: 0; color: #005cbb;">{{form.controls['id'].value}}</p>
-        </div>
-        <div style="display: flex; flex-direction: column; justify-content: center; width: 100%; text-align: center; margin-bottom: 0;">
-            <p style="width: 100%; margin-bottom: 0; color: #005cbb; font-weight: 700;">Data de cadastro</p>
-            <p style="width: 100%; margin-bottom: 0; color: #005cbb;">20/05/2024</p>
-        </div>
-        <div style="display: flex; flex-direction: column; justify-content: center; width: 100%; text-align: center; margin-bottom: 0;">
-            <p style="width: 100%; margin-bottom: 0; color: #005cbb; font-weight: 700;">Data de alteração</p>
-            <p style="width: 100%; margin-bottom: 0; color: #005cbb;">25/05/2024</p>
-        </div>
-    </div>
-</div>
+<app-details-record [id]="form.controls['id'].value"></app-details-record>
 
 <form [formGroup]="form">
     <div class="row">
