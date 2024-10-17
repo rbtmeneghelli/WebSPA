@@ -19,10 +19,10 @@
     color: $var-color !important;
 }
 
-@mixin custom-container($var-display, $var-flex-direction, $var-justify-content, $var-width) {
+@mixin custom-containerr($var-display, $var-flex-direction, $var-justify-content, $var-width) {
     display: $var-display;
     flex-direction: $var-flex-direction;
     justify-content: $var-justify-content;
-    width: 100%;
+    width: $var-width;
 }
 

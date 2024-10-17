@@ -7,8 +7,8 @@
 
 <form [formGroup]="form">
     <div class="row">
-        <div class="container-form">
-            <mat-form-field appearance="outline" class="field-form-1">
+        <div class="container-form-col">
+            <mat-form-field appearance="outline" class="field-form">
                 <mat-label hintLabel="máximo de 80 caracteres">Digite o email do usuário</mat-label>
                 <input matInput placeholder="Email do Usuário" maxlength="80" #emailUsuario
                     formControlName="emailUsuario">
@@ -16,7 +16,7 @@
                 <mat-hint align="end" class="mat-icon-actions">{{emailUsuario.value.length}}/80</mat-hint>
                 <mat-error>{{hasErrorFormControl(form.controls['emailUsuario'])}}</mat-error>
             </mat-form-field>
-            <mat-form-field appearance="outline" class="field-form-1">
+            <mat-form-field appearance="outline" class="field-form">
                 <mat-label hintLabel="máximo de 100 caracteres">Digite o nome do usuário</mat-label>
                 <input matInput placeholder="Nome do Usuário" maxlength="100" #nomeUsuario
                     formControlName="nomeUsuario">
@@ -24,7 +24,7 @@
                 <mat-hint align="end" class="mat-icon-actions">{{nomeUsuario.value.length}}/100</mat-hint>
                 <mat-error>{{hasErrorFormControl(form.controls['nomeUsuario'])}}</mat-error>
             </mat-form-field>
-            <mat-form-field class="search-profile" appearance="outline">
+            <mat-form-field class="field-form" appearance="outline">
                 <mat-label>Selecione o perfil do usuário</mat-label>
                 <mat-select formControlName="perfilUsuario">
                     @for(profile of profileList; track profile){

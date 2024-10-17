@@ -1,19 +1,19 @@
 <form [formGroup]="form" (ngSubmit)="confirm()">
-    <div class="container-login">
-        <div class="box-login">
+    <div class="container-form-fix">
+        <div class="box-fix">
             <div class="row">
                 <div class="container-page">
                     <h1 class="text-table">Tela de Login</h1>
                 </div>
             </div>
-            <mat-form-field appearance="outline" class="field-form-1">
+            <mat-form-field appearance="outline" class="field-form">
                 <mat-label hintLabel="máximo de 80 caracteres">Digite o seu email de acesso</mat-label>
                 <input matInput placeholder="Email de acesso" maxlength="80" #userEmail formControlName="email">
                 <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_ACTION_EMAIL}}</mat-icon>
                 <mat-hint align="end">{{userEmail.value.length}}/80</mat-hint>
                 <mat-error>{{hasErrorFormControl(form.controls['email'])}}</mat-error>
             </mat-form-field>
-            <mat-form-field appearance="outline" class="field-form-2">
+            <mat-form-field appearance="outline" class="field-form">
                 <mat-label hintLabel="máximo de 20 caracteres">Digite a sua senha de acesso</mat-label>
                 <input matInput placeholder="Senha de acesso" maxlength="20" #userPsw
                     [type]="hidePassword ? 'password' : 'text'" formControlName="password">
@@ -23,12 +23,12 @@
                 <mat-error>{{hasErrorFormControl(form.controls['password'])}}</mat-error>
             </mat-form-field>
 
-            <div class="box-login-2">
+            <div class="box-fix-login">
                 <mat-checkbox>Lembrar dados do meu acesso?</mat-checkbox>
                 <button mat-flat-button class="btn-table" matTooltip="Confirmar" (click)="confirm()"
                     [disabled]="!form.valid"><mat-icon>login</mat-icon> Confirmar</button>
             </div>
-            <div class="box-login-3">
+            <div class="sub-box-fix-login">
                 <p class="p-first-text">Esqueceu a senha? <a [routerLink]="['/forget-password']"
                         class="custom-link">Clique aqui</a></p>
                 <p>Novo usuário? <a [routerLink]="['/request-new-user']" class="custom-link">Clique aqui </a></p>

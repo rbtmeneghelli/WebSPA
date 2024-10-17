@@ -6,250 +6,6 @@
     }
 }
 
-.container-page {
-    @include custom-container($display-flex, $width-100, $gap-10);
-    flex-direction: $flex-direction-column;
-    align-items: $align-items-center;
-    .text-table {
-        width: $width-100;
-        margin-bottom: 0;
-    }
-    .text-sub-table {
-        width: $width-100;
-        mat-icon {
-            @include custom-icon($vertical-align-sub, $primary-color);
-        }
-    }
-}
-
-.container-filter {
-    @include custom-container($display-flex, $width-100, $gap-10);
-    @media only screen and (max-width: $max-width-mobile) {
-        flex-direction: $flex-direction-column;
-    }
-
-    .search-name {
-        width: $width-40;
-        @media only screen and (max-width: $max-width-mobile) {
-            width: $width-100;
-        }
-    }
-
-    .search-profile {
-        width: $width-40;
-        @media only screen and (max-width: $max-width-mobile) {
-            width: $width-100;
-        }
-    }
-
-    .search-status {
-        width: $width-20;
-        @media only screen and (max-width: $max-width-mobile) {
-            width: $width-100;
-        }
-    }
-}
-
-.container-filter-button {
-    @include custom-container($display-flex, $width-100, $gap-10);
-    justify-content: $justify-content-end;
-    @media only screen and (max-width: $max-width-mobile) {
-        flex-direction: $flex-direction-column;
-    }
-    .btn-table {
-        width: $width-15;
-        @media only screen and (max-width: $max-width-mobile) {
-            width: $width-100;
-        }
-    }
-}
-
-.container-table {
-    overflow: $auto;
-    @include custom-container($display-flex, $width-100, $gap-10);
-    justify-content: $justify-content-start;
-    align-items: $align-items-center;
-    .text-table {
-        width: $width-90;
-    }
-}
-
-.container-table-button {
-    @include custom-container($display-flex, $width-100, $gap-10);
-    justify-content: $justify-content-end;
-    align-items: $align-items-center;
-    @media only screen and (max-width: $max-width-mobile) {
-        flex-direction: $flex-direction-column;
-    }
-
-    .text-table {
-        width: $width-90;
-        @media only screen and (max-width: $max-width-mobile) {
-            width: $width-100;
-        }
-    }
-
-    .btn-table {
-        width: $width-20;
-        @media only screen and (max-width: $max-width-mobile) {
-            width: $width-100;
-        }
-    }
-}
-
-.container-pagination {
-    @include custom-container($display-flex, $width-100, $gap-10);
-    justify-content: $justify-content-end;
-    align-items: $align-items-center;
-}
-
-.container-footer {
-    @include custom-container($display-flex, $width-100, $gap-10);
-    justify-content: $justify-content-center;
-    align-items: $align-items-center;
-    text-align: $text-align-center;
-    position: $position-fixed;
-    bottom: 0;
-    @media only screen and (max-width: $max-width-mobile) {
-        display: none;
-    }
-    .text-primary {
-        width: $width-100;
-        white-space: nowrap;
-        word-break: break-all;
-        color: $primary-color;
-    }
-    .text-white {
-        width: $width-100;
-        white-space: nowrap;
-        word-break: break-all;
-        color: $color-white;
-    }
-}
-
-.container-form {
-    @include custom-container($display-flex, $width-100, $gap-10);
-    flex-direction: $flex-direction-column;
-    @media only screen and (max-width: $max-width-mobile) {
-        flex-direction: $flex-direction-column;
-    }
-
-    .field-form-1 {
-        width: $width-100;
-        margin-bottom: $mb-10;
-        @media only screen and (max-width: $max-width-mobile) {
-            width: $width-100;
-        }
-    }
-
-    .field-form-2 {
-        width: $width-100;
-        margin-bottom: $mb-10;
-        @media only screen and (max-width: $max-width-mobile) {
-            width: $width-100;
-        }
-    }
-
-    .field-form-3 {
-        width: $width-100;
-        margin-bottom: $mb-10;
-        @media only screen and (max-width: $max-width-mobile) {
-            width: $width-100;
-        }
-    }
-}
-
-.container-form-button {
-    @include custom-container($display-flex, $width-100, $gap-10);
-    justify-content: $justify-content-end;
-    @media only screen and (max-width: $max-width-mobile) {
-        flex-direction: $flex-direction-column;
-    }
-    .btn-table {
-        width: $width-15;
-        @media only screen and (max-width: $max-width-mobile) {
-            width: $width-100;
-        }
-    }
-}
-
-.container-login {
-    display: flex;
-    justify-content: center; // Centraliza horizontalmente
-    align-items: center; // Centraliza verticalmente
-    height: 100vh; // Define a altura como 100% da viewport
-    flex-direction: $flex-direction-column;
-    background: linear-gradient(to bottom right, $primary-color, #005d8c);
-    .box-login {
-        width: 600px; // Largura da div
-        height: 400px; // Altura da div
-        background: $color-white; // Cor de fundo
-        text-align: center; // Centraliza o texto
-        flex-direction: $flex-direction-column;
-        padding: 0px 30px 0px 30px;
-
-        @media only screen and (max-width: $max-width-mobile) {
-            width: 300px; // Largura da div
-            height: 440px; // Altura da div
-        }
-
-        .field-form-1 {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-
-        .field-form-2 {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-
-        .box-login-2 {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .box-login-3 {
-            display: flex;
-            flex-direction: column;
-
-            .p-first-text {
-                margin-bottom: 0;
-            }
-        }
-    }
-}
-
-.container-form-user-create {
-    @include custom-container($display-flex, $width-100, $gap-10);
-    justify-content: $justify-content-end;
-    @media only screen and (max-width: $max-width-mobile) {
-        flex-direction: $flex-direction-column;
-    }
-    .btn-action {
-        width: $width-30;
-        @media only screen and (max-width: $max-width-mobile) {
-            width: $width-100;
-        }
-    }
-}
-
-.container-contact-list {
-    @include custom-container($display-flex, $width-100, $gap-10);
-    justify-content: center;
-    text-align: center;
-    @media only screen and (max-width: $max-width-mobile) {
-        flex-direction: $flex-direction-column;
-    }
-    .btn-action {
-        width: $width-20;
-        @media only screen and (max-width: $max-width-mobile) {
-            width: $width-100;
-        }
-    }
-}
-
 .container-form-finance {
     justify-content: flex-start;
     flex-direction: column;
@@ -358,32 +114,320 @@
     }
 }
 
-.mat-tab-padding {
-    padding-top: 30px !important;
+.container-contact-list {
+    @include custom-container($display-flex, $width-100, $gap-10);
+    justify-content: $justify-content-center;
+    text-align: $text-align-center;
+    @media only screen and (max-width: $max-width-mobile) {
+        flex-direction: $flex-direction-column;
+    }
+    .btn-action {
+        width: $width-20;
+        @media only screen and (max-width: $max-width-mobile) {
+            width: $width-100;
+        }
+    }
 }
 
-.mat-tab-label-text {
-    color: $primary-color;
+.container-detail-record {
+    @include custom-containerr($display-flex, $flex-direction-row, $justify-content-center, $width-100);
+    .container-information {
+        @include custom-containerr($display-flex, $flex-direction-column, $justify-content-center, $width-100);
+        text-align: $text-align-center;
+        .p-title {
+            width: $width-100;
+            margin-bottom: $mb-0;
+            color: $primary-color;
+            font-weight: $font-weight-700;
+        }
+        .p-text {
+            width: $width-100;
+            margin-bottom: $mb-0;
+            color: $primary-color;
+        }
+    }
 }
 
-.container-detail-record{
-    
+.container-alert {
+    display: $display-flex;
+    justify-content: $justify-content-center;
+    align-items: $align-items-center;
+    height: 100vh;
+    flex-direction: $flex-direction-column;
+    background: linear-gradient(to bottom right, $primary-color, #005d8c);
+    .box-alert {
+        width: 600px;
+        height: 300px;
+        background: $color-white;
+        text-align: $text-align-center;
+        flex-direction: $flex-direction-column;
+        padding: 0px 30px 0px 30px;
+
+        @media only screen and (max-width: $max-width-mobile) {
+            width: 300px;
+            height: 440px;
+        }
+
+        .field-form-1 {
+            width: $width-100;
+            margin-bottom: $mb-10;
+        }
+
+        .field-form-2 {
+            width: $width-100;
+            margin-bottom: $mb-10;
+        }
+
+        .box-alert-2 {
+            @include custom-containerr($display-flex, $flex-direction-column, $justify-content-sp-between, $width-100);
+            align-items: $align-items-center;
+        }
+    }
 }
-<div class="row">
-    <div style="display: flex; flex-direction: row; justify-content: center; width: 100%;">
-        <div style="display: flex; flex-direction: column; justify-content: center; width: 100%; text-align: center;">
-            <p style="width: 100%; margin-bottom: 0; color: #005cbb; font-weight: 700;">ID do Registro</p>
-            <p style="width: 100%; margin-bottom: 0; color: #005cbb;">{{id}}</p>
-        </div>
-        <div
-            style="display: flex; flex-direction: column; justify-content: center; width: 100%; text-align: center; margin-bottom: 0;">
-            <p style="width: 100%; margin-bottom: 0; color: #005cbb; font-weight: 700;">Data de cadastro</p>
-            <p style="width: 100%; margin-bottom: 0; color: #005cbb;">20/05/2024</p>
-        </div>
-        <div
-            style="display: flex; flex-direction: column; justify-content: center; width: 100%; text-align: center; margin-bottom: 0;">
-            <p style="width: 100%; margin-bottom: 0; color: #005cbb; font-weight: 700;">Data de alteração</p>
-            <p style="width: 100%; margin-bottom: 0; color: #005cbb;">25/05/2024</p>
-        </div>
-    </div>
-</div>
+
+.container-page-alert {
+    @include custom-container($display-flex, $width-100, $gap-10);
+    flex-direction: $flex-direction-column;
+    align-items: $align-items-center;
+    padding-top: $pt-16;
+
+    .icon-alert {
+        font-size: xxx-large;
+        width: $width-auto;
+        height: $height-auto;
+        color: $primary-color;
+    }
+
+    .text-table {
+        width: $width-100;
+        margin-bottom: 0;
+    }
+
+    .text-sub-table {
+        width: $width-100;
+        mat-icon {
+            @include custom-icon($vertical-align-sub, $primary-color);
+        }
+    }
+}
+
+.container-form-row {
+    @include custom-container($display-flex, $width-100, $gap-10);
+    flex-direction: $flex-direction-row;
+    @media only screen and (max-width: $max-width-mobile) {
+        flex-direction: $flex-direction-column;
+    }
+
+    .field-form {
+        width: $width-100;
+        margin-bottom: $mb-10;
+        @media only screen and (max-width: $max-width-mobile) {
+            width: $width-100;
+        }
+    }
+}
+
+.container-form-col {
+    @include custom-container($display-flex, $width-100, $gap-10);
+    flex-direction: $flex-direction-column;
+    @media only screen and (max-width: $max-width-mobile) {
+        flex-direction: $flex-direction-column;
+    }
+
+    .field-form {
+        width: $width-100;
+        margin-bottom: $mb-10;
+        @media only screen and (max-width: $max-width-mobile) {
+            width: $width-100;
+        }
+    }
+}
+
+.container-form-button {
+    @include custom-container($display-flex, $width-100, $gap-10);
+    justify-content: $justify-content-end;
+    @media only screen and (max-width: $max-width-mobile) {
+        flex-direction: $flex-direction-column;
+    }
+    .btn-table {
+        width: $width-15;
+        @media only screen and (max-width: $max-width-mobile) {
+            width: $width-100;
+        }
+    }
+}
+
+.container-footer {
+    @include custom-container($display-flex, $width-100, $gap-10);
+    justify-content: $justify-content-center;
+    align-items: $align-items-center;
+    text-align: $text-align-center;
+    position: $position-fixed;
+    bottom: 0;
+    @media only screen and (max-width: $max-width-mobile) {
+        display: none;
+    }
+    .text-primary {
+        width: $width-100;
+        white-space: nowrap;
+        word-break: break-all;
+        color: $primary-color;
+    }
+    .text-white {
+        width: $width-100;
+        white-space: nowrap;
+        word-break: break-all;
+        color: $color-white;
+    }
+}
+
+.container-page {
+    @include custom-container($display-flex, $width-100, $gap-10);
+    flex-direction: $flex-direction-column;
+    align-items: $align-items-center;
+    .text-table {
+        width: $width-100;
+        margin-bottom: 0;
+    }
+    .text-sub-table {
+        width: $width-100;
+        mat-icon {
+            @include custom-icon($vertical-align-sub, $primary-color);
+        }
+    }
+}
+
+.container-filter {
+    @include custom-container($display-flex, $width-100, $gap-10);
+    @media only screen and (max-width: $max-width-mobile) {
+        flex-direction: $flex-direction-column;
+    }
+
+    .filter-40 {
+        width: $width-40;
+        @media only screen and (max-width: $max-width-mobile) {
+            width: $width-100;
+        }
+    }
+
+    .filter-20 {
+        width: $width-20;
+        @media only screen and (max-width: $max-width-mobile) {
+            width: $width-100;
+        }
+    }
+}
+
+.container-filter-button {
+    @include custom-container($display-flex, $width-100, $gap-10);
+    justify-content: $justify-content-end;
+    @media only screen and (max-width: $max-width-mobile) {
+        flex-direction: $flex-direction-column;
+    }
+    .btn-table {
+        width: $width-15;
+        @media only screen and (max-width: $max-width-mobile) {
+            width: $width-100;
+        }
+    }
+}
+
+.container-table {
+    overflow: $auto;
+    @include custom-container($display-flex, $width-100, $gap-10);
+    justify-content: $justify-content-start;
+    align-items: $align-items-center;
+    .text-table {
+        width: $width-90;
+    }
+}
+
+.container-table-button {
+    @include custom-container($display-flex, $width-100, $gap-10);
+    justify-content: $justify-content-end;
+    align-items: $align-items-center;
+    @media only screen and (max-width: $max-width-mobile) {
+        flex-direction: $flex-direction-column;
+    }
+
+    .text-table {
+        width: $width-90;
+        @media only screen and (max-width: $max-width-mobile) {
+            width: $width-100;
+        }
+    }
+
+    .btn-table {
+        width: $width-20;
+        @media only screen and (max-width: $max-width-mobile) {
+            width: $width-100;
+        }
+    }
+}
+
+.container-pagination {
+    @include custom-container($display-flex, $width-100, $gap-10);
+    justify-content: $justify-content-end;
+    align-items: $align-items-center;
+}
+
+/* Classes utilizadas pelas telas iniciais (Login, Esqueci senha, Criação de usuario) */
+
+.container-form-fix {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: $flex-direction-column;
+    background: linear-gradient(to bottom right, $primary-color, #005d8c);
+    .box-fix {
+        width: 600px;
+        height: 400px; 
+        background: $color-white;
+        text-align: center;
+        flex-direction: $flex-direction-column;
+        padding: 0px 30px 0px 30px;
+
+        @media only screen and (max-width: $max-width-mobile) {
+            width: 300px;
+            height: 440px;
+        }
+
+        .field-form {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .box-fix-login {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sub-box-fix-login {
+            display: flex;
+            flex-direction: column;
+
+            .p-first-text {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.container-form-inital-actions {
+    @include custom-container($display-flex, $width-100, $gap-10);
+    justify-content: $justify-content-end;
+    @media only screen and (max-width: $max-width-mobile) {
+        flex-direction: $flex-direction-column;
+    }
+    .btn-action {
+        width: $width-30;
+        @media only screen and (max-width: $max-width-mobile) {
+            width: $width-100;
+        }
+    }
+}
+
+/* Fim das classes utilizadas pelas telas iniciais (Login, Esqueci senha, Criação de usuario) */

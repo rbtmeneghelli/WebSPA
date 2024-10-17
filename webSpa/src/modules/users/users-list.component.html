@@ -8,13 +8,13 @@
 <form [formGroup]="form">
     <div class="row">
         <div class="container-filter">
-            <mat-form-field appearance="outline" class="search-name">
+            <mat-form-field appearance="outline" class="filter-40">
                 <mat-label hintLabel="máximo de 100 caracteres">Nome do Usuário</mat-label>
                 <input matInput placeholder="Nome do Usuário" maxlength="100" #nomeUsuario formControlName="nomeUsuario">
                 <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_ACTION_SEARCH}}</mat-icon>
                 <mat-hint align="end" class="mat-icon-actions">{{nomeUsuario.value.length}}/100</mat-hint>
             </mat-form-field>
-            <mat-form-field class="search-profile" appearance="outline">
+            <mat-form-field class="filter-40" appearance="outline">
                 <mat-label>Perfil do Usuário</mat-label>
                 <mat-select formControlName="perfilUsuario">
                     @for(profile of profileList; track profile){
@@ -23,7 +23,7 @@
                 </mat-select>
                 <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_ACTION_SEARCH}}</mat-icon>
             </mat-form-field>
-            <mat-form-field class="search-status" appearance="outline">
+            <mat-form-field class="filter-20" appearance="outline">
                 <mat-label>{{constant_variables.FILTER_STATUS_LABEL}}</mat-label>
                 <mat-select multiple formControlName="status">
                     @for(status of statusList; track status){
@@ -32,7 +32,7 @@
                 </mat-select>
                 <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_ACTION_SEARCH}}</mat-icon>
             </mat-form-field>
-            <mat-form-field class="search-profile" appearance="outline">
+            <mat-form-field class="filter-40" appearance="outline">
                 <mat-label>{{constant_variables.FILTER_ORDER_LABEL}}</mat-label>
                 <mat-select formControlName="ordenacao">
                     @for(order of orderList; track order){

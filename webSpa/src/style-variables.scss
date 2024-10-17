@@ -1,6 +1,6 @@
 $max-width-mobile: 768px;
 
-$width-10: 10%; 
+$width-10: 10%;
 $width-15: 15%;
 $width-20: 20%;
 $width-30: 30%;
@@ -9,6 +9,8 @@ $width-90: 90%;
 $width-100: 100%;
 $gap-10: 10px;
 $height-100: 100%;
+$width-auto: auto;
+$height-auto: auto;
 
 $display-flex: flex;
 $flex-direction-column: column;
@@ -22,11 +24,13 @@ $align-items-center: center;
 $vertical-align-sub: sub;
 $text-align-center: center;
 $position-fixed: fixed;
-$flex-wrap: wrap; 
+$flex-wrap: wrap;
 
 $font-weight-700: 700;
 $padding-left-20: 20px;
 $mb-10: 10px;
+$mb-0: 0;
+$pt-16: 16px;
 $auto: auto;
 $pointer: pointer;
 
