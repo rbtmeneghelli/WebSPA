@@ -11,7 +11,7 @@ import { NotifyEntity } from '../models/notify.model';
 export class NotificationService {
 
     private readonly _HttpClient: HttpClient = inject(HttpClient);
-    private _HubConnection: HubConnection = inject(HubConnection);
+    public _HubConnection: HubConnection = inject(HubConnection);
     public notifications: BehaviorSubject<NotifyEntity[]> = new BehaviorSubject<NotifyEntity[]>([]);
 
     public getNotifications(): Observable<NotifyEntity[]> {

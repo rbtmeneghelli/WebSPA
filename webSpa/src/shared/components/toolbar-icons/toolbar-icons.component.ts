@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
@@ -7,6 +7,11 @@ import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AuthGuardService } from '../../../core/services/auth-guard.service';
+import { NotificationService } from '../../../core/services/notification.service';
+import { NotifyEntity } from '../../../core/models/notify.model';
+import { take } from 'rxjs';
+import { SnackBarService } from '../../../core/services/snackBar.service';
+import { EnumActionMessage, EnumTypeMessage } from '../../../core/enums/enums';
 
 @Component({
   selector: 'app-toolbar-icons',
@@ -15,13 +20,35 @@ import { AuthGuardService } from '../../../core/services/auth-guard.service';
   templateUrl: './toolbar-icons.component.html',
 })
 
-export class ToolBarIconsComponent {
+export class ToolBarIconsComponent implements OnInit, AfterViewInit {
 
-  private _AuthGuardService: AuthGuardService = inject(AuthGuardService);
+  public notifications: NotifyEntity[] = [];
+  private readonly _AuthGuardService: AuthGuardService = inject(AuthGuardService);
+  private readonly _NotificationService: NotificationService = inject(NotificationService);
+  private readonly _SnackBarService: SnackBarService = inject(SnackBarService);
   public userEmail: string = this._AuthGuardService.getUserName();
+
+  ngOnInit(): void {
+    this._NotificationService.getAllNotifications([]).pipe(take(1)).subscribe(response => {
+      this._NotificationService.setNotifications(response.result as NotifyEntity[]);
+      this.notifications = response.result as NotifyEntity[];
+    }, error => {
+      this._SnackBarService.sendSnackBarNotification('Erro para buscar as notificações', EnumTypeMessage.Personalized, EnumActionMessage.Error, false);
+    });
+  }
 
   logOut() {
     this._AuthGuardService.logout();
+  }
+
+  async ngAfterViewInit(): Promise<void> {
+    this._NotificationService._HubConnection.on('ReceiveMessage', (data) => {
+      this._NotificationService.setNotifications(data);
+    });
+
+    this._NotificationService.getNotifications().subscribe((response: any) => {
+      this.notifications = response;
+    });
   }
 }
 
