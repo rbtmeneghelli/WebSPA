@@ -21,4 +21,9 @@ export class UsuarioService extends GenericService<any, any> {
         // tslint:disable-next-line: max-line-length
         return this._HttpClient.post<ResponseResult<boolean>>(`${`${environment.API}`}/resetPassword`, request, { headers: getHttpHeaders() });
     }
+
+    public validCode(code?: any) {
+        // tslint:disable-next-line: max-line-length
+        return this._HttpClient.get<any>(`${`${environment.API}`}/validCode/${code}`, { headers: getHttpHeaders() }).pipe(map((response: any) => response?.result));
+    }
 }

@@ -48,7 +48,7 @@
                 (click)="cleanForm()"><mat-icon>{{constant_variables.ICON_ACTION_CLEAN}}</mat-icon>
                 {{constant_variables.ICON_ACTION_CLEAN_LABEL}}</button>
             <button mat-flat-button class="btn-table" [matTooltip]="constant_variables.ICON_ACTION_SAVE_LABEL"
-                [disabled]="!form.valid" (click)="save()"><mat-icon>{{constant_variables.ICON_ACTION_SAVE}}</mat-icon>
+                [disabled]="!form.valid || desabilitarBotao" (click)="save()"><mat-icon>{{constant_variables.ICON_ACTION_SAVE}}</mat-icon>
                 {{constant_variables.ICON_ACTION_SAVE_LABEL}}</button>
         </div>
     </div>

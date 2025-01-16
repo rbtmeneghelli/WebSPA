@@ -31,6 +31,7 @@ export class UsersEditComponent {
     public subTextPage: string = 'Por meio da edição, você será capaz de editar os dados do usuário.';
     public constant_variables = CONSTANT_VARIABLES;
     public form: FormGroup;
+    public desabilitarBotao: boolean = true;
 
     public profileList: DropDownListModel[] = [
         { id: 1, description: 'Administrador', active: true },
@@ -51,6 +52,10 @@ export class UsersEditComponent {
                 this.form.controls['id'].setValue(params["id"] as number ?? 0);
             }
         });
+
+        this.form.valueChanges.subscribe(response =>{
+            this.desabilitarBotao = false;
+        })
     }
 
     cleanForm(): void {
