@@ -11,6 +11,9 @@
     <mat-list-option *ngFor="let item of listaLog" [selected]="item.active" (click)="changeType(item)">
         {{item.description}}
     </mat-list-option>
+<mat-list-option *ngFor="let item of listaLog" [selected]="item.active" (click)="changeType(item)">
+    {{item.description}}
+</mat-list-option>
 </mat-selection-list>
 
 <br>

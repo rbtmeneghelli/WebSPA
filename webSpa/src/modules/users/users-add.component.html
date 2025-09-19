@@ -12,10 +12,9 @@
                 <mat-label hintLabel="máximo de 10 caracteres">Digite seu código de identificação</mat-label>
                 <input id="input-codigo" name="input-codigo" type="text"
                 placeholder="Digite seu código de identificação" maxlength="10" formControlName="codigo" onlyNumber/>
-                <label class="bottom-label" *ngIf="form.get('codigo')?.valid || form.get('codigo')?.untouched"><span>Máx. {{ descriptionLengthCodigo | async }}</span> caracteres.</label>
+                <!-- <label class="bottom-label" *ngIf="form.get('codigo')?.valid || form.get('codigo')?.untouched"><span>Máx. {{ descriptionLengthCodigo | async }}</span> caracteres.</label> -->
                 <span class="bottom-label" for="" *ngIf="form.get('codigo')?.invalid && form.get('codigo')?.touched && form.get('codigo')?.hasError('required')">Campo obrigatório</span>     
                 <span class="bottom-label" for="" *ngIf="form.get('codigo')?.invalid && form.get('codigo')?.touched && form.get('codigo')?.hasError('codeExist')">{{mensagemCodigoExistente}}</span>                              
-                </div>
             </mat-form-field>
             <mat-form-field appearance="outline" class="field-form">
                 <mat-label hintLabel="máximo de 80 caracteres">Digite o email do usuário</mat-label>

@@ -16,6 +16,7 @@ import { UsersList } from '../../core/models/users/users.model';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CONSTANT_VARIABLES } from '../../core/constants/variables.constant';
 import { DropDownListModel } from '../../core/models/dropdown-list.model';
+import { NotificationService } from '../../core/services/notification.service';
 
 @Component({
     selector: 'app-user-list',
@@ -23,6 +24,7 @@ import { DropDownListModel } from '../../core/models/dropdown-list.model';
     imports: [RouterOutlet, MatSelectModule, CommonModule, MatCardModule, MatPaginatorModule, MatTableModule, MatButtonModule, MatDividerModule,
         MatIconModule, MatFormFieldModule, MatInputModule, MatMenuModule, MatTooltipModule, RouterLink, MatPaginatorModule, ReactiveFormsModule],
     templateUrl: './users-list.component.html',
+    providers: [NotificationService]
 })
 
 export class UsersListComponent implements AfterViewInit {

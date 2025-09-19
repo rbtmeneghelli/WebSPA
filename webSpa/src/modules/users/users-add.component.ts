@@ -18,10 +18,15 @@ import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
+  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { DropDownListModel } from '../../core/models/dropdown-list.model';
 import { hasErrorFormControl } from '../../core/functions/shared-string.functions';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Observable, of, map, catchError } from 'rxjs';
+import { UsuarioService } from '../../core/services/user.service';
+import { NotificationService } from '../../core/services/notification.service';
 
 @Component({
   selector: 'app-users-add',
@@ -39,6 +44,7 @@ import { hasErrorFormControl } from '../../core/functions/shared-string.function
     RouterLink,
   ],
   templateUrl: './users-add.component.html',
+  providers: [NotificationService]
 })
 
 export class UsersAddComponent {

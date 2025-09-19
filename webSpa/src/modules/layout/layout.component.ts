@@ -15,6 +15,7 @@ import { LoginComponent } from "../login/login.component";
 import { UserCreateComponent } from "../user-create/user-create.component";
 import { UsersAddComponent } from "../users/users-add.component";
 import { UsersListComponent } from "../users/users-list.component";
+import { NotificationService } from "../../core/services/notification.service";
 
 
 @Component({
@@ -23,6 +24,7 @@ import { UsersListComponent } from "../users/users-list.component";
   imports: [RouterOutlet, MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, CommonModule, MatTooltipModule,
     UsersListComponent, FooterComponent, SideBarComponent, ToolBarIconsComponent, UsersAddComponent, LoginComponent, UserCreateComponent, ForgetPasswordComponent],
   templateUrl: './layout.component.html',
+  providers: [NotificationService]
 })
 
 export class LayoutComponent {

@@ -13,9 +13,19 @@ import { MatIconModule } from '@angular/material/icon';
 
 export class SideBarComponent {
   submenuOpen = false;
+  submenuOpenFinanceira = false;
+  submenuOpenSeguranca = false;
 
   toggleSubmenu() {
     this.submenuOpen = !this.submenuOpen;
+  }
+
+  toggleSubmenuFinanceira() {
+    this.submenuOpenFinanceira = !this.submenuOpenFinanceira;
+  }
+
+  toggleSubmenuSeguranca() {
+    this.submenuOpenSeguranca = !this.submenuOpenSeguranca;
   }
 }
 

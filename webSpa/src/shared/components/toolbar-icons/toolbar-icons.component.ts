@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, Injectable, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
@@ -13,6 +13,10 @@ import { take } from 'rxjs';
 import { SnackBarService } from '../../../core/services/snackBar.service';
 import { EnumActionMessage, EnumTypeMessage } from '../../../core/enums/enums';
 
+@Injectable({
+  providedIn: 'root'   // ✅ isso já registra automaticamente no root injector
+})
+
 @Component({
   selector: 'app-toolbar-icons',
   standalone: true,
@@ -20,7 +24,7 @@ import { EnumActionMessage, EnumTypeMessage } from '../../../core/enums/enums';
   templateUrl: './toolbar-icons.component.html',
 })
 
-export class ToolBarIconsComponent implements OnInit, AfterViewInit {
+export class ToolBarIconsComponent implements OnInit {
 
   public notifications: NotifyEntity[] = [];
   private readonly _AuthGuardService: AuthGuardService = inject(AuthGuardService);
@@ -41,14 +45,14 @@ export class ToolBarIconsComponent implements OnInit, AfterViewInit {
     this._AuthGuardService.logout();
   }
 
-  async ngAfterViewInit(): Promise<void> {
-    this._NotificationService._HubConnection.on('ReceiveMessage', (data) => {
-      this._NotificationService.setNotifications(data);
-    });
+  // async ngAfterViewInit(): Promise<void> {
+  //   this._NotificationService._HubConnection.on('ReceiveMessage', (data) => {
+  //     this._NotificationService.setNotifications(data);
+  //   });
 
-    this._NotificationService.getNotifications().subscribe((response: any) => {
-      this.notifications = response;
-    });
-  }
+  //   this._NotificationService.getNotifications().subscribe((response: any) => {
+  //     this.notifications = response;
+  //   });
+  // }
 }
 

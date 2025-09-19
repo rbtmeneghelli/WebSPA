@@ -4,6 +4,7 @@ import { ResponseResult } from '../models/response-result';
 import { GenericService } from './generic.service';
 import { environment } from '../../environments/environment';
 import { getHttpHeaders } from '../functions/shared-methods.function';
+import { map } from 'rxjs';
 
 @Injectable()
 export class UsuarioService extends GenericService<any, any> {

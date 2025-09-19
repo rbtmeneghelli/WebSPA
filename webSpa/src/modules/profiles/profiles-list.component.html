@@ -1,0 +1,110 @@
+<style>
+    .container {
+  padding: 20px;
+
+  .full-width {
+    width: 100%;
+  }
+
+  .buttons {
+    margin-top: 20px;
+  }
+
+  table {
+    width: 100%;
+
+    th, td {
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    mat-checkbox {
+      margin-right: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  table, th, td {
+    display: block;
+    width: 100%;
+  }
+
+  td {
+    margin-bottom: 15px;
+  }
+}
+
+</style>
+
+<div class="row">
+    <div class="container-page">
+        <h1 class="text-table">{{textPage}}</h1>
+        <p class="text-sub-table"><mat-icon>{{constant_variables.ICON_INFORMATION}}</mat-icon>{{subTextPage}}</p>
+    </div>
+</div>
+
+<div class="container" fxLayout="column" fxLayoutGap="20px" fxFlexFill>
+    <h2>Editar perfil de acesso</h2>
+  
+    <form [formGroup]="perfilForm">
+      <!-- Nome do perfil -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nome do perfil</mat-label>
+        <input matInput formControlName="nomePerfil" maxlength="100" />
+        <mat-hint align="end">{{ perfilForm.get('nomePerfil')?.value?.length || 0 }}/100</mat-hint>
+        <mat-error *ngIf="perfilForm.get('nomePerfil')?.hasError('required')">
+          Nome do perfil é obrigatório
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Permissões -->
+      <div formArrayName="funcionalidades" class="permissoes-container" fxLayout="column" fxLayoutGap="10px">
+        <table mat-table [dataSource]="funcionalidadesFormArray.controls" class="mat-elevation-z1 full-width">
+  
+          <!-- Funcionalidade -->
+          <ng-container matColumnDef="funcionalidade">
+            <th mat-header-cell *matHeaderCellDef> Funcionalidade </th>
+            <td mat-cell *matCellDef="let row; let i = index" [formGroupName]="i">
+              {{ row.value.nome }}
+            </td>
+          </ng-container>
+  
+          <!-- Permissões -->
+          <ng-container matColumnDef="permissoes">
+            <th mat-header-cell *matHeaderCellDef> Permissões </th>
+            <td mat-cell *matCellDef="let row; let i = index" [formGroupName]="i">
+              <ng-container formArrayName="permissoes">
+                <mat-checkbox
+                  *ngFor="let ctrl of getPermissoesArray(i).controls; let j = index"
+                  [formControlName]="j"
+                  (change)="verificarTodos(i)"
+                >
+                  {{ funcionalidadesMock[i].permissoes[j] }}
+                </mat-checkbox>
+              </ng-container>
+            </td>
+          </ng-container>
+  
+          <!-- Checkbox Todos -->
+          <ng-container matColumnDef="todos">
+            <th mat-header-cell *matHeaderCellDef> Todos </th>
+            <td mat-cell *matCellDef="let row; let i = index" [formGroupName]="i">
+              <mat-checkbox formControlName="todosSelecionado" (change)="toggleTodos(i)"></mat-checkbox>
+            </td>
+          </ng-container>
+  
+          <!-- Header and Row -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+  
+      <!-- Botões -->
+      <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="10px" class="buttons">
+        <button mat-stroked-button color="primary" (click)="cancelar()">Cancelar</button>
+        <button mat-flat-button color="primary" (click)="salvar()">Salvar</button>
+      </div>
+    </form>
+  </div>
+  

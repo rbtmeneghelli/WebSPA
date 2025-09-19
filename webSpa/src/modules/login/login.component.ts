@@ -1,5 +1,5 @@
 import { AuthGuardService } from './../../core/services/auth-guard.service';
-import { inject } from "@angular/core";
+import { inject, OnInit } from "@angular/core";
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -16,7 +16,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FooterComponent } from "../../shared/components/footer/footer-component";
-import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ReactiveFormsModule } from '@angular/forms';
 import { CONSTANT_VARIABLES } from "../../core/constants/variables.constant";
 import { SnackBarService } from "../../core/services/snackBar.service";
@@ -74,3 +74,4 @@ export class LoginComponent {
         return hasErrorFormControl(formControl);
     }
 }
+

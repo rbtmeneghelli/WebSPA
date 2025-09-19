@@ -1,29 +1,43 @@
 <h2 class="menu-item">Menu</h2>
 <mat-nav-list>
-    <div mat-subheader class="menu-area">Área de Funcionalidade</div>
-    <!-- <mat-list-item>
-        <mat-icon matListItemIcon class="mat-icon-menu-actions">assignment</mat-icon>
-        <div matListItemTitle class="menu-item-text">Gerencial</div>
-    </mat-list-item> -->
-    <mat-list-item [routerLink]="['finances']">
-        <mat-icon matListItemIcon class="mat-icon-menu-actions">calculate</mat-icon>
-        <div matListItemTitle class="menu-item-text">Financeira</div>
-    </mat-list-item>
-    <mat-list-item [routerLink]="['users']">
-        <mat-icon matListItemIcon class="mat-icon-menu-actions">security</mat-icon>
-        <div matListItemTitle class="menu-item-text">Segurança</div>
-    </mat-list-item>
 
-    <div mat-subheader class="menu-area">Área de Analise</div>
+    <mat-list-item (click)="toggleSubmenuFinanceira()">
+        <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="!submenuOpenFinanceira">chevron_right</mat-icon>
+        <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="submenuOpenFinanceira">expand_more</mat-icon>
+        <div matListItemTitle class="menu-item-text">Área de Financeira</div>
+    </mat-list-item>
+    @if (submenuOpenFinanceira) {
+        <mat-list-item class="mat-list-item-sub" [routerLink]="['finances']">
+            <mat-icon matListItemIcon class="mat-icon-menu-actions">calculate</mat-icon>
+            <div matListItemTitle class="menu-item-text">Financeira</div>
+        </mat-list-item>
+    }
+
+    <mat-list-item (click)="toggleSubmenuSeguranca()">
+        <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="!submenuOpenSeguranca">chevron_right</mat-icon>
+        <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="submenuOpenSeguranca">expand_more</mat-icon>
+        <div matListItemTitle class="menu-item-text">Área de Segurança</div>
+    </mat-list-item>
+    @if (submenuOpenSeguranca) {
+        <mat-list-item class="mat-list-item-sub" [routerLink]="['profiles']">
+            <mat-icon matListItemIcon class="mat-icon-menu-actions">security</mat-icon>
+            <div matListItemTitle class="menu-item-text">Perfil de Acesso</div>
+        </mat-list-item>
+        <mat-list-item class="mat-list-item-sub" [routerLink]="['users']">
+            <mat-icon matListItemIcon class="mat-icon-menu-actions">security</mat-icon>
+            <div matListItemTitle class="menu-item-text">Usuários</div>
+        </mat-list-item>
+    }
+
     <mat-list-item [routerLink]="['report']">
         <mat-icon matListItemIcon class="mat-icon-menu-actions">analytics</mat-icon>
         <div matListItemTitle class="menu-item-text">Relatorios</div>
     </mat-list-item>
-    <div mat-subheader class="menu-area">Área de Configuração</div>
+    
     <mat-list-item (click)="toggleSubmenu()">
         <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="!submenuOpen">chevron_right</mat-icon>
         <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="submenuOpen">expand_more</mat-icon>
-        <div matListItemTitle class="menu-item-text">Serviços</div>
+        <div matListItemTitle class="menu-item-text">Área de Configuração</div>
     </mat-list-item>
     <!-- Inicio do subMenu do menu Serviços -->
     @if (submenuOpen) {
@@ -37,6 +51,7 @@
     </mat-list-item>
     }
     <!-- Fim do subMenu do menu Serviços -->
+
     <div mat-subheader class="menu-area">Área de Suporte</div>
     <mat-list-item>
         <mat-icon matListItemIcon class="mat-icon-menu-actions">text_snippet</mat-icon>

@@ -28,6 +28,10 @@ export const APP_ROUTES: Routes = [
                 loadChildren: () => import('../modules/users/users.routes').then(r => r.USERS_ROUTES)
             },
             {
+                path: 'profiles',
+                loadChildren: () => import('../modules/profiles/profiles.routes').then(r => r.PROFILES_ROUTES)
+            },
+            {
                 path: 'report',
                 loadComponent: () => import('../modules/report-file/report-file.component').then(c => c.GenerateReportComponent)
             },

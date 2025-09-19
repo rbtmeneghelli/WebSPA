@@ -11,7 +11,7 @@ import { NotifyEntity } from '../models/notify.model';
 export class NotificationService {
 
     private readonly _HttpClient: HttpClient = inject(HttpClient);
-    public _HubConnection: HubConnection = inject(HubConnection);
+    // public _HubConnection: HubConnection = inject(HubConnection);
     public notifications: BehaviorSubject<NotifyEntity[]> = new BehaviorSubject<NotifyEntity[]>([]);
 
     public getNotifications(): Observable<NotifyEntity[]> {
@@ -37,15 +37,15 @@ export class NotificationService {
         return this._HttpClient.get<any>(`${`${environment.API}notify/readNotification/${id}`}`, { headers: getHttpHeaders(), responseType: 'blob' as 'json' });
     }
 
-    public startConnection = () => {
-        this._HubConnection = new HubConnectionBuilder()
-            .withUrl(`${environment.SOCKET}streaminghub`)
-            .build();
-        this._HubConnection
-            .start()
-            .then(() => {})
-            .catch(err => {})
-    }
+    // public startConnection = () => {
+    //     this._HubConnection = new HubConnectionBuilder()
+    //         .withUrl(`${environment.SOCKET}streaminghub`)
+    //         .build();
+    //     this._HubConnection
+    //         .start()
+    //         .then(() => {})
+    //         .catch(err => {})
+    // }
 }
 
 
