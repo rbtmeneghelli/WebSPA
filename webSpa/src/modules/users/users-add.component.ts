@@ -44,7 +44,7 @@ import { NotificationService } from '../../core/services/notification.service';
     RouterLink,
   ],
   templateUrl: './users-add.component.html',
-  providers: [NotificationService]
+  providers: [NotificationService, UsuarioService]
 })
 
 export class UsersAddComponent {

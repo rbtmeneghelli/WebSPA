@@ -15,6 +15,7 @@ export class SideBarComponent {
   submenuOpen = false;
   submenuOpenFinanceira = false;
   submenuOpenSeguranca = false;
+  submenuOpenSuporte = false;
 
   toggleSubmenu() {
     this.submenuOpen = !this.submenuOpen;
@@ -27,5 +28,10 @@ export class SideBarComponent {
   toggleSubmenuSeguranca() {
     this.submenuOpenSeguranca = !this.submenuOpenSeguranca;
   }
+
+  toggleSubmenuSuporte() {
+    this.submenuOpenSuporte = !this.submenuOpenSuporte;
+  }
+  
 }
 

@@ -6,6 +6,7 @@ import {
   FormBuilder,
   Validators,
   FormArray,
+  AbstractControl,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -23,6 +24,7 @@ import { RouterOutlet, RouterLink } from '@angular/router';
 import { AuthGuardService } from '../../core/services/auth-guard.service';
 import { FooterComponent } from '../../shared/components/footer/footer-component';
 import { CONSTANT_VARIABLES } from '../../core/constants/variables.constant';
+import { hasErrorFormControl } from '../../core/functions/shared-string.functions';
 
 @Component({
   selector: 'app-profile-list',
@@ -57,25 +59,32 @@ export class ProfilesListComponent implements OnInit {
   perfilForm!: FormGroup;
 
   funcionalidadesMock = [
-    { nome: 'Atas', permissoes: ['Cadastrar', 'Consultar', 'Excluir'] },
+    { nome: 'Atas', 
+      permissoes: ['Cadastrar', 'Consultar', 'Excluir'],
+      desabilitarPermissoes: false
+    },
     {
       nome: 'Fórum Comissões Técnicas',
-      permissoes: ['Cadastrar', 'Consultar', 'Excluir', 'Moderador'],
+      permissoes: ['Cadastrar', 'Consultar', 'Excluir'],
+      desabilitarPermissoes: false
     },
     {
       nome: 'Fórum Comunidade Associado',
-      permissoes: ['Cadastrar', 'Consultar', 'Excluir', 'Moderador'],
+      permissoes: ['Cadastrar', 'Consultar', 'Excluir'],
+      desabilitarPermissoes: false
     },
     {
       nome: 'Fórum Grupo de Trabalho',
-      permissoes: ['Cadastrar', 'Consultar', 'Excluir', 'Moderador'],
+      permissoes: ['Cadastrar', 'Consultar', 'Excluir'],
+      desabilitarPermissoes: false
     },
-    { nome: 'News', permissoes: ['Consultar'] },
+    { nome: 'News', permissoes: ['Consultar'], desabilitarPermissoes: true},
     {
       nome: 'Perfil de acesso',
       permissoes: ['Cadastrar', 'Consultar', 'Editar'],
+      desabilitarPermissoes: false
     },
-    { nome: 'Usuários', permissoes: ['Cadastrar', 'Consultar', 'Editar'] },
+    { nome: 'Usuários', permissoes: ['Cadastrar', 'Consultar', 'Editar'], desabilitarPermissoes: false},
   ];
 
   displayedColumns: string[] = ['funcionalidade', 'permissoes', 'todos'];
@@ -84,23 +93,23 @@ export class ProfilesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.perfilForm = this.fb.group({
-      nomePerfil: ['', Validators.required],
+      nomePerfil: ['', Validators.required, Validators.maxLength(80)],
       funcionalidades: this.fb.array([]),
     });
 
     this.funcionalidadesMock.forEach((f) => {
       const permissoesArray = this.fb.array(
-        f.permissoes.map(() => this.fb.control(false))
+        f.permissoes.map(() => this.fb.control({ value: false, disabled: f.desabilitarPermissoes}))
       );
 
       const funcionalidadeGroup = this.fb.group({
         nome: [f.nome],
         permissoes: permissoesArray,
-        todosSelecionado: [false],
+        todosSelecionado: [{value: false, disabled: f.desabilitarPermissoes}],
       });
 
       (this.perfilForm.get('funcionalidades') as FormArray).push(
-        funcionalidadeGroup
+        funcionalidadeGroup,
       );
     });
   }
@@ -146,5 +155,9 @@ export class ProfilesListComponent implements OnInit {
 
   cancelar() {
     console.log('Operação cancelada');
+  }
+
+  hasErrorFormControl(formControl: AbstractControl): string {
+    return hasErrorFormControl(formControl);
   }
 }

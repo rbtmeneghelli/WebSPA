@@ -52,13 +52,20 @@
     }
     <!-- Fim do subMenu do menu Serviços -->
 
-    <div mat-subheader class="menu-area">Área de Suporte</div>
-    <mat-list-item>
-        <mat-icon matListItemIcon class="mat-icon-menu-actions">text_snippet</mat-icon>
-        <div matListItemTitle class="menu-item-text">Manual do Sistema</div>
+    <mat-list-item (click)="toggleSubmenuSuporte()">
+        <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="!submenuOpenSuporte">chevron_right</mat-icon>
+        <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="submenuOpenSuporte">expand_more</mat-icon>
+        <div matListItemTitle class="menu-item-text">Área de Suporte</div>
     </mat-list-item>
-    <mat-list-item [routerLink]="['support-contact']">
-        <mat-icon matListItemIcon class="mat-icon-menu-actions">support_agent</mat-icon>
-        <div matListItemTitle class="menu-item-text">Contato</div>
-    </mat-list-item>
+
+    @if (submenuOpenSuporte) {
+        <mat-list-item  class="mat-list-item-sub" >
+            <mat-icon matListItemIcon class="mat-icon-menu-actions">text_snippet</mat-icon>
+            <div matListItemTitle class="menu-item-text">Manual do Sistema</div>
+        </mat-list-item>
+        <mat-list-item  class="mat-list-item-sub" [routerLink]="['support-contact']">
+            <mat-icon matListItemIcon class="mat-icon-menu-actions">support_agent</mat-icon>
+            <div matListItemTitle class="menu-item-text">Contato</div>
+        </mat-list-item>
+    }
 </mat-nav-list>
