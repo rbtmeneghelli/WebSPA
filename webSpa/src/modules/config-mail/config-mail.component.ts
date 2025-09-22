@@ -40,7 +40,7 @@ export class ConfigMailComponent {
         { id: 2, description: 'Utilizar Url de Dev', formName: 'isDev', active: false }
     ];
 
-    public textPage: string = 'Configuração de Email';
+    public textPage: string = 'Configuração de email';
     public subTextPage: string = 'Por meio da consulta, você pode consultar diferentes usuários, ou realizar uma busca mais aprofundada, preenchendo 1 ou mais campos dos filtros abaixo.';
     public constant_variables = CONSTANT_VARIABLES;
     public form: FormGroup;

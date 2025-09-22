@@ -49,17 +49,17 @@ import { DetailsRecordComponent } from '../../shared/components/details-record/d
     FooterComponent,
     ReactiveFormsModule,
     RouterLink,
-    DetailsRecordComponent
+    DetailsRecordComponent,
   ],
-  templateUrl: './profiles-edit.component.html',
+  templateUrl: './profiles-view.component.html',
   providers: [AuthGuardService],
 })
-export class ProfilesEditComponent implements OnInit {
+export class ProfilesViewComponent implements OnInit {
   private _ActivatedRoute: ActivatedRoute = inject(ActivatedRoute);
-  
-  public textPage: string = 'Edição de perfil de acesso';
+
+  public textPage: string = 'Visualização do perfil de acesso';
   public subTextPage: string =
-    'Por meio da edição, você será capaz de editar os dados do perfil de acesso.';
+    'Por meio da visualização, você será capaz de analisar os dados do perfil de acesso, sem possibilidade de editar os dados.';
   public constant_variables = CONSTANT_VARIABLES;
   perfilForm!: FormGroup;
 
@@ -90,22 +90,22 @@ export class ProfilesEditComponent implements OnInit {
     {
       nome: 'Financeiro',
       permissoes: ['Cadastrar', 'Consultar', 'Excluir'],
-      desabilitarPermissoes: false,
+      desabilitarPermissoes: true,
     },
     {
       nome: 'Configuração de Email',
       permissoes: ['Consultar'],
-      desabilitarPermissoes: false,
+      desabilitarPermissoes: true,
     },
     {
       nome: 'Perfil de acesso',
       permissoes: ['Cadastrar', 'Consultar', 'Editar'],
-      desabilitarPermissoes: false,
+      desabilitarPermissoes: true,
     },
     {
       nome: 'Usuários',
       permissoes: ['Cadastrar', 'Consultar', 'Editar'],
-      desabilitarPermissoes: false,
+      desabilitarPermissoes: true,
     },
   ];
 
@@ -116,13 +116,16 @@ export class ProfilesEditComponent implements OnInit {
   ngOnInit(): void {
     this.perfilForm = this.fb.group({
       id: [],
-      nomePerfil: ['', [Validators.required, Validators.maxLength(80)]],
+      nomePerfil: [
+        { value: '', disabled: true },
+        [Validators.required, Validators.maxLength(80)],
+      ],
       funcionalidades: this.fb.array([]),
     });
 
-    this._ActivatedRoute.params.subscribe(params => {
-      if (!!params["id"]) {
-          this.perfilForm.controls['id'].setValue(params["id"] as number ?? 0);
+    this._ActivatedRoute.params.subscribe((params) => {
+      if (!!params['id']) {
+        this.perfilForm.controls['id'].setValue((params['id'] as number) ?? 0);
       }
     });
 

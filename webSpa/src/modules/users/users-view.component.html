@@ -27,7 +27,7 @@
                 <mat-hint align="end" class="mat-icon-actions">{{emailUsuario.value.length}}/80</mat-hint>
             </mat-form-field>
             <mat-form-field class="field-form" appearance="outline">
-                <mat-label>Selecione o perfil do usuário</mat-label>
+                <mat-label>Selecione o perfil de acesso</mat-label>
                 <mat-select formControlName="perfilUsuario" [disabled]="true">
                     @for(profile of profileList; track profile){
                     <mat-option value={{profile.id}}>{{profile.description}}</mat-option>

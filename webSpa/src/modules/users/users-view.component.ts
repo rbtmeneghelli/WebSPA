@@ -24,7 +24,7 @@ export class UsersViewComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
     private _ActivatedRoute: ActivatedRoute = inject(ActivatedRoute);
     
-    public textPage: string = 'Visualização do Usuário';
+    public textPage: string = 'Visualização do usuário';
     public subTextPage: string = 'Por meio da visualização, você será capaz de analisar os dados do usuário, sem possibilidade de editar os dados.';
     public constant_variables = CONSTANT_VARIABLES;
     public form: FormGroup;

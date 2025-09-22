@@ -27,7 +27,7 @@
                 <mat-error>{{hasErrorFormControl(form.controls['nomeUsuario'])}}</mat-error>
             </mat-form-field>
             <mat-form-field class="field-form" appearance="outline">
-                <mat-label>Selecione o perfil do usuário</mat-label>
+                <mat-label>Selecione o perfil de acesso</mat-label>
                 <mat-select formControlName="perfilUsuario">
                     @for(profile of profileList; track profile){
                     <mat-option value={{profile.id}}>{{profile.description}}</mat-option>

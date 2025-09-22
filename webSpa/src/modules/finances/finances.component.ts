@@ -26,7 +26,7 @@ import { DropDownListModel } from "../../core/models/dropdown-list.model";
 })
 
 export class FinancesComponent {
-    public textTable: string = 'Movimentação Financeira';
+    public textTable: string = 'Movimentação financeira';
     public subTextTable: string = 'Ao clicar em um dos botões abaixo, você será redirecionado para a pagina da rede social escolhida.';
     public textPrincipal: string = 'conta a receber';
     public displayedColumns: string[] = ['registro', 'planoConta', 'descricao', 'data', 'formaRecebimento', 'valorTotal', '#'];

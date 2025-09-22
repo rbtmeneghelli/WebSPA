@@ -20,7 +20,7 @@
             </mat-form-field>
             <mat-form-field appearance="outline" class="field-form">
                 <mat-label hintLabel="máximo de 80 caracteres">Digite o email do usuário</mat-label>
-                <input matInput placeholder="Email do Usuário" maxlength="80" #emailUsuario
+                <input matInput placeholder="Digite o email do usuário" maxlength="80" #emailUsuario
                     formControlName="emailUsuario">
                 <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_ACTION_EDIT}}</mat-icon>
                 <mat-hint align="end" class="mat-icon-actions">{{emailUsuario.value.length}}/80</mat-hint>
@@ -28,14 +28,14 @@
             </mat-form-field>
             <mat-form-field appearance="outline" class="field-form">
                 <mat-label hintLabel="máximo de 100 caracteres">Digite o nome do usuário</mat-label>
-                <input matInput placeholder="Nome do Usuário" maxlength="100" #nomeUsuario
+                <input matInput placeholder="Digite o nome do usuário" maxlength="100" #nomeUsuario
                     formControlName="nomeUsuario">
                 <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_ACTION_EDIT}}</mat-icon>
                 <mat-hint align="end" class="mat-icon-actions">{{nomeUsuario.value.length}}/100</mat-hint>
                 <mat-error>{{hasErrorFormControl(form.controls['nomeUsuario'])}}</mat-error>
             </mat-form-field>
             <mat-form-field class="field-form" appearance="outline">
-                <mat-label>Selecione o perfil do usuário</mat-label>
+                <mat-label>Selecione o perfil de acesso</mat-label>
                 <mat-select formControlName="perfilUsuario">
                     @for(profile of profileList; track profile){
                     <mat-option value={{profile.id}}>{{profile.description}}</mat-option>

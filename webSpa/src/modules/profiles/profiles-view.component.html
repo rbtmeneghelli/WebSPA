@@ -25,14 +25,14 @@
           formControlName="nomePerfil"
         />
         <mat-icon matSuffix class="mat-icon-actions">{{
-          constant_variables.ICON_ACTION_EDIT
+          constant_variables.ICON_ACTION_LOCK
         }}</mat-icon>
+        <mat-hint align="start" class="mat-icon-actions">{{
+          constant_variables.ICON_ACTION_LOCK_LABEL
+        }}</mat-hint>
         <mat-hint align="end" class="mat-icon-actions"
           >{{ nomePerfil.value.length }}/80</mat-hint
         >
-        <mat-error>{{
-          hasErrorFormControl(perfilForm.controls["nomePerfil"])
-        }}</mat-error>
       </mat-form-field>
     </div>
   </div>
@@ -107,30 +107,11 @@
       <button
         mat-flat-button
         class="btn-table"
-        matTooltip="Cancelar"
+        matTooltip="Voltar"
         [routerLink]="['/profiles']"
       >
-        <mat-icon>{{ constant_variables.ICON_ACTION_CANCEL }}</mat-icon>
-        {{ constant_variables.ICON_ACTION_CANCEL_LABEL }}
-      </button>
-      <button
-        mat-flat-button
-        class="btn-table"
-        [matTooltip]="constant_variables.ICON_ACTION_CLEAN_LABEL"
-        (click)="cleanForm()"
-      >
-        <mat-icon>{{ constant_variables.ICON_ACTION_CLEAN }}</mat-icon>
-        {{ constant_variables.ICON_ACTION_CLEAN_LABEL }}
-      </button>
-      <button
-        mat-flat-button
-        class="btn-table"
-        [matTooltip]="constant_variables.ICON_ACTION_SAVE_LABEL"
-        (click)="(null)"
-        [disabled]="!perfilForm.valid"
-      >
-        <mat-icon>{{ constant_variables.ICON_ACTION_SAVE }}</mat-icon>
-        {{ constant_variables.ICON_ACTION_SAVE_LABEL }}
+        <mat-icon>{{ constant_variables.ICON_ACTION_UNDO }}</mat-icon>
+        {{ constant_variables.ICON_ACTION_UNDO_LABEL }}
       </button>
     </div>
   </div>

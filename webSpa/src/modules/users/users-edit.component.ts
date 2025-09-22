@@ -27,7 +27,7 @@ export class UsersEditComponent {
     private _SnackBarService: SnackBarService = inject(SnackBarService);
     private _ActivatedRoute: ActivatedRoute = inject(ActivatedRoute);
 
-    public textPage: string = 'Edição de Usuário';
+    public textPage: string = 'Edição de usuário';
     public subTextPage: string = 'Por meio da edição, você será capaz de editar os dados do usuário.';
     public constant_variables = CONSTANT_VARIABLES;
     public form: FormGroup;

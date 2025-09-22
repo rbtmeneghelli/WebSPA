@@ -13,11 +13,11 @@
     <div class="container-filter">
       <mat-form-field appearance="outline" class="filter-40">
         <mat-label hintLabel="máximo de 100 caracteres"
-          >Nome do Usuário</mat-label
+          >Digite o nome do usuário</mat-label
         >
         <input
           matInput
-          placeholder="Nome do Usuário"
+          placeholder="Digite o nome do usuário"
           maxlength="100"
           #nomeUsuario
           formControlName="nomeUsuario"
@@ -30,7 +30,7 @@
         >
       </mat-form-field>
       <mat-form-field class="filter-40" appearance="outline">
-        <mat-label>Perfil do Usuário</mat-label>
+        <mat-label>Selecione o perfil de acesso</mat-label>
         <mat-select formControlName="perfilUsuario">
           @for(profile of profileList; track profile){
           <mat-option value="{{ profile.id }}">{{
@@ -125,18 +125,18 @@
   <div class="container-table">
     <table mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Nome</th>
+        <th mat-header-cell *matHeaderCellDef>Nome usuário</th>
         <td mat-cell *matCellDef="let element">{{ element.name }}</td>
         <td mat-footer-cell *matFooterCellDef>Total</td>
       </ng-container>
 
       <ng-container matColumnDef="profile">
-        <th mat-header-cell *matHeaderCellDef>Perfil</th>
+        <th mat-header-cell *matHeaderCellDef>Perfil de acesso</th>
         <td mat-cell *matCellDef="let element">{{ element.profile }}</td>
       </ng-container>
 
       <ng-container matColumnDef="credenciaisEnviadas">
-        <th mat-header-cell *matHeaderCellDef style="text-align: center;">Credenciais Enviadas</th>
+        <th mat-header-cell *matHeaderCellDef style="text-align: center;">Credenciais enviadas</th>
         <td mat-cell *matCellDef="let element" style="text-align: center;">
           <span *ngIf="element.credenciaisEnviadas" class="mat-span-active">
             <mat-icon class="mat-icon-active">{{

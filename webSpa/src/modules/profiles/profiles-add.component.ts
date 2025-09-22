@@ -53,7 +53,7 @@ import { FunctionalityList } from '../../core/models/functionalitys/functionalit
   providers: [AuthGuardService],
 })
 export class ProfilesAddComponent implements OnInit {
-  public textPage: string = 'Cadastro de Perfil de Acesso';
+  public textPage: string = 'Cadastro de perfil de acesso';
   public subTextPage: string =
     'Por meio do cadastro de perfil de acesso, você pode definir as funcionalidades e permissões que o perfil irá possuir.';
   public constant_variables = CONSTANT_VARIABLES;

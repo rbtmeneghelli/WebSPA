@@ -52,7 +52,7 @@ export class UsersAddComponent {
   private snackBarService: SnackBarService = inject(SnackBarService);
   private usuarioService: UsuarioService = inject(UsuarioService);
   
-  public textPage: string = 'Cadastro de Usuário';
+  public textPage: string = 'Cadastro de usuário';
   public subTextPage: string =
     'Por meio do cadastro, você será capaz de adicionar novos usuários.';
   public constant_variables = CONSTANT_VARIABLES;

@@ -24,7 +24,7 @@ export class ConfigSystemComponent {
         { id: 4, description: 'Gravar log ao editar um registro', active: false },
         { id: 5, description: 'Gravar log ao excluir um registro', active: false }];
 
-    public textPage: string = 'Configuração do Sistema';
+    public textPage: string = 'Configuração do sistema';
     public subTextPage: string = 'Por meio da consulta, você pode consultar diferentes usuários, ou realizar uma busca mais aprofundada, preenchendo 1 ou mais campos dos filtros abaixo.';
     public constant_variables = CONSTANT_VARIABLES;
 

@@ -65,8 +65,8 @@ export const CONSTANT_VARIABLES = {
     ICON_ACTION_EXPORT_LABEL: 'Exportar dados',
     ICON_ACTION_ADD: 'add',
     ICON_ACTION_ADD_LABEL: 'Criar',
-    FILTER_STATUS_LABEL: 'Status do registro',
-    FILTER_ORDER_LABEL: 'Ordem dos dados',
+    FILTER_STATUS_LABEL: 'Selecione o(s) status do registro',
+    FILTER_ORDER_LABEL: 'Selecione a ordem dos dados',
     ICON_ACTION_SEARCH: 'search',
     FIX_DROPDOWNLIST_STATUS: [
         { id: 0, description: 'Inativo', active: true },

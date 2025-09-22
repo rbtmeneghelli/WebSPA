@@ -18,7 +18,7 @@
                 <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_FIELDS}}</mat-icon>
             </mat-form-field>
             <mat-form-field appearance="outline" class="field-form">
-                <mat-label>Forma recebimento / pagamento</mat-label>
+                <mat-label>Selecione a(s) forma de recebimento/pagamento</mat-label>
                 <mat-select multiple formControlName="formaPagamento">
                     @for(paymentForm of paymentFormList; track paymentForm){
                     <mat-option value={{paymentForm.id}}>{{paymentForm.description}}</mat-option>
@@ -124,7 +124,7 @@
                         </ng-container>
 
                         <ng-container matColumnDef="valorTotal">
-                            <th mat-header-cell *matHeaderCellDef> Valor Total </th>
+                            <th mat-header-cell *matHeaderCellDef> Valor total </th>
                             <td mat-cell *matCellDef="let element"> {{element.valorTotal |currency:"BRL":"symbol"}}
                             </td>
                         </ng-container>

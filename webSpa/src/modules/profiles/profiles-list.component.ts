@@ -46,7 +46,7 @@ export class ProfilesListComponent implements AfterViewInit {
   public textTable: string = 'Filtro de pesquisa';
   public subTextTable: string =
     'Por meio da consulta, você pode consultar diferentes perfis de acesso, ou realizar uma busca mais aprofundada, preenchendo 1 ou mais campos dos filtros abaixo.';
-  public textTableOptional: string = 'Lista de Perfis de acesso registrados';
+  public textTableOptional: string = 'Lista de perfis de acesso registrados';
   public actionLabel: string = 'perfil de acesso';
   public displayedColumns: string[] = ['perfil', 'status', '#'];
   public constant_variables = CONSTANT_VARIABLES;

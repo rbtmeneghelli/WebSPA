@@ -47,7 +47,7 @@ export class UsersListComponent implements AfterViewInit {
   public textTable: string = 'Filtro de pesquisa';
   public subTextTable: string =
     'Por meio da consulta, você pode consultar diferentes usuários, ou realizar uma busca mais aprofundada, preenchendo 1 ou mais campos dos filtros abaixo.';
-  public textTableOptional: string = 'Lista de Usuários registrados';
+  public textTableOptional: string = 'Lista de usuários registrados';
   public actionLabel: string = 'usuário';
   public displayedColumns: string[] = ['name', 'profile', 'status', 'credenciaisEnviadas', '#'];
   public constant_variables = CONSTANT_VARIABLES;
