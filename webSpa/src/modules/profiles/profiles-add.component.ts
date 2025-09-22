@@ -25,6 +25,7 @@ import { AuthGuardService } from '../../core/services/auth-guard.service';
 import { FooterComponent } from '../../shared/components/footer/footer-component';
 import { CONSTANT_VARIABLES } from '../../core/constants/variables.constant';
 import { hasErrorFormControl } from '../../core/functions/shared-string.functions';
+import { FunctionalityList } from '../../core/models/functionalitys/functionality.model';
 
 @Component({
   selector: 'app-profile-add',
@@ -58,7 +59,7 @@ export class ProfilesAddComponent implements OnInit {
   public constant_variables = CONSTANT_VARIABLES;
   perfilForm!: FormGroup;
 
-  funcionalidadesMock = [
+  funcionalidadesMock: FunctionalityList[] = [
     {
       nome: 'Financeiro',
       permissoes: ['Cadastrar', 'Consultar', 'Excluir'],

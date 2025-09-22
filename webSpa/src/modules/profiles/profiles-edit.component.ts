@@ -25,6 +25,7 @@ import { AuthGuardService } from '../../core/services/auth-guard.service';
 import { FooterComponent } from '../../shared/components/footer/footer-component';
 import { CONSTANT_VARIABLES } from '../../core/constants/variables.constant';
 import { hasErrorFormControl } from '../../core/functions/shared-string.functions';
+import { FunctionalityList } from '../../core/models/functionalitys/functionality.model';
 
 @Component({
   selector: 'app-profile-edit',
@@ -58,7 +59,7 @@ export class ProfilesEditComponent implements OnInit {
   public constant_variables = CONSTANT_VARIABLES;
   perfilForm!: FormGroup;
 
-  funcionalidadesMock = [
+  funcionalidadesMock: FunctionalityList[] = [
     {
       nome: 'Financeiro',
       permissoes: ['Cadastrar', 'Consultar', 'Excluir', 'Editar'],
@@ -81,10 +82,15 @@ export class ProfilesEditComponent implements OnInit {
     },
   ];
 
-  funcionalidadesBackEndMock = [
+  funcionalidadesBackEndMock: FunctionalityList[] = [
     {
       nome: 'Financeiro',
       permissoes: ['Cadastrar', 'Consultar', 'Excluir'],
+      desabilitarPermissoes: false,
+    },
+    {
+      nome: 'Configuração de Email',
+      permissoes: ['Consultar'],
       desabilitarPermissoes: false,
     },
     {
@@ -191,120 +197,74 @@ export class ProfilesEditComponent implements OnInit {
     this.perfilForm.get('nomePerfil')?.setValue('Administrador');
 
     for (let index = 0; index < this.funcionalidadesMock.length; index++) {
+      const funcionalidadeMock = this.funcionalidadesMock.at(index) ?? {
+        nome: '',
+        permissoes: [],
+        desabilitarPermissoes: true,
+      };
 
-        debugger;
-        const a = this.funcionalidadesMock.at(index) ?? { nome: '', permissoes: [], desabilitarPermissoes: true};
-        const nomePermissoes = a?.permissoes.map(x => {
-            return x;
-        });
+      const nomePermissoes = funcionalidadeMock?.permissoes.map((x) => {
+        return x;
+      });
 
-        const funcionalidade = this.funcionalidadesFormArray.at(index) as FormGroup;
-        const bancoDados = this.funcionalidadesBackEndMock.find(x => x.nome === funcionalidade.value.nome);
+      if (this.funcionalidadesBackEndMock.length > 0) {
+        const bancoDados = this.funcionalidadesBackEndMock.find(
+          (x) => x.nome === funcionalidadeMock.nome
+        );
+
+        const funcionalidade = this.funcionalidadesFormArray.at(
+          index
+        ) as FormGroup;
 
         const permissoes = funcionalidade.get('permissoes') as FormArray;
 
         let index2 = 0;
 
-        debugger
-        if(!!bancoDados){
-        for(const item of nomePermissoes){
-            // permissoes.controls.forEach((control) => {
-                if(bancoDados?.permissoes?.find(x => x === item)){
-                    permissoes.controls[index2].setValue(true);
-                } else {
-                    permissoes.controls[index2].setValue(false);
-                }
-                index2++;
-            // });
+        if (!!bancoDados) {
+          for (const item of nomePermissoes) {
+            if (bancoDados?.permissoes?.find((x) => x === item)) {
+              permissoes.controls[index2].setValue(true);
+              if (bancoDados.desabilitarPermissoes) {
+                permissoes.controls[index2].disable();
+              } else {
+                permissoes.controls[index2].enable();
+              }
+            } else {
+              permissoes.controls[index2].setValue(false);
+              if (bancoDados.desabilitarPermissoes) {
+                permissoes.controls[index2].disable();
+              } else {
+                permissoes.controls[index2].enable();
+              }
+            }
+            index2++;
+          }
+
+          const todosSelecionado = permissoes.controls.every(
+            (c) => c.value === true
+          );
+
+          if (todosSelecionado) {
+            funcionalidade
+              .get('todosSelecionado')
+              ?.setValue(true, { emitEvent: false });
+            if (bancoDados.desabilitarPermissoes) {
+              funcionalidade.get('todosSelecionado')?.disable();
+            } else {
+              funcionalidade.get('todosSelecionado')?.enable();
+            }
+          } else {
+            funcionalidade
+              .get('todosSelecionado')
+              ?.setValue(false, { emitEvent: false });
+            if (bancoDados.desabilitarPermissoes) {
+              funcionalidade.get('todosSelecionado')?.disable();
+            } else {
+              funcionalidade.get('todosSelecionado')?.enable();
+            }
+          }
         }
+      }
     }
-
-        // 
-    }
-
-    // this.funcionalidadesMock.forEach((f) => {
-
-    //     const funcionalidadeBancoDados = this.funcionalidadesBackEndMock.find(x => x.nome === f?.nome);
-
-    //     if(!!funcionalidadeBancoDados){
-    //         for(const item of funcionalidadeBancoDados.permissoes){
-    //             if(this.funcionalidadesBackEndMock.some(x => x.permissoes.some(z => z === item))){
-    //                 const permissoesArray = this.fb.array(
-    //                     f.permissoes.map(() =>
-    //                       this.fb.control({ value: true, disabled: f.desabilitarPermissoes })
-    //                     )
-    //                   );
-    //                   const funcionalidadeGroup = this.fb.group({
-    //                     nome: [f.nome],
-    //                     permissoes: permissoesArray,
-    //                     todosSelecionado: [{ value: false, disabled: f.desabilitarPermissoes }],
-    //                   });
-    //                   (this.perfilForm.get('funcionalidades') as FormArray).push(
-    //                     funcionalidadeGroup
-    //                   );
-    //             } else {
-    //                 const permissoesArray = this.fb.array(
-    //                     f.permissoes.map(() =>
-    //                       this.fb.control({ value: false, disabled: f.desabilitarPermissoes })
-    //                     )
-    //                   );
-    //                   const funcionalidadeGroup = this.fb.group({
-    //                     nome: [f.nome],
-    //                     permissoes: permissoesArray,
-    //                     todosSelecionado: [{ value: false, disabled: f.desabilitarPermissoes }],
-    //                   });
-    //                   (this.perfilForm.get('funcionalidades') as FormArray).push(
-    //                     funcionalidadeGroup
-    //                   );
-    //             }
-    //         }
-    //     }
-
-
-    // for (let index = 0; index < this.funcionalidadesMock.length; index++) {
-
-        // const funcionalidadeMockada = this.funcionalidadesBackEndMock.at(index);
-        // 
-        
-        // if(funcionalidadeBancoDados){
-        //     if(funcionalidadeBancoDados?.permissoes.length === funcionalidadeMockada?.permissoes.length){
-        //     const funcionalidade = this.funcionalidadesFormArray.at(
-        //     index
-        //     ) as FormGroup;
-        //     const permissoes = funcionalidade.get('permissoes') as FormArray;
-        //     permissoes.controls.forEach((control) => control.setValue(true));
-        //     }
-        // }
-
-
-
-
-    //     const funcionalidade = this.funcionalidadesFormArray.at(
-    //     index
-    //   ) as FormGroup;
-    //   const permissoes = funcionalidade.get('permissoes') as FormArray;
-
-    //   const funcionalidade = this.funcionalidadesFormArray.at(
-    //     index
-    //   ) as FormGroup;
-    //   const permissoes = funcionalidade.get('permissoes') as FormArray;
-
-    //   if (index % 2 === 0) {
-    //     permissoes.controls.forEach((control) => control.setValue(true));
-    //   }
-
-    //   else if(index === 3){
-    //     permissoes.controls.forEach((control) => control.setValue(true));
-    //   }
-    //   const todosSelecionado = permissoes.controls.every(
-    //     (c) => c.value === true
-    //   );
-
-    //   if (todosSelecionado) {
-    //     funcionalidade
-    //       .get('todosSelecionado')
-    //       ?.setValue(true, { emitEvent: false });
-    //   }
-    //}
   }
 }
