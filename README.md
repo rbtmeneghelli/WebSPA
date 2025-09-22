@@ -43,12 +43,19 @@ Para desenvolvimento desse software foi escolhido as seguintes tecnologias:
 
 ![image](https://github.com/user-attachments/assets/c3df6a56-f1c8-4583-9b7f-c67cc9254e83)
 
-![image](https://github.com/user-attachments/assets/a7f3fc73-642e-466b-b346-ce463a043fbd)
+<img width="1917" height="910" alt="image" src="https://github.com/user-attachments/assets/bf014906-865f-41af-a9b7-939e1da0c80c" />
 
-![image](https://github.com/user-attachments/assets/2ac3e255-7146-44b8-90b4-7f85890182a8)
+<img width="1917" height="911" alt="image" src="https://github.com/user-attachments/assets/0893efec-e724-41ac-b0e5-c6fb8d62c335" />
 
-![image](https://github.com/user-attachments/assets/16dbc566-42aa-450b-82ce-257e11f44f49)
+<img width="1919" height="910" alt="image" src="https://github.com/user-attachments/assets/f041c56f-8ee6-4bbc-b7e0-367bdbf9daa4" />
+
+<img width="1918" height="910" alt="image" src="https://github.com/user-attachments/assets/ad2c29a4-e1a7-47b4-bd16-dfc4f4329095" />
+
+<img width="1919" height="913" alt="image" src="https://github.com/user-attachments/assets/ce635d16-e934-43bd-b254-4c8d14e1abae" />
+
+<img width="1918" height="910" alt="image" src="https://github.com/user-attachments/assets/4ba9ca97-2e70-4e5b-b8d8-7f02c87c355a" />
 
 ![image](https://github.com/user-attachments/assets/bec27098-a6b2-42c5-937b-b3cf349ca969)
 
-![image](https://github.com/user-attachments/assets/238248f3-22d5-4f8f-8c30-64161cc52f88)
+<img width="1919" height="911" alt="image" src="https://github.com/user-attachments/assets/c557dfb5-6668-46b7-9209-fb75c123e1dd" />
+
