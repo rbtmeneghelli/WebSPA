@@ -42,6 +42,7 @@ import { NotificationService } from '../../core/services/notification.service';
   templateUrl: './users-list.component.html',
   providers: [NotificationService],
 })
+
 export class UsersListComponent implements AfterViewInit {
   public textTable: string = 'Filtro de pesquisa';
   public subTextTable: string =

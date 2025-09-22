@@ -1,125 +1,241 @@
 <div class="row">
   <div class="container-page">
-    <h1 class="text-table">{{ textPage }}</h1>
+    <h1 class="text-table">{{ textTable }}</h1>
     <p class="text-sub-table">
       <mat-icon>{{ constant_variables.ICON_INFORMATION }}</mat-icon
-      >{{ subTextPage }}
+      >{{ subTextTable }}
     </p>
   </div>
 </div>
 
-<form [formGroup]="perfilForm">
+<form [formGroup]="form">
   <div class="row">
-    <div class="container-form-col">
-      <mat-form-field appearance="outline" class="field-form">
-        <mat-label hintLabel="máximo de 80 caracteres"
-          >Digite o nome do perfil</mat-label
+    <div class="container-filter">
+      <mat-form-field appearance="outline" class="filter-60">
+        <mat-label hintLabel="máximo de 100 caracteres"
+          >Digite o nome do perfil de acesso</mat-label
         >
         <input
           matInput
-          placeholder="Nome do perfil"
-          maxlength="80"
-          #nomePerfil
-          formControlName="nomePerfil"
+          placeholder="Digite o nome do perfil de acesso"
+          maxlength="100"
+          #nomePerfilAcesso
+          formControlName="nomePerfilAcesso"
         />
         <mat-icon matSuffix class="mat-icon-actions">{{
-          constant_variables.ICON_ACTION_EDIT
+          constant_variables.ICON_ACTION_SEARCH
         }}</mat-icon>
         <mat-hint align="end" class="mat-icon-actions"
-          >{{ nomePerfil.value.length }}/80</mat-hint
+          >{{ nomePerfilAcesso.value.length }}/100</mat-hint
         >
-        <mat-error>{{
-          hasErrorFormControl(perfilForm.controls["nomePerfil"])
-        }}</mat-error>
+      </mat-form-field>
+      <mat-form-field class="filter-40" appearance="outline">
+        <mat-label>{{ constant_variables.FILTER_STATUS_LABEL }}</mat-label>
+        <mat-select multiple formControlName="status">
+          @for(status of statusList; track status){
+          <mat-option value="{{ status.id }}">{{
+            status.description
+          }}</mat-option>
+          }
+        </mat-select>
+        <mat-icon matSuffix class="mat-icon-actions">{{
+          constant_variables.ICON_ACTION_SEARCH
+        }}</mat-icon>
+      </mat-form-field>
+      <mat-form-field class="filter-40" appearance="outline">
+        <mat-label>{{ constant_variables.FILTER_ORDER_LABEL }}</mat-label>
+        <mat-select formControlName="ordenacao">
+          @for(order of orderList; track order){
+          <mat-option value="{{ order.id }}">{{
+            order.description
+          }}</mat-option>
+          }
+        </mat-select>
+        <mat-icon matSuffix class="mat-icon-actions">{{
+          constant_variables.ICON_ACTION_SEARCH
+        }}</mat-icon>
       </mat-form-field>
     </div>
   </div>
-
-  <div class="row">
-    <div class="container-table" formArrayName="funcionalidades">
-      <table mat-table [dataSource]="funcionalidadesFormArray.controls">
-        <!-- <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef>Nome</th>
-          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-          <td mat-footer-cell *matFooterCellDef>Total</td>
-        </ng-container> -->
-        <ng-container matColumnDef="funcionalidade">
-          <th mat-header-cell *matHeaderCellDef>Funcionalidade</th>
-          <td mat-cell *matCellDef="let row; let i = index" [formGroupName]="i">
-            {{ row.value.nome }}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="permissoes">
-          <th mat-header-cell *matHeaderCellDef style="text-align: center;">Permissões</th>
-          <td mat-cell *matCellDef="let row; let i = index" [formGroupName]="i" style="text-align: center; align-content: center;">
-            {{ row.value.funcionalidadeHabilitada }}
-            <ng-container formArrayName="permissoes">
-              <mat-checkbox
-                *ngFor="
-                  let ctrl of getPermissoesArray(i).controls;
-                  let j = index
-                "
-                [formControlName]="j"
-                (change)="verificarTodos(i)"
-                [disabled]="row.value.funcionalidadeHabilitada"
-              >
-                {{ funcionalidadesMock[i].permissoes[j] }}
-              </mat-checkbox>
-            </ng-container>
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="todos">
-          <th mat-header-cell *matHeaderCellDef style="text-align: center;">Todas Permissões</th>
-          <td mat-cell *matCellDef="let row; let i = index" [formGroupName]="i" style="text-align: center; align-content: center;">
-            <mat-checkbox
-              formControlName="todosSelecionado"
-              (change)="toggleTodos(i)"
-              [disabled] = "true"
-            ></mat-checkbox>
-          </td>
-        </ng-container>
-
-        <tr
-          mat-header-row
-          *matHeaderRowDef="displayedColumns; sticky: true"
-          class="tr-header"
-        ></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="container-form-button">
-      <button
-        mat-flat-button
-        class="btn-table"
-        matTooltip="Cancelar"
-        [routerLink]="['..']"
-      >
-        <mat-icon>{{ constant_variables.ICON_ACTION_CANCEL }}</mat-icon>
-        {{ constant_variables.ICON_ACTION_CANCEL_LABEL }}
-      </button>
-      <button
-        mat-flat-button
-        class="btn-table"
-        [matTooltip]="constant_variables.ICON_ACTION_CLEAN_LABEL"
-        (click)="(null)"
-      >
-        <mat-icon>{{ constant_variables.ICON_ACTION_CLEAN }}</mat-icon>
-        {{ constant_variables.ICON_ACTION_CLEAN_LABEL }}
-      </button>
-      <button
-        mat-flat-button
-        class="btn-table"
-        [matTooltip]="constant_variables.ICON_ACTION_SAVE_LABEL"
-        (click)="(null)"
-      >
-        <mat-icon>{{ constant_variables.ICON_ACTION_SAVE }}</mat-icon>
-        {{ constant_variables.ICON_ACTION_SAVE_LABEL }}
-      </button>
-    </div>
-  </div>
 </form>
+
+<div class="row">
+  <div class="container-filter-button">
+    <button
+      mat-flat-button
+      class="btn-table"
+      [matTooltip]="constant_variables.ICON_ACTION_FILTER_OFF_LABEL"
+      (click)="cleanForm()"
+    >
+      <mat-icon>{{ constant_variables.ICON_ACTION_FILTER_OFF }}</mat-icon>
+      {{ constant_variables.ICON_ACTION_FILTER_OFF_LABEL }}
+    </button>
+    <button
+      mat-flat-button
+      class="btn-table"
+      [matTooltip]="constant_variables.ICON_ACTION_FILTER_LABEL"
+    >
+      <mat-icon>{{ constant_variables.ICON_ACTION_FILTER }}</mat-icon>
+      {{ constant_variables.ICON_ACTION_FILTER_LABEL }}
+    </button>
+  </div>
+</div>
+
+<mat-divider></mat-divider>
+
+<div class="row">
+  <div class="container-table-button">
+    <h1 class="text-table">{{ textTableOptional }}</h1>
+    <button
+      mat-flat-button
+      class="btn-table"
+      [matTooltip]="constant_variables.ICON_ACTION_EXPORT_LABEL"
+    >
+      <mat-icon>{{ constant_variables.ICON_ACTION_EXPORT }}</mat-icon>
+      {{ constant_variables.ICON_ACTION_EXPORT_LABEL }}
+    </button>
+    <button
+      mat-flat-button
+      class="btn-table"
+      [matTooltip]="
+        constant_variables.ICON_ACTION_ADD_LABEL + ' ' + actionLabel
+      "
+      [routerLink]="['new']"
+    >
+      <mat-icon>{{ constant_variables.ICON_ACTION_ADD }}</mat-icon>
+      {{ constant_variables.ICON_ACTION_ADD_LABEL }} {{ actionLabel }}
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="container-table">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="perfil">
+        <th mat-header-cell *matHeaderCellDef>Perfil de Acesso</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        <td mat-footer-cell *matFooterCellDef>Total</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element">
+          <span *ngIf="element.status" class="mat-span-active">{{
+            constant_variables.ICON_ACTIVE_LABEL
+          }}</span>
+          <span *ngIf="!element.status" class="mat-span-inactive"
+            >{{ constant_variables.ICON_INACTIVE_LABEL }}
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="#">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon
+              class="mat-icon-actions"
+              [matTooltip]="constant_variables.ICON_ACTION_LIST_LABEL"
+              >{{ constant_variables.ICON_ACTION_LIST }}</mat-icon
+            >
+          </button>
+          <mat-menu #menu="matMenu">
+            <button
+              mat-menu-item
+              [matTooltip]="
+                constant_variables.ICON_ACTION_VIEW_LABEL + actionLabel
+              "
+              [routerLink]="[element.id, 'view']"
+            >
+              <mat-icon class="mat-icon-actions">{{
+                constant_variables.ICON_ACTION_VIEW
+              }}</mat-icon>
+              <span
+                >{{ constant_variables.ICON_ACTION_VIEW_LABEL }}
+                {{ actionLabel }}</span
+              >
+            </button>
+            <button
+              mat-menu-item
+              [matTooltip]="
+                constant_variables.ICON_ACTION_EDIT_LABEL + actionLabel
+              "
+              [routerLink]="[element.id, 'edit']"
+            >
+              <mat-icon
+                class="mat-icon-actions"
+                [routerLink]="[element.id, 'edit']"
+                >{{ constant_variables.ICON_ACTION_EDIT }}</mat-icon
+              >
+              <span
+                >{{ constant_variables.ICON_ACTION_EDIT_LABEL }}
+                {{ actionLabel }}</span
+              >
+            </button>
+            <button
+              mat-menu-item
+              [matTooltip]="
+                constant_variables.ICON_ACTION_DELETE_LABEL + actionLabel
+              "
+            >
+              <mat-icon class="mat-icon-actions">{{
+                constant_variables.ICON_ACTION_DELETE
+              }}</mat-icon>
+              <span
+                >{{ constant_variables.ICON_ACTION_DELETE_LABEL }}
+                {{ actionLabel }}</span
+              >
+            </button>
+            <button
+              mat-menu-item
+              *ngIf="element.status"
+              [matTooltip]="
+                constant_variables.ICON_ACTION_INACTIVE_LABEL + actionLabel
+              "
+            >
+              <mat-icon class="mat-icon-actions">{{
+                constant_variables.ICON_ACTION_INACTIVE
+              }}</mat-icon>
+              <span
+                >{{ constant_variables.ICON_ACTION_INACTIVE_LABEL }}
+                {{ actionLabel }}
+              </span>
+            </button>
+            <button
+              mat-menu-item
+              *ngIf="!element.status"
+              [matTooltip]="
+                constant_variables.ICON_ACTION_ACTIVE_LABEL + actionLabel
+              "
+            >
+              <mat-icon class="mat-icon-actions">{{
+                constant_variables.ICON_ACTION_ACTIVE
+              }}</mat-icon>
+              <span
+                >{{ constant_variables.ICON_ACTION_ACTIVE_LABEL }}
+                {{ actionLabel }}
+              </span>
+            </button>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr
+        mat-header-row
+        *matHeaderRowDef="displayedColumns; sticky: true"
+        class="tr-header"
+      ></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="container-pagination">
+    <mat-paginator
+      [pageSizeOptions]="constant_variables.PAGE_SIZE_OPTION"
+      showFirstLastButtons
+    >
+    </mat-paginator>
+  </div>
+</div>

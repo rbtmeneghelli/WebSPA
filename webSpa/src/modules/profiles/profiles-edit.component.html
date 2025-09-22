@@ -1,0 +1,135 @@
+<div class="row">
+  <div class="container-page">
+    <h1 class="text-table">{{ textPage }}</h1>
+    <p class="text-sub-table">
+      <mat-icon>{{ constant_variables.ICON_INFORMATION }}</mat-icon
+      >{{ subTextPage }}
+    </p>
+  </div>
+</div>
+
+<form [formGroup]="perfilForm">
+  <div class="row">
+    <div class="container-form-col">
+      <mat-form-field appearance="outline" class="field-form">
+        <mat-label hintLabel="máximo de 80 caracteres"
+          >Digite o nome do perfil de acesso</mat-label
+        >
+        <input
+          matInput
+          placeholder="Nome do perfil"
+          maxlength="80"
+          #nomePerfil
+          formControlName="nomePerfil"
+        />
+        <mat-icon matSuffix class="mat-icon-actions">{{
+          constant_variables.ICON_ACTION_EDIT
+        }}</mat-icon>
+        <mat-hint align="end" class="mat-icon-actions"
+          >{{ nomePerfil.value.length }}/80</mat-hint
+        >
+        <mat-error>{{
+          hasErrorFormControl(perfilForm.controls["nomePerfil"])
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="container-table" formArrayName="funcionalidades">
+      <table mat-table [dataSource]="funcionalidadesFormArray.controls">
+        <ng-container matColumnDef="funcionalidade">
+          <th mat-header-cell *matHeaderCellDef>Funcionalidade</th>
+          <td mat-cell *matCellDef="let row; let i = index" [formGroupName]="i">
+            {{ row.value.nome }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="permissoes">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center">
+            Permissões
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let row; let i = index"
+            [formGroupName]="i"
+            style="text-align: center; align-content: center"
+          >
+            {{ row.value.funcionalidadeHabilitada }}
+            <ng-container formArrayName="permissoes">
+              <mat-checkbox
+                *ngFor="
+                  let ctrl of getPermissoesArray(i).controls;
+                  let j = index
+                "
+                [formControlName]="j"
+                (change)="verificarTodos(i)"
+                [disabled]="row.value.funcionalidadeHabilitada"
+              >
+                {{ funcionalidadesMock[i].permissoes[j] }}
+              </mat-checkbox>
+            </ng-container>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="todos">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center">
+            Todas Permissões
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let row; let i = index"
+            [formGroupName]="i"
+            style="text-align: center; align-content: center"
+          >
+            <mat-checkbox
+              formControlName="todosSelecionado"
+              (change)="toggleTodos(i)"
+              [disabled]="true"
+            ></mat-checkbox>
+          </td>
+        </ng-container>
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns; sticky: true"
+          class="tr-header"
+        ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="container-form-button">
+      <button
+        mat-flat-button
+        class="btn-table"
+        matTooltip="Cancelar"
+        [routerLink]="['..']"
+      >
+        <mat-icon>{{ constant_variables.ICON_ACTION_CANCEL }}</mat-icon>
+        {{ constant_variables.ICON_ACTION_CANCEL_LABEL }}
+      </button>
+      <button
+        mat-flat-button
+        class="btn-table"
+        [matTooltip]="constant_variables.ICON_ACTION_CLEAN_LABEL"
+        (click)="cleanForm()"
+      >
+        <mat-icon>{{ constant_variables.ICON_ACTION_CLEAN }}</mat-icon>
+        {{ constant_variables.ICON_ACTION_CLEAN_LABEL }}
+      </button>
+      <button
+        mat-flat-button
+        class="btn-table"
+        [matTooltip]="constant_variables.ICON_ACTION_SAVE_LABEL"
+        (click)="(null)"
+        [disabled]="!perfilForm.valid"
+      >
+        <mat-icon>{{ constant_variables.ICON_ACTION_SAVE }}</mat-icon>
+        {{ constant_variables.ICON_ACTION_SAVE_LABEL }}
+      </button>
+    </div>
+  </div>
+</form>

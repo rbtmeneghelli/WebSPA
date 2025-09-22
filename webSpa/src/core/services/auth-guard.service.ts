@@ -38,6 +38,7 @@ export class AuthGuardService {
     public keepUserData(credencial: CredentialsModel) {
         const payload = this.getTokenData(credencial.token);
         this.credentials = new CredentialsModel();
+        this.credentials.name = 'Roberto Meneghelli';
         this.credentials.email = 'admin@gmail.com';
         this.credentials.password = '***********';
         this.credentials.profile = 'Administrador';
@@ -73,6 +74,14 @@ export class AuthGuardService {
     public getUserName(): string {
         this.setCredentials();
         if (!!this.credentials) {
+            return this.credentials.name;
+        }
+        return '';
+    }
+
+    public getUserEmail(): string {
+        this.setCredentials();
+        if (!!this.credentials) {
             return this.credentials.email;
         }
         return '';
@@ -90,6 +99,7 @@ export class AuthGuardService {
     private setCredentials() {
         if(!!localStorage.getItem('userLoggedData')){
             this.credentials = new CredentialsModel();
+            this.credentials.name = 'Roberto Meneghelli';
             this.credentials.email = 'admin@gmail.com';
             this.credentials.password = '***********';
             this.credentials.profile = 'Administrador';

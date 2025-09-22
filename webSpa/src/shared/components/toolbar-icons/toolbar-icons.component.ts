@@ -30,7 +30,8 @@ export class ToolBarIconsComponent implements OnInit {
   private readonly _AuthGuardService: AuthGuardService = inject(AuthGuardService);
   private readonly _NotificationService: NotificationService = inject(NotificationService);
   private readonly _SnackBarService: SnackBarService = inject(SnackBarService);
-  public userEmail: string = this._AuthGuardService.getUserName();
+  public userName: string = this._AuthGuardService.getUserName();
+  public userEmail: string = this._AuthGuardService.getUserEmail();
 
   ngOnInit(): void {
     this._NotificationService.getAllNotifications([]).pipe(take(1)).subscribe(response => {

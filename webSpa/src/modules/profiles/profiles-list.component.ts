@@ -1,33 +1,25 @@
+import { AfterViewInit, Component, inject, ViewChild } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import {
-  ReactiveFormsModule,
-  FormGroup,
-  FormBuilder,
-  Validators,
-  FormArray,
-  AbstractControl,
-} from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
-import { MatTableModule } from '@angular/material/table';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { RouterOutlet, RouterLink } from '@angular/router';
-import { AuthGuardService } from '../../core/services/auth-guard.service';
-import { FooterComponent } from '../../shared/components/footer/footer-component';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CONSTANT_VARIABLES } from '../../core/constants/variables.constant';
-import { hasErrorFormControl } from '../../core/functions/shared-string.functions';
+import { DropDownListModel } from '../../core/models/dropdown-list.model';
+import { NotificationService } from '../../core/services/notification.service';
+import { ProfilesList } from '../../core/models/profiles/profiles.model';
 
 @Component({
-  selector: 'app-profile-list',
+  selector: 'app-profiles-list',
   standalone: true,
   imports: [
     RouterOutlet,
@@ -43,121 +35,78 @@ import { hasErrorFormControl } from '../../core/functions/shared-string.function
     MatInputModule,
     MatMenuModule,
     MatTooltipModule,
-    MatCheckboxModule,
-    FooterComponent,
-    ReactiveFormsModule,
     RouterLink,
+    MatPaginatorModule,
+    ReactiveFormsModule,
   ],
   templateUrl: './profiles-list.component.html',
-  providers: [AuthGuardService],
+  providers: [NotificationService],
 })
-export class ProfilesListComponent implements OnInit {
-  public textPage: string = 'Cadastro de Perfil de Acesso';
-  public subTextPage: string =
-    'Por meio do cadastro de perfil de acesso, você pode definir as funcionalidades e permissões que o perfil irá possuir';
+export class ProfilesListComponent implements AfterViewInit {
+  public textTable: string = 'Filtro de pesquisa';
+  public subTextTable: string =
+    'Por meio da consulta, você pode consultar diferentes perfis de acesso, ou realizar uma busca mais aprofundada, preenchendo 1 ou mais campos dos filtros abaixo.';
+  public textTableOptional: string = 'Lista de Perfis de acesso registrados';
+  public actionLabel: string = 'perfil de acesso';
+  public displayedColumns: string[] = ['perfil', 'status', '#'];
   public constant_variables = CONSTANT_VARIABLES;
-  perfilForm!: FormGroup;
 
-  funcionalidadesMock = [
-    { nome: 'Atas', 
-      permissoes: ['Cadastrar', 'Consultar', 'Excluir'],
-      desabilitarPermissoes: false
+  public formBuilder: FormBuilder = inject(FormBuilder);
+  public form: FormGroup;
+
+  public statusList: DropDownListModel[] =
+    CONSTANT_VARIABLES.FIX_DROPDOWNLIST_STATUS;
+  public orderList: DropDownListModel[] =
+    CONSTANT_VARIABLES.FIX_DROPDOWNLIST_ORDER;
+
+  public profilesList: ProfilesList[] = [
+    {
+      id: 1,
+      name: 'Administrador',
+      status: true,
     },
     {
-      nome: 'Fórum Comissões Técnicas',
-      permissoes: ['Cadastrar', 'Consultar', 'Excluir'],
-      desabilitarPermissoes: false
+      id: 2,
+      name: 'Colaborador',
+      status: true,
     },
     {
-      nome: 'Fórum Comunidade Associado',
-      permissoes: ['Cadastrar', 'Consultar', 'Excluir'],
-      desabilitarPermissoes: false
+      id: 3,
+      name: 'Cliente',
+      status: true,
     },
-    {
-      nome: 'Fórum Grupo de Trabalho',
-      permissoes: ['Cadastrar', 'Consultar', 'Excluir'],
-      desabilitarPermissoes: false
-    },
-    { nome: 'News', permissoes: ['Consultar'], desabilitarPermissoes: true},
-    {
-      nome: 'Perfil de acesso',
-      permissoes: ['Cadastrar', 'Consultar', 'Editar'],
-      desabilitarPermissoes: false
-    },
-    { nome: 'Usuários', permissoes: ['Cadastrar', 'Consultar', 'Editar'], desabilitarPermissoes: false},
   ];
 
-  displayedColumns: string[] = ['funcionalidade', 'permissoes', 'todos'];
+  dataSource = new MatTableDataSource<ProfilesList>(this.profilesList);
 
-  constructor(private fb: FormBuilder) {}
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
 
-  ngOnInit(): void {
-    this.perfilForm = this.fb.group({
-      nomePerfil: ['', Validators.required, Validators.maxLength(80)],
-      funcionalidades: this.fb.array([]),
-    });
-
-    this.funcionalidadesMock.forEach((f) => {
-      const permissoesArray = this.fb.array(
-        f.permissoes.map(() => this.fb.control({ value: false, disabled: f.desabilitarPermissoes}))
-      );
-
-      const funcionalidadeGroup = this.fb.group({
-        nome: [f.nome],
-        permissoes: permissoesArray,
-        todosSelecionado: [{value: false, disabled: f.desabilitarPermissoes}],
-      });
-
-      (this.perfilForm.get('funcionalidades') as FormArray).push(
-        funcionalidadeGroup,
-      );
+  constructor() {
+    this.form = this.formBuilder.group({
+      nomePerfilAcesso: ['', []],
+      status: [['1'], []],
+      ordenacao: ['1', []],
     });
   }
 
-  get funcionalidadesFormArray(): FormArray {
-    return this.perfilForm.get('funcionalidades') as FormArray;
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.paginator._intl.itemsPerPageLabel =
+      this.constant_variables.ITEMS_PAGE_LABEL;
+    this.dataSource.paginator._intl.firstPageLabel =
+      this.constant_variables.FIRST_PAGE_LABEL;
+    this.dataSource.paginator._intl.previousPageLabel =
+      this.constant_variables.PREVIOUS_PAGE_LABEL;
+    this.dataSource.paginator._intl.nextPageLabel =
+      this.constant_variables.NEXT_PAGE_LABEL;
+    this.dataSource.paginator._intl.lastPageLabel =
+      this.constant_variables.LAST_PAGE_LABEL;
   }
 
-  getPermissoesArray(index: number): FormArray {
-    return this.funcionalidadesFormArray
-      .at(index)
-      .get('permissoes') as FormArray;
-  }
-
-  toggleTodos(index: number) {
-    const funcionalidade = this.funcionalidadesFormArray.at(index) as FormGroup;
-    const permissoes = funcionalidade.get('permissoes') as FormArray;
-    const todosSelecionado = funcionalidade.get('todosSelecionado')?.value;
-
-    permissoes.controls.forEach((control) =>
-      control.setValue(todosSelecionado)
-    );
-  }
-
-  verificarTodos(index: number) {
-    const funcionalidade = this.funcionalidadesFormArray.at(index) as FormGroup;
-    const permissoes = funcionalidade.get('permissoes') as FormArray;
-    const todosSelecionado = permissoes.controls.every((c) => c.value === true);
-
-    funcionalidade
-      .get('todosSelecionado')
-      ?.setValue(todosSelecionado, { emitEvent: false });
-  }
-
-  salvar() {
-    if (this.perfilForm.valid) {
-      console.log('Perfil salvo', this.perfilForm.value);
-      // Aqui você chamaria a API
-    } else {
-      this.perfilForm.markAllAsTouched();
-    }
-  }
-
-  cancelar() {
-    console.log('Operação cancelada');
-  }
-
-  hasErrorFormControl(formControl: AbstractControl): string {
-    return hasErrorFormControl(formControl);
+  cleanForm(): void {
+    this.form.reset();
+    this.form.controls['status'].setValue(['1']);
+    this.form.controls['ordenacao'].setValue('1');
   }
 }
