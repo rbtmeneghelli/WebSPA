@@ -1,21 +1,39 @@
 table {
-    width: $width-100;
-    overflow: $auto;
+  width: $width-100;
+  overflow: $auto;
 
-    .tr-header {
-        background-color: $primary-color;
-    }
+  .tr-header {
+    background-color: $primary-color;
+  }
 
-    th {
-        color: $color-white;
-        font-weight: $font-weight-700;
-    }
+  th {
+    color: $color-white;
+    font-weight: $font-weight-700;
+  }
+
+  .th-center {
+    text-align: $text-align-center;
+  }
+
+  .th-center-chk-todos {
+    text-align: $text-align-center;
+    align-content: $align-content-center;
+  }
+
+  .td-center {
+    text-align: $text-align-center;
+  }
+
+  .td-center-chk-todos {
+    text-align: $text-align-center;
+    align-content: $align-content-center;
+  }
 }
 
 mat-paginator {
-    color: $primary-color !important;
+  color: $primary-color !important;
 }
 
 mat-selection-list {
-    padding: 8px 0px 16px;
+  padding: 8px 0px 16px;
 }
