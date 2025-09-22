@@ -17,6 +17,8 @@ import { CONSTANT_VARIABLES } from '../../core/constants/variables.constant';
 import { DropDownListModel } from '../../core/models/dropdown-list.model';
 import { NotificationService } from '../../core/services/notification.service';
 import { ProfilesList } from '../../core/models/profiles/profiles.model';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalDialogComponent } from '../../shared/components/modal-dialog/modal-dialog.component';
 
 @Component({
   selector: 'app-profiles-list',
@@ -82,6 +84,9 @@ export class ProfilesListComponent implements AfterViewInit {
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
+  readonly profileDeleteModal = inject(MatDialog);
+  readonly profileStatusModal = inject(MatDialog);
+
   constructor() {
     this.form = this.formBuilder.group({
       nomePerfilAcesso: ['', []],
@@ -108,5 +113,30 @@ export class ProfilesListComponent implements AfterViewInit {
     this.form.reset();
     this.form.controls['status'].setValue(['1']);
     this.form.controls['ordenacao'].setValue('1');
+  }
+
+  openProfileDeleteModal(id: number): void {
+    const profile = this.profilesList.find(x => x.id === id);
+    this.profileDeleteModal.open(ModalDialogComponent, {
+      data: {
+        title: 'Exclusão do perfil de acesso',
+        ask: `Deseja efetuar a exclusão do perfil de acesso ${profile?.name}?`,
+        id: id
+      },
+      width: '400px',
+    });
+  }
+
+  openProfileStatusModal(id: number): void {
+    const profile = this.profilesList.find(x => x.id === id);
+    const ask = profile?.status ? `Deseja atualizar o status do perfil de acesso ${profile?.name} para ativo?` : `Deseja atualizar o status do perfil de acesso ${profile?.name} para inativo?`
+    this.profileStatusModal.open(ModalDialogComponent, {
+      data: {
+        title: 'Atualização de status do perfil de acesso',
+        ask: ask,
+        id: id
+      },
+      width: '500px',
+    });
   }
 }

@@ -1,63 +1,110 @@
 <div class="row">
-    <div class="container-page">
-        <h1 class="text-table">{{textPage}}</h1>
-        <p class="text-sub-table"><mat-icon>{{constant_variables.ICON_INFORMATION}}</mat-icon>{{subTextPage}} </p>
-    </div>
+  <div class="container-page">
+    <h1 class="text-table">{{ textPage }}</h1>
+    <p class="text-sub-table">
+      <mat-icon>{{ constant_variables.ICON_INFORMATION }}</mat-icon
+      >{{ subTextPage }}
+    </p>
+  </div>
 </div>
 
 <form [formGroup]="form">
-    <div class="row">
-        <div class="container-form-col">
-            <mat-form-field appearance="outline" class="field-form">
-                <mat-label hintLabel="máximo de 10 caracteres">Digite seu código de identificação</mat-label>
-                <input matInput id="input-codigo" name="input-codigo" type="text"
-                placeholder="Digite seu código de identificação" maxlength="10" formControlName="codigo" onlyNumber/>
-                <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_ACTION_EDIT}}</mat-icon>
-                <mat-error>{{hasErrorFormControl(form.controls['codigo'])}}</mat-error>
-                <!-- <label class="bottom-label" *ngIf="form.get('codigo')?.valid || form.get('codigo')?.untouched"><span>Máx. {{ descriptionLengthCodigo | async }}</span> caracteres.</label> -->
-                <!-- <span class="bottom-label" for="" *ngIf="form.get('codigo')?.invalid && form.get('codigo')?.touched && form.get('codigo')?.hasError('required')">Campo obrigatório</span>     
-                <span class="bottom-label" for="" *ngIf="form.get('codigo')?.invalid && form.get('codigo')?.touched && form.get('codigo')?.hasError('codeExist')">{{mensagemCodigoExistente}}</span>                               -->
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="field-form">
-                <mat-label hintLabel="máximo de 80 caracteres">Digite o email do usuário</mat-label>
-                <input matInput placeholder="Digite o email do usuário" maxlength="80" #emailUsuario
-                    formControlName="emailUsuario">
-                <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_ACTION_EDIT}}</mat-icon>
-                <mat-hint align="end" class="mat-icon-actions">{{emailUsuario.value.length}}/80</mat-hint>
-                <mat-error>{{hasErrorFormControl(form.controls['emailUsuario'])}}</mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="field-form">
-                <mat-label hintLabel="máximo de 100 caracteres">Digite o nome do usuário</mat-label>
-                <input matInput placeholder="Digite o nome do usuário" maxlength="100" #nomeUsuario
-                    formControlName="nomeUsuario">
-                <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_ACTION_EDIT}}</mat-icon>
-                <mat-hint align="end" class="mat-icon-actions">{{nomeUsuario.value.length}}/100</mat-hint>
-                <mat-error>{{hasErrorFormControl(form.controls['nomeUsuario'])}}</mat-error>
-            </mat-form-field>
-            <mat-form-field class="field-form" appearance="outline">
-                <mat-label>Selecione o perfil de acesso</mat-label>
-                <mat-select formControlName="perfilUsuario">
-                    @for(profile of profileList; track profile){
-                    <mat-option value={{profile.id}}>{{profile.description}}</mat-option>
-                    }
-                </mat-select>
-                <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_ACTION_EDIT}}</mat-icon>
-                <mat-error>{{hasErrorFormControl(form.controls['perfilUsuario'])}}</mat-error>
-            </mat-form-field>
-        </div>
+  <div class="row">
+    <div class="container-form-col">
+      <mat-form-field appearance="outline" class="field-form">
+        <mat-label hintLabel="máximo de 80 caracteres"
+          >Digite o email do usuário</mat-label
+        >
+        <input
+          matInput
+          placeholder="Digite o email do usuário"
+          maxlength="80"
+          #emailUsuario
+          formControlName="emailUsuario"
+        />
+        <mat-icon matSuffix class="mat-icon-actions">{{
+          constant_variables.ICON_ACTION_EDIT
+        }}</mat-icon>
+        <mat-hint align="end" class="mat-icon-actions"
+          >{{ emailUsuario.value.length }}/80</mat-hint
+        >
+        <mat-error>{{
+          hasErrorFormControl(form.controls["emailUsuario"])
+        }}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="field-form">
+        <mat-label hintLabel="máximo de 100 caracteres"
+          >Digite o nome do usuário</mat-label
+        >
+        <input
+          matInput
+          placeholder="Digite o nome do usuário"
+          maxlength="100"
+          #nomeUsuario
+          formControlName="nomeUsuario"
+        />
+        <mat-icon matSuffix class="mat-icon-actions">{{
+          constant_variables.ICON_ACTION_EDIT
+        }}</mat-icon>
+        <mat-hint align="end" class="mat-icon-actions"
+          >{{ nomeUsuario.value.length }}/100</mat-hint
+        >
+        <mat-error>{{
+          hasErrorFormControl(form.controls["nomeUsuario"])
+        }}</mat-error>
+      </mat-form-field>
+      <mat-form-field class="field-form" appearance="outline">
+        <mat-label>Selecione o perfil de acesso</mat-label>
+        <mat-select formControlName="perfilUsuario">
+          @for(profile of profileList; track profile){
+          <mat-option value="{{ profile.id }}">{{
+            profile.description
+          }}</mat-option>
+          }
+        </mat-select>
+        <mat-icon matSuffix class="mat-icon-actions">{{
+          constant_variables.ICON_ACTION_EDIT
+        }}</mat-icon>
+        <mat-error>{{
+          hasErrorFormControl(form.controls["perfilUsuario"])
+        }}</mat-error>
+      </mat-form-field>
     </div>
+  </div>
 
-    <div class="row">
-        <div class="container-form-button">
-            <button mat-flat-button class="btn-table" matTooltip="Cancelar"
-                [routerLink]="['..']"><mat-icon>{{constant_variables.ICON_ACTION_CANCEL}}</mat-icon>
-                {{constant_variables.ICON_ACTION_CANCEL_LABEL}}</button>
-            <button mat-flat-button class="btn-table" [matTooltip]="constant_variables.ICON_ACTION_CLEAN_LABEL"
-                (click)="cleanForm()"><mat-icon>{{constant_variables.ICON_ACTION_CLEAN}}</mat-icon>
-                {{constant_variables.ICON_ACTION_CLEAN_LABEL}}</button>
-            <button mat-flat-button class="btn-table" [matTooltip]="constant_variables.ICON_ACTION_SAVE_LABEL"
-                [disabled]="!form.valid" (click)="save()"><mat-icon>{{constant_variables.ICON_ACTION_SAVE}}</mat-icon>
-                {{constant_variables.ICON_ACTION_SAVE_LABEL}}</button>
-        </div>
+  <div class="row">
+    <div class="container-form-button">
+      <button
+        type="button"
+        mat-flat-button
+        class="btn-table"
+        matTooltip="Cancelar"
+        [routerLink]="['/users']"
+      >
+        <mat-icon>{{ constant_variables.ICON_ACTION_CANCEL }}</mat-icon>
+        {{ constant_variables.ICON_ACTION_CANCEL_LABEL }}
+      </button>
+      <button
+        type="button"
+        mat-flat-button
+        class="btn-table"
+        [matTooltip]="constant_variables.ICON_ACTION_CLEAN_LABEL"
+        (click)="cleanForm()"
+      >
+        <mat-icon>{{ constant_variables.ICON_ACTION_CLEAN }}</mat-icon>
+        {{ constant_variables.ICON_ACTION_CLEAN_LABEL }}
+      </button>
+      <button
+        type="button"
+        mat-flat-button
+        class="btn-table"
+        [matTooltip]="constant_variables.ICON_ACTION_SAVE_LABEL"
+        [disabled]="!form.valid"
+        (click)="save()"
+      >
+        <mat-icon>{{ constant_variables.ICON_ACTION_SAVE }}</mat-icon>
+        {{ constant_variables.ICON_ACTION_SAVE_LABEL }}
+      </button>
     </div>
+  </div>
 </form>

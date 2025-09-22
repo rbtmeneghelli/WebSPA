@@ -17,6 +17,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CONSTANT_VARIABLES } from '../../core/constants/variables.constant';
 import { DropDownListModel } from '../../core/models/dropdown-list.model';
 import { NotificationService } from '../../core/services/notification.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ModalDialogComponent } from '../../shared/components/modal-dialog/modal-dialog.component';
 
 @Component({
   selector: 'app-user-list',
@@ -38,6 +40,7 @@ import { NotificationService } from '../../core/services/notification.service';
     RouterLink,
     MatPaginatorModule,
     ReactiveFormsModule,
+    ModalDialogComponent
   ],
   templateUrl: './users-list.component.html',
   providers: [NotificationService],
@@ -144,6 +147,9 @@ export class UsersListComponent implements AfterViewInit {
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
+  readonly userDeleteModal = inject(MatDialog);
+  readonly userStatusModal = inject(MatDialog);
+
   constructor() {
     this.form = this.formBuilder.group({
       nomeUsuario: ['', []],
@@ -171,5 +177,30 @@ export class UsersListComponent implements AfterViewInit {
     this.form.reset();
     this.form.controls['status'].setValue(['1']);
     this.form.controls['ordenacao'].setValue('1');
+  }
+
+  openUserDeleteModal(id: number): void {
+    const user = this.usersList.find(x => x.id === id);
+    this.userDeleteModal.open(ModalDialogComponent, {
+      data: {
+        title: 'Exclusão do usuário',
+        ask: `Deseja efetuar a exclusão do usuário ${user?.name}?`,
+        id: id
+      },
+      width: '400px',
+    });
+  }
+
+  openUserStatusModal(id: number): void {
+    const user = this.usersList.find(x => x.id === id);
+    const ask = user?.status ? `Deseja atualizar o status do usuário ${user?.name} para ativo?` : `Deseja atualizar o status do usuário ${user?.name} para inativo?`
+    this.userStatusModal.open(ModalDialogComponent, {
+      data: {
+        title: 'Atualização de status do usuário',
+        ask: ask,
+        id: id
+      },
+      width: '500px',
+    });
   }
 }

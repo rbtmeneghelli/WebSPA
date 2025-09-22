@@ -87,6 +87,7 @@
   <div class="container-table-button">
     <h1 class="text-table">{{ textTableOptional }}</h1>
     <button
+      type="button"
       mat-flat-button
       class="btn-table"
       [matTooltip]="constant_variables.ICON_ACTION_EXPORT_LABEL"
@@ -95,6 +96,7 @@
       {{ constant_variables.ICON_ACTION_EXPORT_LABEL }}
     </button>
     <button
+      type="button"
       mat-flat-button
       class="btn-table"
       [matTooltip]="
@@ -132,7 +134,7 @@
       <ng-container matColumnDef="#">
         <th mat-header-cell *matHeaderCellDef>Ações</th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button [matMenuTriggerFor]="menu">
+          <button type="button" mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon
               class="mat-icon-actions"
               [matTooltip]="constant_variables.ICON_ACTION_LIST_LABEL"
@@ -141,6 +143,7 @@
           </button>
           <mat-menu #menu="matMenu">
             <button
+              type="button"
               mat-menu-item
               [matTooltip]="
                 constant_variables.ICON_ACTION_VIEW_LABEL + actionLabel
@@ -156,6 +159,7 @@
               >
             </button>
             <button
+              type="button"
               mat-menu-item
               [matTooltip]="
                 constant_variables.ICON_ACTION_EDIT_LABEL + actionLabel
@@ -173,10 +177,12 @@
               >
             </button>
             <button
+              type="button"
               mat-menu-item
               [matTooltip]="
                 constant_variables.ICON_ACTION_DELETE_LABEL + actionLabel
               "
+              (click)="openProfileDeleteModal(element.id)"
             >
               <mat-icon class="mat-icon-actions">{{
                 constant_variables.ICON_ACTION_DELETE
@@ -187,11 +193,13 @@
               >
             </button>
             <button
+              type="button"
               mat-menu-item
               *ngIf="element.status"
               [matTooltip]="
                 constant_variables.ICON_ACTION_INACTIVE_LABEL + actionLabel
               "
+              (click)="openProfileStatusModal(element.id)"
             >
               <mat-icon class="mat-icon-actions">{{
                 constant_variables.ICON_ACTION_INACTIVE
@@ -202,11 +210,13 @@
               </span>
             </button>
             <button
+              type="button"
               mat-menu-item
               *ngIf="!element.status"
               [matTooltip]="
                 constant_variables.ICON_ACTION_ACTIVE_LABEL + actionLabel
               "
+              (click)="openProfileStatusModal(element.id)"
             >
               <mat-icon class="mat-icon-actions">{{
                 constant_variables.ICON_ACTION_ACTIVE

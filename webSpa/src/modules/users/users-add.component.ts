@@ -68,7 +68,7 @@ export class UsersAddComponent {
 
   constructor() {
     this.form = this.formBuilder.group({
-      codigo: ['', [Validators.required], [this.validarCodigo.bind(this)]],
+      // codigo: ['', [Validators.required], [this.validarCodigo.bind(this)]],
       emailUsuario: ['', [Validators.required, Validators.email]],
       nomeUsuario: ['', [Validators.required]],
       perfilUsuario: ['', [Validators.required]],
@@ -87,26 +87,26 @@ export class UsersAddComponent {
     this.snackBarService.sendSnackBarNotification(CONSTANT_MESSAGES.BTN_NEW);
   }
 
-  validarCodigo(control: AbstractControl): Observable<ValidationErrors | null> {
-    const codigo = control.value;
+  // validarCodigo(control: AbstractControl): Observable<ValidationErrors | null> {
+  //   const codigo = control.value;
 
-    if (!codigo) {
-      return of(null);
-    }
+  //   if (!codigo) {
+  //     return of(null);
+  //   }
 
-    return this.usuarioService.validCode(codigo).pipe(
-      map((response) => null),
-      catchError((error: HttpErrorResponse) => {
-        if (error.status === 400) {
-          this.mensagemCodigoExistente = error.error?.errors[0];
-          return of({ codeExist: true });
-        } else {
-          this.snackBarService.sendSnackBarNotification(
-            'Não é possível prosseguir com nenhuma ação, verifique sua conexão com a internet'
-          );
-          return of({ codeExist: true });
-        }
-      })
-    );
-  }
+  //   return this.usuarioService.validCode(codigo).pipe(
+  //     map((response) => null),
+  //     catchError((error: HttpErrorResponse) => {
+  //       if (error.status === 400) {
+  //         this.mensagemCodigoExistente = error.error?.errors[0];
+  //         return of({ codeExist: true });
+  //       } else {
+  //         this.snackBarService.sendSnackBarNotification(
+  //           'Não é possível prosseguir com nenhuma ação, verifique sua conexão com a internet'
+  //         );
+  //         return of({ codeExist: true });
+  //       }
+  //     })
+  //   );
+  // }
 }
