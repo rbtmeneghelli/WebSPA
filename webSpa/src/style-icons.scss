@@ -1,23 +1,26 @@
+@use "style-mixin" as mixins;
+@use "style-variables" as vars;
+
 .mat-span-active{
-    @include custom-span($color-icon-active, $font-weight-700);
+    @include mixins.custom-span(vars.$color-icon-active, vars.$font-weight-700);
 }
 
 .mat-span-inactive{
-    @include custom-span($color-icon-inactive, $font-weight-700);
+    @include mixins.custom-span(vars.$color-icon-inactive, vars.$font-weight-700);
 }
 
 .mat-icon-active{
-    @include custom-icon($vertical-align-sub, $color-icon-active);
+    @include mixins.custom-icon(vars.$vertical-align-sub, vars.$color-icon-active);
 }
 
 .mat-icon-inactive{
-    @include custom-icon($vertical-align-sub, $color-icon-inactive);
+    @include mixins.custom-icon(vars.$vertical-align-sub, vars.$color-icon-inactive);
 }
 
 .mat-icon-menu-actions{
-    @include custom-icon($vertical-align-sub, $color-white);
+    @include mixins.custom-icon(vars.$vertical-align-sub, vars.$color-white);
 }
 
 .mat-icon-actions{
-    @include custom-icon($vertical-align-sub, $primary-color);
+    @include mixins.custom-icon(vars.$vertical-align-sub, vars.$primary-color);
 }

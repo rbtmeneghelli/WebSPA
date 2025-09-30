@@ -1,90 +1,91 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
+// ================================
+// Angular Material Core & Theme
+// ================================
 @use "@angular/material" as mat;
-// Plus imports for other components in your app.
+@use "style-mixin" as mixins;
+@use "style-icons" as icons;
+@use "style-menu" as menu;
+@use "style-snackbar" as snackbar;
+@use "style-spinner" as spinner;
+@use "style-table" as table;
+@use "style-container" as container;
+@use "style-icon-user" as iconUser;
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
+// Core do Material (incluir apenas uma vez)
 @include mat.core();
 
-// Define the theme object.
-$webSpa-theme: mat.define-theme(
-  (
-    color: (
-      theme-type: light,
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette
-    ),
-    density: (
-      scale: 0
-    )
+// Define o tema (Light Theme)
+$webSpa-theme: mat.define-light-theme((
+  color: (
+    primary: mat.$azure-palette,
+    secondary: mat.$blue-palette
+  ),
+  density: (
+    scale: 0
   )
-);
+));
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-:root {
-  @include mat.all-component-themes($webSpa-theme);
+// Aplica o tema para todos os componentes
+@include mat.all-component-themes($webSpa-theme);
+
+
+// ================================
+// Global Styles
+// ================================
+html, body {
+  height: vars.$height-100;
 }
 
-@import "style-variables";
-@import "style-mixin";
-@import "style-icons";
-@import "style-menu";
-@import "style-snackbar";
-@import "style-spinner";
-@import "style-table";
-@import "style-container";
-@import "style-icon-user";
-
-// Comment out the line below if you want to use the pre-defined typography utility classes.
-// For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
-// @include mat.typography-hierarchy($webSpa-theme);
-
-// Comment out the line below if you want to use the deprecated `color` inputs.
-// @include mat.color-variants-backwards-compatibility($webSpa-theme);
-/* You can add global styles to this file, and also import other style files */
-
-html,
-body {
-  height: $height-100;
-}
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+
+// ================================
+// Helpers & Utilities
+// ================================
 .chevron {
-  margin-left: $auto;
-}
-
-h1 {
-  color: $primary-color;
-}
-
-.custom-link {
-  color: $primary-color;
-  text-decoration: none;
-  transition: color 0.3s;
-  cursor: $pointer;
-  font-weight: $font-weight-700;
-
-  &:hover {
-    color: $color-info;
-    text-decoration: underline;
-  }
+  margin-left: vars.$auto;
 }
 
 .mr-5 {
   margin-right: 5px;
 }
 
+
+// ================================
+// Typography & Links
+// ================================
+h1 {
+  color: vars.$primary-color;
+}
+
+.custom-link {
+  color: vars.$primary-color;
+  text-decoration: none;
+  transition: color 0.3s;
+  cursor: vars.$pointer;
+  font-weight: vars.$font-weight-700;
+
+  &:hover {
+    color: vars.$color-info;
+    text-decoration: underline;
+  }
+}
+
+
+// ================================
+// Angular Material Overrides
+// ================================
+
+// Aba com padding customizado
 .mat-tab-padding {
   padding-top: 30px !important;
 }
 
+// Ajuste cor do label da tab (Angular 20)
+// Use ::ng-deep se necessário para garantir estilo
 .mat-tab-label-text {
-  color: $primary-color;
+  color: vars.$primary-color;
 }

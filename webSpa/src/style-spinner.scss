@@ -1,12 +1,14 @@
+@use "style-variables" as vars;
+
 .background-spinner {
     background: #00000066;
-    position: $position-fixed;
-    width: $width-100;
-    height: $height-100;
+    position: vars.$position-fixed;
+    width: vars.$width-100;
+    height: vars.$height-100;
     z-index: 1060 !important;
-    display: $display-flex;
-    justify-content: $justify-content-center;
-    align-items: $align-items-center;
+    display: vars.$display-flex;
+    justify-content: vars.$justify-content-center;
+    align-items: vars.$align-items-center;
 }
 
 .loader-spinner {

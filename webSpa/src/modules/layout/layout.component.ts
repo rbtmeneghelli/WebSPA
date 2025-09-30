@@ -21,8 +21,7 @@ import { NotificationService } from "../../core/services/notification.service";
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [RouterOutlet, MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, CommonModule, MatTooltipModule,
-    UsersListComponent, FooterComponent, SideBarComponent, ToolBarIconsComponent, UsersAddComponent, LoginComponent, UserCreateComponent, ForgetPasswordComponent],
+  imports: [RouterOutlet, MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, CommonModule, MatTooltipModule, FooterComponent, SideBarComponent, ToolBarIconsComponent],
   templateUrl: './layout.component.html',
   providers: [NotificationService]
 })

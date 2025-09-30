@@ -46,7 +46,6 @@ import { DetailsRecordComponent } from '../../shared/components/details-record/d
     MatMenuModule,
     MatTooltipModule,
     MatCheckboxModule,
-    FooterComponent,
     ReactiveFormsModule,
     RouterLink,
     DetailsRecordComponent

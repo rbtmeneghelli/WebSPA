@@ -1,94 +1,96 @@
+@use "style-variables" as vars;
+
 .row {
-    display: $display-flex;
+    display: vars.$display-flex;
     margin-bottom: 2em;
-    @media only screen and (max-width: $max-width-mobile) {
-        flex-wrap: $flex-wrap;
+    @media only screen and (max-width: vars.$max-width-mobile) {
+        flex-wrap: vars.$flex-wrap;
     }
 }
 
 .container-form-finance {
-    @include custom-containerr($display-flex, $flex-direction-column, $justify-content-start, $width-50);
-    margin-right: $mr-16;
-    @media only screen and (max-width: $max-width-mobile) {
-        width: $width-100;
+    @include custom-containerr(vars.$display-flex, vars.$flex-direction-column, vars.$justify-content-start, vars.$width-50);
+    margin-right: vars.$mr-16;
+    @media only screen and (max-width: vars.$max-width-mobile) {
+        width: vars.$width-100;
         margin-right: 0px;
     }
     .field-form {
-        width: $width-100;
-        @media only screen and (max-width: $max-width-mobile) {
-            width: $width-100;
+        width: vars.$width-100;
+        @media only screen and (max-width: vars.$max-width-mobile) {
+            width: vars.$width-100;
         }
     }
 }
 
 .container-form-finance2 {
-    @include custom-containerr($display-flex, $flex-direction-column, $justify-content-start, $width-50);
-    margin-right: $mr-16;
-    @media only screen and (max-width: $max-width-mobile) {
-        width: $width-100;
+    @include custom-containerr(vars.$display-flex, vars.$flex-direction-column, vars.$justify-content-start, vars.$width-50);
+    margin-right: vars.$mr-16;
+    @media only screen and (max-width: vars.$max-width-mobile) {
+        width: vars.$width-100;
         margin-right: 0px;
     }
     mat-card {
         max-height: 87%;
-        @media only screen and (max-width: $max-width-mobile) {
-            max-height: $height-100;
+        @media only screen and (max-width: vars.$max-width-mobile) {
+            max-height: vars.$height-100;
         }
     }
     .field-form {
-        width: $width-100;
-        @media only screen and (max-width: $max-width-mobile) {
-            width: $width-100;
+        width: vars.$width-100;
+        @media only screen and (max-width: vars.$max-width-mobile) {
+            width: vars.$width-100;
         }
     }
     .container-data {
-        display: $display-flex;
+        display: vars.$display-flex;
         .p-left-1 {
-            width: $width-50;
-            margin-right: $mr-20;
-            color: $color-success;
-            font-weight: $font-weight-700;
-            @media only screen and (max-width: $max-width-mobile) {
-                width: $width-100;
+            width: vars.$width-50;
+            margin-right: vars.$mr-20;
+            color: vars.$color-success;
+            font-weight: vars.$font-weight-700;
+            @media only screen and (max-width: vars.$max-width-mobile) {
+                width: vars.$width-100;
             }
         }
         .p-right-1 {
-            width: $width-50;
-            font-weight: $font-weight-700;
-            @media only screen and (max-width: $max-width-mobile) {
-                width: $width-100;
+            width: vars.$width-50;
+            font-weight: vars.$font-weight-700;
+            @media only screen and (max-width: vars.$max-width-mobile) {
+                width: vars.$width-100;
             }
         }
         .p-left-2 {
-            width: $width-50;
-            margin-right: $mr-20;
-            color: $color-error;
-            font-weight: $font-weight-700;
-            @media only screen and (max-width: $max-width-mobile) {
-                width: $width-100;
+            width: vars.$width-50;
+            margin-right: vars.$mr-20;
+            color: vars.$color-error;
+            font-weight: vars.$font-weight-700;
+            @media only screen and (max-width: vars.$max-width-mobile) {
+                width: vars.$width-100;
             }
         }
         .p-right-2 {
-            width: $width-50;
-            font-weight: $font-weight-700;
-            @media only screen and (max-width: $max-width-mobile) {
-                width: $width-100;
+            width: vars.$width-50;
+            font-weight: vars.$font-weight-700;
+            @media only screen and (max-width: vars.$max-width-mobile) {
+                width: vars.$width-100;
             }
         }
         .progress-bar {
-            display: $display-flex;
+            display: vars.$display-flex;
         }
     }
 }
 
 .container-subform-finance {
-    justify-content: $justify-content-center;
-    flex-direction: $flex-direction-row;
-    width: $width-100;
-    display: $display-flex;
-    @media only screen and (max-width: $max-width-mobile) {
-        width: $width-100;
-        flex-direction: $flex-direction-column;
-        justify-content: $justify-content-start;
+    justify-content: vars.$justify-content-center;
+    flex-direction: vars.$flex-direction-row;
+    width: vars.$width-100;
+    display: vars.$display-flex;
+    @media only screen and (max-width: vars.$max-width-mobile) {
+        width: vars.$width-100;
+        flex-direction: vars.$flex-direction-column;
+        justify-content: vars.$justify-content-start;
     }
     .field-form-1 {
         width: $width-15;

@@ -45,7 +45,6 @@ import { FunctionalityList } from '../../core/models/functionalitys/functionalit
     MatMenuModule,
     MatTooltipModule,
     MatCheckboxModule,
-    FooterComponent,
     ReactiveFormsModule,
     RouterLink,
   ],

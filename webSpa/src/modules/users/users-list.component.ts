@@ -40,7 +40,6 @@ import { ModalDialogComponent } from '../../shared/components/modal-dialog/modal
     RouterLink,
     MatPaginatorModule,
     ReactiveFormsModule,
-    ModalDialogComponent
   ],
   templateUrl: './users-list.component.html',
   providers: [NotificationService],

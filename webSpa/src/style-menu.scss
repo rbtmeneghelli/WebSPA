@@ -1,43 +1,45 @@
+@use "style-variables" as vars;
+
 mat-toolbar {
-    background-color: $primary-color !important;
-    justify-content: $justify-content-sp-between;
-    align-items: $align-items-center;
+    background-color: vars.$primary-color !important;
+    justify-content: vars.$justify-content-sp-between;
+    align-items: vars.$align-items-center;
 
     span {
-        color: $color-white;
-        font-weight: $font-weight-700;
+        color: vars.$color-white;
+        font-weight: vars.$font-weight-700;
     }
 
     mat-icon {
-        color: $color-white;
+        color: vars.$color-white;
     }
 }
 
 .sidenav-container {
-    width: $width-100;
-    height: $height-100;
+    width: vars.$width-100;
+    height: vars.$height-100;
     mat-sidenav {
-        background-color: $primary-color !important;
+        background-color: vars.$primary-color !important;
         border-radius: 0px !important;
     }
 }
 
 .menu-area {
-    color: $color-white;
-    text-align: $text-align-center;
+    color: vars.$color-white;
+    text-align: vars.$text-align-center;
 }
 
 .menu-item {
-    color: $color-white;
-    text-align: $text-align-center;
+    color: vars.$color-white;
+    text-align: vars.$text-align-center;
 }
 
 .menu-item-text {
-    color: $color-white !important;
+    color: vars.$color-white !important;
 }
 
 .mat-list-item-sub {
-    padding-left: $padding-left-20 !important;
+    padding-left: vars.$padding-left-20 !important;
 }
 
 .content {

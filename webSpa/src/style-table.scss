@@ -1,37 +1,39 @@
+@use "style-variables" as vars;
+
 table {
-  width: $width-100;
-  overflow: $auto;
+  width: vars.$width-100;
+  overflow: vars.$auto;
 
   .tr-header {
-    background-color: $primary-color;
+    background-color: vars.$primary-color;
   }
 
   th {
-    color: $color-white;
-    font-weight: $font-weight-700;
+    color: vars.$color-white;
+    font-weight: vars.$font-weight-700;
   }
 
   .th-center {
-    text-align: $text-align-center;
+    text-align: vars.$text-align-center;
   }
 
   .th-center-chk-todos {
-    text-align: $text-align-center;
-    align-content: $align-content-center;
+    text-align: vars.$text-align-center;
+    align-content: vars.$align-content-center;
   }
 
   .td-center {
-    text-align: $text-align-center;
+    text-align: vars.$text-align-center;
   }
 
   .td-center-chk-todos {
-    text-align: $text-align-center;
-    align-content: $align-content-center;
+    text-align: vars.$text-align-center;
+    align-content: vars.$align-content-center;
   }
 }
 
 mat-paginator {
-  color: $primary-color !important;
+  color: vars.$primary-color !important;
 }
 
 mat-selection-list {
