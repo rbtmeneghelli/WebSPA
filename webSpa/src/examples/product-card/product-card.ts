@@ -1,6 +1,7 @@
+import { Product } from './../product';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from "@angular/common";
-import { Component, inject } from "@angular/core";
+import { Component, inject, Input, input } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSidenavModule } from "@angular/material/sidenav";
@@ -18,7 +19,6 @@ import { UsersAddComponent } from "../../modules/users/users-add.component";
 import { UsersListComponent } from "../../modules/users/users-list.component";
 import { NotificationService } from "../../core/services/notification.service";
 
-
 @Component({
   selector: 'app-product-card',
   standalone: true,
@@ -28,5 +28,11 @@ import { NotificationService } from "../../core/services/notification.service";
 })
 
 export class ProductCardComponent {
+
+  /* Formato da versão mais nova */
+  readonly product = input.required<Product>();
+  readonly addButtonLabel = input('Add to Cart')
+  /* Formato da versão mais antiga */
+  // @Input({ required: true }) product!: Product;
 }
 
