@@ -44,21 +44,20 @@ export class ProductsGridComponent {
       name: 'XPTO',
       description: 'Este produto e fake',
       price: 10.0,
-      orginalPrice: 100.0,
+      orginalPrice: 100.99,
     },
     {
       id: 2,
       name: 'XYZ',
       description: 'Este produto e fake II',
-      price: 20.0,
-      orginalPrice: 200.0,
+      price: 20.99
     },
     {
       id: 3,
       name: 'ABC',
       description: 'Este produto e fake III',
       price: 30.0,
-      orginalPrice: 300.0,
+      orginalPrice: 300.99,
     },
   ]);
 }
