@@ -1,3 +1,5 @@
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
@@ -33,11 +35,16 @@ import { Product } from '../product';
     MatTooltipModule,
     ProductCardComponent,
     MatCardModule,
+    MatInputModule,
+    FormsModule,
+    MatFormFieldModule,
   ],
   templateUrl: './products-grid.component.html',
   providers: [NotificationService],
 })
 export class ProductsGridComponent {
+  protected readonly searchTerm = signal('');
+
   protected readonly products = signal<Product[]>([
     {
       id: 1,
@@ -50,7 +57,7 @@ export class ProductsGridComponent {
       id: 2,
       name: 'XYZ',
       description: 'Este produto e fake II',
-      price: 20.99
+      price: 20.99,
     },
     {
       id: 3,
@@ -60,4 +67,12 @@ export class ProductsGridComponent {
       orginalPrice: 300.99,
     },
   ]);
+
+  protected clearSearch() {
+    this.searchTerm.set('');
+  }
+
+  protected trimSearch() {
+    this.searchTerm.update((value: string) => value.trim());
+  }
 }

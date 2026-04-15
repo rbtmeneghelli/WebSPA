@@ -1,6 +1,11 @@
 <div class="products-container">
   <p>Total products: {{ products().length }}</p>
 
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>Search Products</mat-label>
+    <input matInput [(ngModel)]="searchTerm" placeholder="e.g. headphones" />
+  </mat-form-field>
+
   <div class="products-grid">
     @for (item of products(); track item.id) {
     <app-product-card [product]="item"></app-product-card>

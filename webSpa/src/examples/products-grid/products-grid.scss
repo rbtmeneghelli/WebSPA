@@ -3,6 +3,11 @@
   gap: 1rem;
 }
 
+.search-field {
+  display: block;
+  width: 100%;
+}
+
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
