@@ -68,6 +68,16 @@ export class ProductsGridComponent {
     },
   ]);
 
+  protected filteredProducts = computed(() => {
+    const term = this.searchTerm().toLocaleLowerCase().trim();
+    if(!term) return this.products();
+
+    this.products().filter((product) =>
+      product.name.toLocaleLowerCase().includes(term) ||
+      product.description.toLocaleLowerCase().includes(term)
+    );
+  });
+
   protected clearSearch() {
     this.searchTerm.set('');
   }
