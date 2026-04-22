@@ -1,7 +1,7 @@
 import { Product } from './../product';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from "@angular/common";
-import { Component, inject, Input, input } from "@angular/core";
+import { Component, inject, Input, input, output } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSidenavModule } from "@angular/material/sidenav";
@@ -34,5 +34,11 @@ export class ProductCardComponent {
   readonly addButtonLabel = input('Add to Cart')
   /* Formato da versão mais antiga */
   // @Input({ required: true }) product!: Product;
+
+  readonly addToCart = output<Product>();
+
+  protected onAddToCart() {
+    this.addToCart.emit(this.product())
+  }
 }
 

@@ -70,11 +70,12 @@ export class ProductsGridComponent {
 
   protected filteredProducts = computed(() => {
     const term = this.searchTerm().toLocaleLowerCase().trim();
-    if(!term) return this.products();
+    if (!term) return this.products();
 
-    this.products().filter((product) =>
-      product.name.toLocaleLowerCase().includes(term) ||
-      product.description.toLocaleLowerCase().includes(term)
+    this.products().filter(
+      (product) =>
+        product.name.toLocaleLowerCase().includes(term) ||
+        product.description.toLocaleLowerCase().includes(term),
     );
   });
 
@@ -82,7 +83,7 @@ export class ProductsGridComponent {
     this.searchTerm.set('');
   }
 
-  protected trimSearch() {
-    this.searchTerm.update((value: string) => value.trim());
+  protected onAddToCart(product: Product) {
+    console.log('Add produto no carrinho: ', product.name);
   }
 }
