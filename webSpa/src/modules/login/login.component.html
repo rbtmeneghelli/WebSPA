@@ -1,28 +1,3 @@
-<!-- <form [formGroup]="form" (ngSubmit)="confirm()">
-    <div class="container-form-fix">
-        <div class="box-fix">
-            <div class="row">
-                <div class="container-page">
-                    <h1 class="text-table">Tela de Login</h1>
-                </div>
-            </div>
-
-
-
-            <div class="box-fix-login">
-                <mat-checkbox>Lembrar dados do meu acesso?</mat-checkbox>
-                <button mat-flat-button class="btn-table" matTooltip="Confirmar" (click)="confirm()"
-                    [disabled]="!form.valid"><mat-icon>login</mat-icon> Confirmar</button>
-            </div>
-            <div class="sub-box-fix-login">
-                <p class="p-first-text">Esqueceu a senha? <a [routerLink]="['/forget-password']"
-                        class="custom-link">Clique aqui</a></p>
-                <p>Novo usuário? <a [routerLink]="['/request-new-user']" class="custom-link">Clique aqui </a></p>
-            </div>
-        </div>
-    </div>
-</form> -->
-
 <div class="container-login">
   <!-- LEFT SIDE -->
   <div class="left">
@@ -111,20 +86,17 @@
           <mat-icon>login</mat-icon> Entrar
         </button>
 
-        <!--
-                <p>Novo usuário? <a [routerLink]="['/request-new-user']" class="custom-link">Clique aqui </a></p> -->
-
         <button
           mat-flat-button
           color="primary"
           matTooltip="Esqueci minha senha"
           id="lkEsqueciSenha"
-          [routerLink]="['/forget-password']"
+          [routerLink]="['/request-new-user']"
           type="button"
           id="btnEsqueciSenha"
           class="esqueci-btn"
         >
-          <i class="fa fa-group_add"> Cadastrar nova conta</i>
+        <mat-icon>group_add</mat-icon> Cadastrar nova conta
         </button>
       </form>
 

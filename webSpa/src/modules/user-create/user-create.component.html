@@ -1,38 +1,85 @@
-<form [formGroup]="form" (ngSubmit)="confirm()">
-    <div class="container-form-fix">
-        <div class="box-fix">
-            <div class="row">
-                <div class="container-page">
-                    <h1 class="text-table">Solicitação de criação de usuário</h1>
-                </div>
-            </div>
-            <mat-form-field appearance="outline" class="field-form">
-                <mat-label hintLabel="máximo de 80 caracteres">Digite seu email de acesso</mat-label>
-                <input matInput placeholder="Email" maxlength="80" #emailUsuario formControlName="email">
-                <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_ACTION_EMAIL}}</mat-icon>
-                <mat-hint align="end">{{emailUsuario.value.length}}/80</mat-hint>
-                <mat-error>{{hasErrorFormControl(form.controls['email'])}}</mat-error>
-            </mat-form-field>
-            <mat-form-field class="search-profile" appearance="outline" class="field-form">
-                <mat-label>Selecione um perfil</mat-label>
-                <mat-select formControlName="profile">
-                    <mat-option value=2>Colaborador</mat-option>
-                    <mat-option value=3>Cliente</mat-option>
-                </mat-select>
-                <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_ACTION_EDIT}}</mat-icon>
-                <mat-error>{{hasErrorFormControl(form.controls['profile'])}}</mat-error>
-            </mat-form-field>
-            <div class="row">
-                <div class="container-form-inital-actions">
-                    <button mat-flat-button class="btn-action" matTooltip="Cancelar"
-                        [routerLink]="['/login']"><mat-icon>{{constant_variables.ICON_ACTION_CANCEL}}</mat-icon>
-                        {{constant_variables.ICON_ACTION_CANCEL_LABEL}}</button>
-                    <button mat-flat-button class="btn-action" matTooltip="Confirmar" (click)="confirm()"
-                        [disabled]="!form.valid"><mat-icon>manage_accounts</mat-icon> Confirmar</button>
-                </div>
-            </div>
-        </div>
+<div class="container-user-create">
+  <!-- LEFT SIDE -->
+  <div class="left">
+    <div class="brand">
+      <div class="logo">WSPA</div>
+      <h1>WebSPA</h1>
     </div>
-</form>
+    <p class="description">
+      Simples, moderno e feito para você. <br />
+      Um template com diversos tipos de tela para futuras aplicações
+    </p>
+  </div>
 
-<app-footer [classColor]="'text-white'"></app-footer>
+  <!-- RIGHT SIDE -->
+  <div class="right">
+    <mat-card class="user-create-card">
+      <div class="header">
+        <div class="mini-logo">WSPA</div>
+        <p>Solicitação de criação de usuário</p>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="confirm()">
+        <mat-form-field appearance="outline" class="w-100 mb-20">
+          <mat-label hintLabel="máximo de 80 caracteres"
+            >Digite seu email</mat-label
+          >
+          <input
+            matInput
+            placeholder="Email"
+            maxlength="80"
+            #emailUsuario
+            formControlName="email"
+          />
+          <mat-icon matSuffix class="mat-icon-actions">{{
+            constant_variables.ICON_ACTION_EMAIL
+          }}</mat-icon>
+          <mat-hint align="end">{{ emailUsuario.value.length }}/80</mat-hint>
+          <mat-error>{{
+            hasErrorFormControl(form.controls["email"])
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="search-profile w-100 mb-20">
+          <mat-label>Selecione um perfil</mat-label>
+          <mat-select formControlName="profile">
+            <mat-option value="2">Colaborador</mat-option>
+            <mat-option value="3">Cliente</mat-option>
+          </mat-select>
+          <mat-icon matSuffix class="mat-icon-actions">{{
+            constant_variables.ICON_ACTION_EDIT
+          }}</mat-icon>
+          <mat-error>{{
+            hasErrorFormControl(form.controls["profile"])
+          }}</mat-error>
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          class="confirm-btn"
+          matTooltip="Confirmar"
+          (click)="confirm()"
+          [disabled]="!form.valid"
+          type="submit"
+        >
+          <mat-icon>{{ constant_variables.ICON_ACTION_SAVE }}</mat-icon> Confirmar
+        </button>
+
+        <button
+          mat-flat-button
+          class="cancel-btn"
+          matTooltip="Cancelar"
+          [routerLink]="['/login']"
+          type="button"
+        >
+          <mat-icon>{{ constant_variables.ICON_ACTION_CANCEL }}</mat-icon>
+          {{ constant_variables.ICON_ACTION_CANCEL_LABEL }}
+        </button>
+      </form>
+
+      <div>
+        <app-footer [classColor]="'text-primary'"></app-footer>
+      </div>
+    </mat-card>
+  </div>
+</div>

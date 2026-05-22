@@ -28,6 +28,7 @@ import { EnumTypeMessage, EnumActionMessage } from "../../core/enums/enums";
     imports: [RouterOutlet, MatSelectModule, CommonModule, MatCardModule, MatPaginatorModule, MatTableModule, MatButtonModule, MatDividerModule, MatIconModule,
         MatFormFieldModule, MatInputModule, MatMenuModule, MatCheckboxModule, FooterComponent, ReactiveFormsModule, MatTooltipModule, RouterLink],
     templateUrl: './user-create.component.html',
+    styleUrls: ['./user-create.component.scss']
 })
 
 export class UserCreateComponent {
