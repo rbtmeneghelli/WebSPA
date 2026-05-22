@@ -29,6 +29,7 @@ import { CredentialsModel } from '../../core/models/credentials.model';
     imports: [RouterOutlet, MatSelectModule, CommonModule, MatCardModule, MatPaginatorModule, MatTableModule, MatButtonModule, MatDividerModule, MatIconModule,
         MatFormFieldModule, MatInputModule, MatMenuModule, MatTooltipModule, MatCheckboxModule, FooterComponent, ReactiveFormsModule, RouterLink],
     templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
     providers:[AuthGuardService]
 })
 

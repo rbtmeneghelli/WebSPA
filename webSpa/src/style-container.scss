@@ -256,10 +256,11 @@
 
 .container-footer {
     @include mixin.custom-container(vars.$display-flex, vars.$width-100, vars.$gap-10);
+    display: vars.$display-flex;
+    flex-direction: vars.$flex-direction-row;
     justify-content: vars.$justify-content-center;
     align-items: vars.$align-items-center;
     text-align: vars.$text-align-center;
-    position: vars.$position-fixed;
     bottom: 0;
     @media only screen and (max-width: vars.$max-width-mobile) {
         display: none;

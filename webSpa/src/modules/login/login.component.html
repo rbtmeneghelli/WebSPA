@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="confirm()">
+<!-- <form [formGroup]="form" (ngSubmit)="confirm()">
     <div class="container-form-fix">
         <div class="box-fix">
             <div class="row">
@@ -6,22 +6,8 @@
                     <h1 class="text-table">Tela de Login</h1>
                 </div>
             </div>
-            <mat-form-field appearance="outline" class="field-form">
-                <mat-label hintLabel="máximo de 80 caracteres">Digite o seu email de acesso</mat-label>
-                <input matInput placeholder="Email de acesso" maxlength="80" #userEmail formControlName="email">
-                <mat-icon matSuffix class="mat-icon-actions">{{constant_variables.ICON_ACTION_EMAIL}}</mat-icon>
-                <mat-hint align="end">{{userEmail.value.length}}/80</mat-hint>
-                <mat-error>{{hasErrorFormControl(form.controls['email'])}}</mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="field-form">
-                <mat-label hintLabel="máximo de 20 caracteres">Digite a sua senha de acesso</mat-label>
-                <input matInput placeholder="Senha de acesso" maxlength="20" #userPsw
-                    [type]="hidePassword ? 'password' : 'text'" formControlName="password">
-                <mat-icon matSuffix class="mat-icon-actions" (click)="hidePassword = !hidePassword">{{hidePassword ?
-                    constant_variables.ICON_ACTION_VIEW : constant_variables.ICON_ACTION_VIEW_OFF}}</mat-icon>
-                <mat-hint align="end">{{userPsw.value.length}}/20</mat-hint>
-                <mat-error>{{hasErrorFormControl(form.controls['password'])}}</mat-error>
-            </mat-form-field>
+
+
 
             <div class="box-fix-login">
                 <mat-checkbox>Lembrar dados do meu acesso?</mat-checkbox>
@@ -35,7 +21,116 @@
             </div>
         </div>
     </div>
-</form>
+</form> -->
 
-<app-footer [classColor]="'text-white'"></app-footer>
+<div class="container-login">
+  <!-- LEFT SIDE -->
+  <div class="left">
+    <div class="brand">
+      <div class="logo">WSPA</div>
+      <h1>WebSPA</h1>
+    </div>
+    <p class="description">
+      Simples, moderno e feito para você. <br />
+      Um template com diversos tipos de tela para futuras aplicações
+    </p>
+  </div>
 
+  <!-- RIGHT SIDE -->
+  <div class="right">
+    <mat-card class="login-card">
+      <div class="header">
+        <div class="mini-logo">WSPA</div>
+        <p>Preencha seus dados e acesse sua conta</p>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="confirm()">
+        <mat-form-field appearance="outline" class="w-100 mb-20">
+          <mat-label hintLabel="máximo de 80 caracteres"
+            >Digite o seu email de acesso</mat-label
+          >
+          <input
+            matInput
+            placeholder="Email de acesso"
+            maxlength="80"
+            #userEmail
+            formControlName="email"
+          />
+          <mat-icon matSuffix class="mat-icon-actions">{{
+            constant_variables.ICON_ACTION_EMAIL
+          }}</mat-icon>
+          <mat-hint align="end">{{ userEmail.value.length }}/80</mat-hint>
+          <mat-error>{{
+            hasErrorFormControl(form.controls["email"])
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100 mb-20">
+          <mat-label hintLabel="máximo de 20 caracteres"
+            >Digite a sua senha de acesso</mat-label
+          >
+          <input
+            matInput
+            placeholder="Senha de acesso"
+            maxlength="20"
+            #userPsw
+            [type]="hidePassword ? 'password' : 'text'"
+            formControlName="password"
+          />
+          <mat-icon
+            matSuffix
+            class="mat-icon-actions"
+            (click)="hidePassword = !hidePassword"
+            >{{
+              hidePassword
+                ? constant_variables.ICON_ACTION_VIEW
+                : constant_variables.ICON_ACTION_VIEW_OFF
+            }}</mat-icon
+          >
+          <mat-hint align="end">{{ userPsw.value.length }}/20</mat-hint>
+          <mat-error>{{
+            hasErrorFormControl(form.controls["password"])
+          }}</mat-error>
+        </mat-form-field>
+
+        <div class="actions">
+          <mat-checkbox>Lembrar dados do meu acesso?</mat-checkbox>
+          <a [routerLink]="['/forget-password']" class="custom-link"
+            >Esqueci minha senha</a
+          >
+        </div>
+
+        <button
+          mat-raised-button
+          class="login-btn"
+          matTooltip="Entrar"
+          (click)="confirm()"
+          [disabled]="!form.valid"
+          type="submit"
+        >
+          <mat-icon>login</mat-icon> Entrar
+        </button>
+
+        <!--
+                <p>Novo usuário? <a [routerLink]="['/request-new-user']" class="custom-link">Clique aqui </a></p> -->
+
+        <button
+          mat-flat-button
+          color="primary"
+          matTooltip="Esqueci minha senha"
+          id="lkEsqueciSenha"
+          [routerLink]="['/forget-password']"
+          type="button"
+          id="btnEsqueciSenha"
+          class="esqueci-btn"
+        >
+          <i class="fa fa-group_add"> Cadastrar nova conta</i>
+        </button>
+      </form>
+
+      <div>
+        <app-footer [classColor]="'text-primary'"></app-footer>
+      </div>
+    </mat-card>
+  </div>
+</div>
