@@ -28,6 +28,7 @@ import { CONSTANT_VARIABLES } from "../../core/constants/variables.constant";
     imports: [RouterOutlet, MatSelectModule, CommonModule, MatCardModule, MatPaginatorModule, MatTableModule, MatButtonModule, MatDividerModule, MatIconModule,
         MatFormFieldModule, MatInputModule, MatMenuModule, MatCheckboxModule, FooterComponent, ReactiveFormsModule, MatTooltipModule, RouterLink],
     templateUrl: './forget-password.component.html',
+    styleUrls: ['./forget-password.component.scss']
 })
 
 export class ForgetPasswordComponent {
