@@ -39,7 +39,12 @@ Para desenvolvimento desse software foi escolhido as seguintes tecnologias:
    
 <b>PRINTS DO SISTEMA</b>
 
-![image](https://github.com/user-attachments/assets/3c678e54-a413-4508-8790-9e26dfb255ff)
+<img width="1919" height="910" alt="image" src="https://github.com/user-attachments/assets/42398c8e-b4ad-4fbe-8e1c-7b90986ad074" />
+
+<img width="1919" height="911" alt="image" src="https://github.com/user-attachments/assets/4fe28a13-6d00-4b57-90db-82833fd86a9f" />
+
+<img width="1919" height="909" alt="image" src="https://github.com/user-attachments/assets/99cccea2-dcf1-4d39-8093-fba955dfb27b" />
+
 
 ![image](https://github.com/user-attachments/assets/c3df6a56-f1c8-4583-9b7f-c67cc9254e83)
 
