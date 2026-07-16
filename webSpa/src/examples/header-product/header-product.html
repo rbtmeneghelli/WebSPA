@@ -3,7 +3,7 @@
     <mat-icon aria-hidden="false" aria-label="Home" fontIcon="store"></mat-icon>
   </button>
 
-  <span class="branding">Modern Angular</span>
+  <span class="branding">Modern Angular with Signals</span>
 
   <span class="spacer"></span>
 
@@ -11,6 +11,9 @@
 
   <button mat-button>
     <mat-icon
+      [matBadge]="_CartService.totalItems()"
+      [matBadgeHidden]="_CartService.totalItems() === 0"
+      matBadgeDescription="Número de items no carrinho"
       aria-hidden="false"
       aria-label="Cart"
       fontIcon="shopping_cart"

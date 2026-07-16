@@ -32,7 +32,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     MatFormFieldModule,
   ],
-  templateUrl: './products-grid.component.html',
+  templateUrl: './products-grid.html',
   providers: [NotificationService],
 })
 export class ProductsGridComponent {

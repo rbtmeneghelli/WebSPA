@@ -23,7 +23,7 @@ import { NotificationService } from "../../core/services/notification.service";
   selector: 'app-product-card',
   standalone: true,
   imports: [RouterOutlet, MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, CommonModule, MatTooltipModule, MatCardModule],
-  templateUrl: './product-card.component.html',
+  templateUrl: './product-card.html',
   providers: [NotificationService]
 })
 
