@@ -3,6 +3,7 @@ import { AuthGuard } from '../core/guards/auth.guard';
 import { LayoutComponent } from '../modules/layout/layout.component';
 
 export const APP_ROUTES: Routes = [
+    // Quando é usado a propriedade redirect to, temos que usar o pathmatch full para que o redirectTo funcione corretamente!
     { path: '', pathMatch: 'full', redirectTo: 'login' },
     {
         path: 'login',
