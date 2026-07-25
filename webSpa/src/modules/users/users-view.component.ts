@@ -62,7 +62,15 @@ export class UsersViewComponent {
       perfilUsuario: [{ value: '1', disabled: true }, []],
     });
 
+    /* Esse código e para ler os parametros vindos da URL como um todo! */
     this._ActivatedRoute.params.subscribe((params) => {
+      if (!!params['id']) {
+        this.form.controls['id'].setValue((params['id'] as number) ?? 0);
+      }
+    });
+
+    /* Esse código e para ler os parametros vindos da rota pai somente! */
+    this._ActivatedRoute.parent?.params.subscribe((params) => {
       if (!!params['id']) {
         this.form.controls['id'].setValue((params['id'] as number) ?? 0);
       }
