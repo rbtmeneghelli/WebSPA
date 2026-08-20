@@ -1,5 +1,6 @@
-import { Component, effect, input } from '@angular/core';
+import { Component, effect, input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AuthGuardService } from "../../../core/services/auth-guard.service";
 
 @Component({
   selector: 'app-footer',
@@ -13,6 +14,8 @@ export class FooterComponent {
   // @Input()
   // classColor: string = 'text-primary';
 
+  private _AuthGuardService: AuthGuardService = inject(AuthGuardService);
+
   //Nova forma efetuada para Angular 16 ou superior
   classColor = input<string>('text-primary', { alias: 'classColor' });
 
@@ -21,6 +24,10 @@ export class FooterComponent {
     // effect(() => {
     //   console.log(this.classColor());
     // });
+  }
+
+  isAuthenticated() {
+    return this._AuthGuardService.isAuthenticated();
   }
 }
 

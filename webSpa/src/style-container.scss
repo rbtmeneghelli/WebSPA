@@ -262,6 +262,13 @@
     align-items: vars.$align-items-center;
     text-align: vars.$text-align-center;
     bottom: 0;
+    z-index: 1000;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    background-color: vars.$color-white;
+
+    
     @media only screen and (max-width: vars.$max-width-mobile) {
         display: none;
     }
