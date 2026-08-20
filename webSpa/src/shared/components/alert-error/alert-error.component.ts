@@ -2,13 +2,13 @@ import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CONSTANT_VARIABLES } from '../../../core/constants/variables.constant';
 
 @Component({
     selector: 'app-alert-error',
     standalone: true,
-    imports: [RouterLink, MatIconModule, MatButtonModule],
+    imports: [RouterLink, MatIconModule, MatButtonModule, RouterLinkActive],
     templateUrl: './alert-error.component.html'
 })
 

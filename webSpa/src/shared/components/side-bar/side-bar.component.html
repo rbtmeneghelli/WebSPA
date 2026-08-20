@@ -1,71 +1,298 @@
 <h2 class="menu-item">Menu</h2>
+
 <mat-nav-list>
 
+    <!-- ========================================== -->
+    <!-- ÁREA FINANCEIRA -->
+    <!-- ========================================== -->
+
     <mat-list-item (click)="toggleSubmenuFinanceira()">
-        <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="!submenuOpenFinanceira">chevron_right</mat-icon>
-        <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="submenuOpenFinanceira">expand_more</mat-icon>
-        <div matListItemTitle class="menu-item-text">Área de Financeira</div>
+
+        <mat-icon
+            matListItemIcon
+            class="mat-icon-menu-actions"
+            *ngIf="!submenuOpenFinanceira">
+            chevron_right
+        </mat-icon>
+
+        <mat-icon
+            matListItemIcon
+            class="mat-icon-menu-actions"
+            *ngIf="submenuOpenFinanceira">
+            expand_more
+        </mat-icon>
+
+        <div matListItemTitle class="menu-item-text">
+            Área de Financeira
+        </div>
+
     </mat-list-item>
+
+
     @if (submenuOpenFinanceira) {
-        <mat-list-item class="mat-list-item-sub" [routerLink]="['finances']">
-            <mat-icon matListItemIcon class="mat-icon-menu-actions">calculate</mat-icon>
-            <div matListItemTitle class="menu-item-text">Financeira</div>
-        </mat-list-item>
+
+        <a
+            mat-list-item
+            class="mat-list-item-sub"
+            routerLink="/finances"
+            routerLinkActive="menu-item-active"
+            [routerLinkActiveOptions]="{ exact: true }">
+
+            <mat-icon
+                matListItemIcon
+                class="mat-icon-menu-actions">
+                calculate
+            </mat-icon>
+
+            <div matListItemTitle class="menu-item-text">
+                Financeira
+            </div>
+
+        </a>
+
     }
+
+
+    <!-- ========================================== -->
+    <!-- ÁREA DE SEGURANÇA -->
+    <!-- ========================================== -->
 
     <mat-list-item (click)="toggleSubmenuSeguranca()">
-        <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="!submenuOpenSeguranca">chevron_right</mat-icon>
-        <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="submenuOpenSeguranca">expand_more</mat-icon>
-        <div matListItemTitle class="menu-item-text">Área de Segurança</div>
+
+        <mat-icon
+            matListItemIcon
+            class="mat-icon-menu-actions"
+            *ngIf="!submenuOpenSeguranca">
+            chevron_right
+        </mat-icon>
+
+        <mat-icon
+            matListItemIcon
+            class="mat-icon-menu-actions"
+            *ngIf="submenuOpenSeguranca">
+            expand_more
+        </mat-icon>
+
+        <div matListItemTitle class="menu-item-text">
+            Área de Segurança
+        </div>
+
     </mat-list-item>
+
+
     @if (submenuOpenSeguranca) {
-        <mat-list-item class="mat-list-item-sub" [routerLink]="['profiles']">
-            <mat-icon matListItemIcon class="mat-icon-menu-actions">security</mat-icon>
-            <div matListItemTitle class="menu-item-text">Perfil de Acesso</div>
-        </mat-list-item>
-        <mat-list-item class="mat-list-item-sub" [routerLink]="['users']">
-            <mat-icon matListItemIcon class="mat-icon-menu-actions">security</mat-icon>
-            <div matListItemTitle class="menu-item-text">Usuários</div>
-        </mat-list-item>
+
+        <!-- PERFIL -->
+
+        <a
+            mat-list-item
+            class="mat-list-item-sub"
+            routerLink="/profiles"
+            routerLinkActive="menu-item-active"
+            [routerLinkActiveOptions]="{ exact: true }">
+
+            <mat-icon
+                matListItemIcon
+                class="mat-icon-menu-actions">
+                security
+            </mat-icon>
+
+            <div matListItemTitle class="menu-item-text">
+                Perfil de Acesso
+            </div>
+
+        </a>
+
+
+        <!-- USUÁRIOS -->
+
+        <a
+            mat-list-item
+            class="mat-list-item-sub"
+            routerLink="/users"
+            routerLinkActive="menu-item-active"
+            [routerLinkActiveOptions]="{ exact: true }">
+
+            <mat-icon
+                matListItemIcon
+                class="mat-icon-menu-actions">
+                security
+            </mat-icon>
+
+            <div matListItemTitle class="menu-item-text">
+                Usuários
+            </div>
+
+        </a>
+
     }
 
-    <mat-list-item [routerLink]="['report']">
-        <mat-icon matListItemIcon class="mat-icon-menu-actions">analytics</mat-icon>
-        <div matListItemTitle class="menu-item-text">Relatorios</div>
-    </mat-list-item>
-    
+
+    <!-- ========================================== -->
+    <!-- RELATÓRIOS -->
+    <!-- ========================================== -->
+
+    <a
+        mat-list-item
+        routerLink="/report"
+        routerLinkActive="menu-item-active"
+        [routerLinkActiveOptions]="{ exact: true }">
+
+        <mat-icon
+            matListItemIcon
+            class="mat-icon-menu-actions">
+            analytics
+        </mat-icon>
+
+        <div matListItemTitle class="menu-item-text">
+            Relatórios
+        </div>
+
+    </a>
+
+
+    <!-- ========================================== -->
+    <!-- ÁREA DE CONFIGURAÇÃO -->
+    <!-- ========================================== -->
+
     <mat-list-item (click)="toggleSubmenu()">
-        <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="!submenuOpen">chevron_right</mat-icon>
-        <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="submenuOpen">expand_more</mat-icon>
-        <div matListItemTitle class="menu-item-text">Área de Configuração</div>
+
+        <mat-icon
+            matListItemIcon
+            class="mat-icon-menu-actions"
+            *ngIf="!submenuOpen">
+            chevron_right
+        </mat-icon>
+
+        <mat-icon
+            matListItemIcon
+            class="mat-icon-menu-actions"
+            *ngIf="submenuOpen">
+            expand_more
+        </mat-icon>
+
+        <div matListItemTitle class="menu-item-text">
+            Área de Configuração
+        </div>
+
     </mat-list-item>
-    <!-- Inicio do subMenu do menu Serviços -->
+
+
     @if (submenuOpen) {
-    <mat-list-item class="mat-list-item-sub" [routerLink]="['config-mail']">
-        <mat-icon matListItemIcon class="mat-icon-menu-actions">mail</mat-icon>
-        <div matListItemTitle class="menu-item-text">Configuração de Email</div>
-    </mat-list-item>
-    <mat-list-item class="mat-list-item-sub" [routerLink]="['config-system']">
-        <mat-icon matListItemIcon class="mat-icon-menu-actions">settings</mat-icon>
-        <div matListItemTitle class="menu-item-text">Configuração do Sistema</div>
-    </mat-list-item>
+
+        <!-- CONFIGURAÇÃO DE EMAIL -->
+
+        <a
+            mat-list-item
+            class="mat-list-item-sub"
+            routerLink="/config-mail"
+            routerLinkActive="menu-item-active"
+            [routerLinkActiveOptions]="{ exact: true }">
+
+            <mat-icon
+                matListItemIcon
+                class="mat-icon-menu-actions">
+                mail
+            </mat-icon>
+
+            <div matListItemTitle class="menu-item-text">
+                Configuração de Email
+            </div>
+
+        </a>
+
+
+        <!-- CONFIGURAÇÃO DO SISTEMA -->
+
+        <a
+            mat-list-item
+            class="mat-list-item-sub"
+            routerLink="/config-system"
+            routerLinkActive="menu-item-active"
+            [routerLinkActiveOptions]="{ exact: true }">
+
+            <mat-icon
+                matListItemIcon
+                class="mat-icon-menu-actions">
+                settings
+            </mat-icon>
+
+            <div matListItemTitle class="menu-item-text">
+                Configuração do Sistema
+            </div>
+
+        </a>
+
     }
-    <!-- Fim do subMenu do menu Serviços -->
+
+
+    <!-- ========================================== -->
+    <!-- ÁREA DE SUPORTE -->
+    <!-- ========================================== -->
 
     <mat-list-item (click)="toggleSubmenuSuporte()">
-        <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="!submenuOpenSuporte">chevron_right</mat-icon>
-        <mat-icon matListItemIcon class="mat-icon-menu-actions" *ngIf="submenuOpenSuporte">expand_more</mat-icon>
-        <div matListItemTitle class="menu-item-text">Área de Suporte</div>
+
+        <mat-icon
+            matListItemIcon
+            class="mat-icon-menu-actions"
+            *ngIf="!submenuOpenSuporte">
+            chevron_right
+        </mat-icon>
+
+        <mat-icon
+            matListItemIcon
+            class="mat-icon-menu-actions"
+            *ngIf="submenuOpenSuporte">
+            expand_more
+        </mat-icon>
+
+        <div matListItemTitle class="menu-item-text">
+            Área de Suporte
+        </div>
+
     </mat-list-item>
 
+
     @if (submenuOpenSuporte) {
-        <mat-list-item  class="mat-list-item-sub" >
-            <mat-icon matListItemIcon class="mat-icon-menu-actions">text_snippet</mat-icon>
-            <div matListItemTitle class="menu-item-text">Manual do Sistema</div>
+
+        <!-- MANUAL -->
+
+        <mat-list-item class="mat-list-item-sub">
+
+            <mat-icon
+                matListItemIcon
+                class="mat-icon-menu-actions">
+                text_snippet
+            </mat-icon>
+
+            <div matListItemTitle class="menu-item-text">
+                Manual do Sistema
+            </div>
+
         </mat-list-item>
-        <mat-list-item  class="mat-list-item-sub" [routerLink]="['support-contact']">
-            <mat-icon matListItemIcon class="mat-icon-menu-actions">support_agent</mat-icon>
-            <div matListItemTitle class="menu-item-text">Contato</div>
-        </mat-list-item>
+
+
+        <!-- CONTATO -->
+
+        <a
+            mat-list-item
+            class="mat-list-item-sub"
+            routerLink="/support-contact"
+            routerLinkActive="menu-item-active"
+            [routerLinkActiveOptions]="{ exact: true }">
+
+            <mat-icon
+                matListItemIcon
+                class="mat-icon-menu-actions">
+                support_agent
+            </mat-icon>
+
+            <div matListItemTitle class="menu-item-text">
+                Contato
+            </div>
+
+        </a>
+
     }
+
 </mat-nav-list>

@@ -45,3 +45,20 @@ mat-toolbar {
 .content {
     padding: 36px;
 }
+
+/* Item atualmente selecionado */
+.mat-mdc-list-item.menu-item-active {
+    background-color: #e3f2fd !important;
+    color: #1976d2 !important;
+}
+
+/* Ícone do item selecionado */
+.mat-mdc-list-item.menu-item-active .mat-icon {
+    color: #1976d2 !important;
+}
+
+/* Texto do item selecionado */
+.mat-mdc-list-item.menu-item-active .menu-item-text {
+    color: #1976d2 !important;
+    font-weight: 600;
+}
