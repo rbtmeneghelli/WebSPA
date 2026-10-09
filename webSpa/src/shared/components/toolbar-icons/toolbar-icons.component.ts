@@ -9,7 +9,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { AuthGuardService } from '../../../core/services/auth-guard.service';
 import { NotificationService } from '../../../core/services/notification.service';
 import { NotifyEntity } from '../../../core/models/notify.model';
-import { take } from 'rxjs';
+import { retry, take } from 'rxjs';
 import { SnackBarService } from '../../../core/services/snackBar.service';
 import { EnumActionMessage, EnumTypeMessage } from '../../../core/enums/enums';
 
@@ -30,13 +30,16 @@ export class ToolBarIconsComponent implements OnInit {
   private readonly _AuthGuardService: AuthGuardService = inject(AuthGuardService);
   private readonly _NotificationService: NotificationService = inject(NotificationService);
   private readonly _SnackBarService: SnackBarService = inject(SnackBarService);
-  public userName: string = this._AuthGuardService.getUserName();
-  public userEmail: string = this._AuthGuardService.getUserEmail();
+  public userName: string = '';
 
-  ngOnInit(): void {
-    this._NotificationService.getAllNotifications([]).pipe(take(1)).subscribe(response => {
-      this._NotificationService.setNotifications(response.result as NotifyEntity[]);
-      this.notifications = response.result as NotifyEntity[];
+  async ngOnInit(): Promise<void> {
+    await this._AuthGuardService.getUserNameValue().pipe(take(1), retry(1)).toPromise().then(response => {
+      this.userName = response as string;
+    });
+
+    await this._NotificationService.getAllNotifications([]).pipe(take(1)).subscribe(response => {
+      this._NotificationService.setNotifications(response.data as NotifyEntity[]);
+      this.notifications = response.data as NotifyEntity[];
     }, error => {
       this._SnackBarService.sendSnackBarNotification('Erro para buscar as notificações', EnumTypeMessage.Personalized, EnumActionMessage.Error, false);
     });

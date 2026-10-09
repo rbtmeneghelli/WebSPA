@@ -1,8 +1,14 @@
-export class CredentialsModel {
-    public name!: string;
-    public email!: string;
-    public password!: string;
-    public profile!: string;
-    public roles!: string[];
-    public token!: string;
+export class CredentialsRequest {
+    login?: string = '';
+    password?: string = '';
+}
+
+export class CredentialsResponse {
+    roles?: Array<FuncionalityRoleResponse> = new Array<FuncionalityRoleResponse>();
+    token?: string = '';
+}
+
+export class FuncionalityRoleResponse {
+  funcionalityId?: number;
+  crudPermissions?: string;
 }

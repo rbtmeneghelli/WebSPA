@@ -16,13 +16,14 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FooterComponent } from "../../shared/components/footer/footer-component";
-import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ReactiveFormsModule } from '@angular/forms';
 import { CONSTANT_VARIABLES } from "../../core/constants/variables.constant";
 import { SnackBarService } from "../../core/services/snackBar.service";
 import { hasErrorFormControl } from "../../core/functions/shared-string.functions";
 import { EnumActionMessage, EnumTypeMessage } from "../../core/enums/enums";
-import { CredentialsModel } from '../../core/models/credentials.model';
+import { environment } from '../../environments/environment.prod';
+import { CredentialsResponse } from '../../core/models/credentials.model';
 @Component({
     selector: 'app-login',
     standalone: true,
@@ -53,7 +54,7 @@ export class LoginComponent {
         const email = this.form.controls['email'].value;
         const password = this.form.controls['password'].value;
         if (email === 'admin@gmail.com' && password === 'Admin@123') {
-            this._AuthGuardService.keepUserData(new CredentialsModel());
+            this._AuthGuardService.keepUserData(new CredentialsResponse(), environment.production);
             this._SnackBarService.sendSnackBarNotificationRoute(
                 'Login efetuado com sucesso',
                 EnumTypeMessage.Login,
